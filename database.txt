@@ -1,0 +1,1 @@
+[{"Name":"Kasutaja Monster","pHead":2,"pLeftHand":2,"pChest":2,"pRightHand":2,"pLeftLeg":2,"pRightLeg":2,"won":0,"lost":0}, {"Name":"Kasutaja Monster","pHead":2,"pLeftHand":2,"pChest":2,"pRightHand":2,"pLeftLeg":2,"pRightLeg":2,"won":0,"lost":0}]
