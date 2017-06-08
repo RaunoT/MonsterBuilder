@@ -1,0 +1,156 @@
+body, html {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url(background/22.png);
+}
+
+.container {
+  float: left;
+  height: 800px;
+  width: 800px;
+  margin-top: 100px;
+  margin-left: 100px;
+  background-color: #666;
+}
+
+#savedPlayer {
+  width: 400px;
+  height: 400px;
+  margin-left: 200px;
+  margin-top: 90px;
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+.savedPlayerCreature {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  background-color: #404040;
+}
+
+#SPhead {
+  margin-left: 150px;
+  margin-top: 45px;
+}
+
+#SPleftHand {
+  margin-left: 45px;
+  margin-top: 150px;
+}
+
+#SPchest {
+  margin-left: 150px;
+  margin-top: 150px;
+}
+
+#SPrightHand {
+  margin-left: 255px;
+  margin-top: 150px;
+}
+
+#SPleftLeg {
+  margin-left: 97px;
+  margin-top: 255px;
+}
+
+#SPrightLeg {
+  margin-left: 203px;
+  margin-top: 255px;
+}
+
+#lContainer {
+  float: right;
+  height: 800px;
+  width: 800px;
+  margin-top: 100px;
+  margin-right: 100px;
+  background-color: #666;
+  border-radius: 5px;
+}
+
+#hallOfFame {
+  height: 490px;
+  background-color: #888;
+}
+
+.interface {
+  height: 300px;
+  width: 500px;
+  margin: 0px 150px 0px 150px;
+}
+
+.btn {
+  width: 200px;
+  height: 100px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 100px;
+  font-variant: small-caps;
+  font-weight: bold;
+  font-size: 2em;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+a:link, a:visited {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  outline: 0;
+}
+
+a:link:active, a:visited:active {
+  color: black;
+  outline: 0;
+}
+
+#placeholder {
+  height: 180px;
+  width: 500px;
+}
+
+#PvP {
+  float: left;
+  background-color: #ff9900;
+  cursor: pointer;
+}
+
+#PvAI {
+  float: left;
+  margin-left: 100px;
+  background-color: #00e600;
+  cursor: pointer;
+}
+
+#logout {
+  width: 200px;
+  height: 80px;
+  background: #992600;
+  margin-right: 0px;
+  margin-top: -40px;
+  position: relative;
+  float: right;
+  border-radius: 5px;
+  line-height: 80px;
+  font-variant: small-caps;
+}
+
+#logout>span {
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+#logout:hover {
+  cursor: pointer;
+}
