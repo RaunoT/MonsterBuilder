@@ -1,0 +1,2 @@
+# MonsterBuilder
+Tarkvararenduse suvepraktika
