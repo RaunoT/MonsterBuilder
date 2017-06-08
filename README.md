@@ -1,29 +1,29 @@
-#MonsterBuilder
+# MonsterBuilder
 Tarkvararenduse suvepraktika
 
 
-git käsklused:
+## git käsklused
 
-// Tekitab uue branch'i lokaalselt
-git checkout -b "branchi nimi"
+- Tekitab uue branch'i lokaalselt
+	- git checkout -b **branch name**
 
-// Pushib uue branch'i github'i
-git push origin "branchi nimi"
+- Pushib uue branch'i github'i
+	- git push origin **branch name**
 
-// Branch'i kustutamine
-git push origin --delete "branchi nimi"
+- Branch'i kustutamine
+	- git push origin --delete **branch name**
 
-// Ütleb mis branch'il praegu oled 
-git branch
+- Ütleb mis branch'il praegu oled 
+	- git branch
 
-// 
-git merge -
+- Ühendab branch'id
+	- git merge **branch name**
 
 
-Tööjaotus ja rühmaliikmed
+## tööjaotus ja rühmaliikmed
 
-Ksenia Gennadevna Belorusskaja - Disainer
-Rando Tomingas - Programmeerija
-Rait Keernik - Programmeerija
-Tatjana Kuznetsova - Dokumentatsioon
-Rauno Tegelmann - CSS
+1. Ksenia Gennadevna Belorusskaja - Disainer
+2. Rando Tomingas - Programmeerija
+3. Rait Keernik - Programmeerija
+4. Tatjana Kuznetsova - Dokumentatsioon
+5. Rauno Tegelmann - CSS/Juhendamine/Koodihaldus
