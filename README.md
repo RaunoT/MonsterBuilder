@@ -1,6 +1,19 @@
 # MonsterBuilder
 Tarkvararenduse suvepraktika
 
+## eesmärk
+
+Two-player rock-paper-scissors type of game, where instead of rock, paper or scissors
+monsters body parts compete with eachother.
+
+## tööjaotus ja rühmaliikmed
+
+1. Ksenia Gennadevna Belorusskaja - Disainer
+2. Rando Tomingas - Programmeerija
+3. Rait Keernik - Programmeerija
+4. Tatjana Kuznetsova - Dokumentatsioon
+5. Rauno Tegelmann - Kujundus/Juhendamine/Koodihaldus
+
 ## git käsklused
 
 Tekitab uue branch'i lokaalselt
@@ -17,11 +30,3 @@ Branch'i kustutamine
 
 Ühendab branch'id
 * git merge **branch name**
-
-## tööjaotus ja rühmaliikmed
-
-1. Ksenia Gennadevna Belorusskaja - Disainer
-2. Rando Tomingas - Programmeerija
-3. Rait Keernik - Programmeerija
-4. Tatjana Kuznetsova - Dokumentatsioon
-5. Rauno Tegelmann - Kujundus/Juhendamine/Koodihaldus
