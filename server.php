@@ -2,7 +2,7 @@
 
     $allPlayers = array();
 
-    define("FILENAME","database.txt");
+    define("FILENAME","database.json");
     if(isset($_POST["save"]) && !empty($_POST["save"])){
         saveToFile($_POST["save"]);
     }
