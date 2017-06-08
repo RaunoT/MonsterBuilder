@@ -1,19 +1,17 @@
-
-var player = {
-"Name":user,
-"pHead":0,
-"pLeftHand":0,
-"pChest":0,
-"pRightHand":0,
-"pLeftLeg":0,
-"pRightLeg":0,
-"won":0,
-"lost":0
+var valueCounter = {
+  "pHead": 0,
+  "pLeftHand": 0,
+  "pChest": 0,
+  "pRightHand": 0,
+  "pLeftLeg": 0,
+  "pRightLeg":0,
+  "head": 0,
+  "leftHand": 0,
+  "chest": 0,
+  "rightHand": 0,
+  "leftLeg": 0,
+  "rightLeg":0
 };
-
-var playerString = {};
-var stringToSave = {};
-var allPlayers =[];
 
 var colors = ["#ffc0cb", "#b3b3b3", "#966d4f"];  // roosa, hõbedane, pruun
 var types = ["head", "leftHand", "chest", "rightHand", "leftLeg", "rightLeg"];
@@ -22,23 +20,11 @@ var AICreatureParts = document.getElementsByClassName("AICreature");
 var playerPoints = 0;
 var AIPoints = 0;
 
-
-
 window.onload = function(){
 
-  // window.addEventListener("click", function(e) {
-  //   console.log(e);
-  // });
-
-  loadServerFn();
-
-  setTimeout(function() {
-    loadPlayer();
-  }, 100);
-
-
-
-
+  window.addEventListener("click", function(e) {
+    console.log(e);
+  });
 
   pHead.addEventListener("click", function() {changeValue(colors, pHead, "pHead");} );
   pHead.addEventListener("mouseover", function() {pointer(pHead);} );
@@ -58,153 +44,27 @@ window.onload = function(){
   pRightLeg.addEventListener("click", function() {changeValue(colors, pRightLeg, "pRightLeg");} );
   pRightLeg.addEventListener("mouseover", function() {pointer(pRightLeg);} );
 
-  confirmer.addEventListener("click", function() {confirmMonster();} );
-  confirmer.addEventListener("mouseover", function() {pointer(confirmer);} );
+  play.addEventListener("click", function() {startPlay();} );
+  play.addEventListener("mouseover", function() {pointer(play);} );
 
-  playPvP.addEventListener("mouseover", function() {pointer(playPvP);} );
-
-
-
-
+  refresh.addEventListener("click", function() {refreshPage();} );
+  refresh.addEventListener("mouseover", function() {pointer(refresh);} );
 
 };
 
+
 function changeValue(list, object, type) {
   for(var i=0; i<list.length; i++);
-    player[type] += 1;
-    if (player[type] == list.length+1) {
-      player[type] = 1;
+    valueCounter[type] += 1;
+    if (valueCounter[type] == list.length+1) {
+      valueCounter[type] = 1;
     }
-    object.style.backgroundColor = list[player[type]-1];
+    object.style.backgroundColor = list[valueCounter[type]-1];
 }
 
 function pointer(object) {
   object.style.cursor = "pointer";
 }
-
-function confirmMonster() {
-  if(checkMonster()==1) {
-    var playerString = JSON.stringify(player);
-    console.log("Monster väärib savemist!");
-
-    // console.log(playerString);
-    //
-    // saveServerFn();
-
-    /////////////////////////////////////////////////pooooooooooleli
-
-  } else {
-    console.log("Monstril tervis puha korrast ära!");
-  }
-}
-
-function checkMonster() {
-  var ready = 1;
-  for(var i=0; i<pTypes.length; i++) {
-    if(player[pTypes[i]]===0){
-      ready = 0;
-    }
-  }
-  return ready;
-}
-
-
-
-function loadPlayer() {
-
-  for(var p=0; p<allPlayers.length; p++){
-    if(allPlayers[p].Name==player.Name){
-
-      console.log(player.Name);
-
-      player.Name = allPlayers[p].Name;
-      player.pHead = allPlayers[p].pHead;
-      document.getElementById('pHead').style.backgroundColor = colors[player[pHead]-1];
-      player.pLeftHand = allPlayers[p].pLeftHand;
-      player.pChest = allPlayers[p].pChest;
-      player.pRightHand = allPlayers[p].pRightHand;
-      player.pLeftLeg = allPlayers[p].pLeftLeg;
-      player.pRightLeg = allPlayers[p].pRightLeg;
-      player.won = allPlayers[p].won;
-      player.lost = allPlayers[p].lost;
-
-      console.log(player.pChest);
-    }
-
-
-  }
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-function loadServerFn() {
-  console.log('loadServer');
-
-  // POST server.php save=mingivaartus
-  var xmlDoc = new XMLHttpRequest();
-  xmlDoc.open('GET', 'database.txt', true);
-
-  xmlDoc.onreadystatechange = function() {
-    if (xmlDoc.readyState === 4 && xmlDoc.status === 200) {
-      // console.log(xmlDoc.responseText);
-
-      // tekstifaili sisu teen objektiks ja võtan väärtuse sisse
-      var JSobject = JSON.parse(xmlDoc.responseText);
-      allPlayers = JSobject;
-    }
-  };
-
-  xmlDoc.send();
-
-}
-
-
-
-
-
-
-function saveServerFn() {
-  console.log('saveServer');
-
-  var playerString = JSON.stringify(player);
-  var stringToSave = "["+playerString+", "+playerString+"]";
-
-  console.log(stringToSave);
-
-  // POST server.php save=mingivaartus
-  var xmlDoc = new XMLHttpRequest();
-  xmlDoc.open('POST', 'server.php', true);
-  xmlDoc.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-  xmlDoc.onreadystatechange = function() {
-    if (xmlDoc.readyState === 4 && xmlDoc.status === 200) {
-      console.log(xmlDoc.responseText);
-    }
-  };
-
-  xmlDoc.send('save='+stringToSave);
-
-
-}
-
-
-
-
-
-
-
-
-
 
 function startPlay() {
   console.log("mäng algab");
@@ -246,6 +106,11 @@ function randomizer() {
   return Math.floor((Math.random() * 3) + 1);
 }
 
+function giveAIValue(object, type) {
+  var value = randomizer();
+  object.style.backgroundColor = colors[value-1];
+  valueCounter[type] = value;
+}
 
 function valuate(partValue, list) {
   var points = 0;
@@ -293,6 +158,9 @@ function valuate2(subjectPartValue, partValue) {
   return points;
 }
 
+function refreshPage() {
+  window.location.reload();
+}
 
 function winner(){
 
