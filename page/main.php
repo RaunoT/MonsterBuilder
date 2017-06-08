@@ -1,6 +1,6 @@
 <?php
 
-	require("functions.php");
+	require("../functions.php");
 
 	if (!isset($_SESSION["userId"])) {
 
@@ -25,8 +25,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
-		<link type="text/css" rel="stylesheet" href="main.css" />
-		<script src="javascript.js" charset="utf-8"></script>
+		 <link type="text/css" rel="stylesheet" href="../css/style.css">
+		<script src="../js/javascript.js" charset="utf-8"></script>
 		<title>Monster</title>
 	</head>
 

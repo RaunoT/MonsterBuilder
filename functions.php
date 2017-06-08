@@ -1,11 +1,9 @@
 <?php
 
 	require("../../../config.php");
-
 	session_start();
 
 	$database = "if16_raitkeer";
-
 
 	function signup($email, $password, $userName) {
 
@@ -67,7 +65,7 @@
 
 	}
 
-  function cleanInput ($input) {
+ 	function cleanInput ($input) {
 
 		$input = trim($input);
 

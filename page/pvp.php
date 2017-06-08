@@ -1,6 +1,6 @@
 <?php
 
-	require("functions.php");
+	require("../functions.php");
 
 	if (!isset($_SESSION["userId"])) {
 
@@ -21,11 +21,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Amatic+SC:700" rel="stylesheet">
-		<link type="text/css" rel="stylesheet" href="stylesheet.css" />
+		<link type="text/css" rel="stylesheet" href="../css/style.css">
 		<script type="text/javascript">
 	    var user = '<?php echo $user; ?>';
 		</script>
-		<script src="pvp.js" charset="utf-8"></script>
+		<script src="../js/pvp.js" charset="utf-8"></script>
 		<title>Monster</title>
 	</head>
 

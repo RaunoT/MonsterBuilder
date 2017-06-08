@@ -1,6 +1,6 @@
 <?php
 
-	require("functions.php");
+	require("../functions.php");
 
 	if (isset($_SESSION["userId"])) {
 
@@ -114,7 +114,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Monster</title>
-    <link type="text/css" rel="stylesheet" href="login.css" />
+    <link type="text/css" rel="stylesheet" href="../css/style.css">
 	</head>
 
 	<body>
