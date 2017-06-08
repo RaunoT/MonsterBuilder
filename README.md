@@ -13,7 +13,7 @@ Branch'i kustutamine
 * git push origin --delete **branch name**
 
 Ütleb mis branch'il praegu oled 
-*git branch
+* git branch
 
 Ühendab branch'id
 * git merge **branch name**
