@@ -22,6 +22,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Amatic+SC:700" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="../css/style.css">
+		<script src="../js/jquery-3.2.1.min.js" charset="utf-8"></script>
 		<script type="text/javascript">
 	    var user = '<?php echo $user; ?>';
 		</script>

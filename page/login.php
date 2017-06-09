@@ -115,6 +115,7 @@
 		<meta charset="UTF-8">
 		<title>Monster</title>
     <link type="text/css" rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-3.2.1.min.js" charset="utf-8"></script>
 	</head>
 
 	<body>

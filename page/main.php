@@ -1,13 +1,12 @@
 <?php
 
 	require("../functions.php");
-
+/*
 	if (!isset($_SESSION["userId"])) {
 
 		header("Location: login.php");
 		exit();
 	}
-
 	if (isset($_GET["logout"])) {
 
 		session_destroy();
@@ -15,6 +14,7 @@
 		header("Location: login.php");
 		exit();
 	}
+*/
 
 ?>
 
@@ -25,6 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+		<script src="../js/jquery-3.2.1.min.js" charset="utf-8"></script>
 		 <link type="text/css" rel="stylesheet" href="../css/style.css">
 		<script src="../js/javascript.js" charset="utf-8"></script>
 		<title>Monster</title>
