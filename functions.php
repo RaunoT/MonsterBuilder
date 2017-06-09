@@ -3,7 +3,7 @@
 	require("../../../config.php");
 	session_start();
 
-	$database = "if16_raitkeer";
+	//$database = "if16_raitkeer";
 
 	function signup($email, $password, $userName) {
 
@@ -20,7 +20,10 @@
 	function login($email, $password) {
 
 		$notice = "";
-
+		echo $GLOBALS["serverHost"];
+		echo $GLOBALS["serverUsername"];
+		echo $GLOBALS["serverPassword"];
+		echo $GLOBALS["database"];
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
 
 		$stmt = $mysqli->prepare("

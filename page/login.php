@@ -130,7 +130,7 @@
 
 				<form method="POST">
 
-					<input class="field" name="loginEmail" placeholder="email" value="<?=$loginEmail;?>" type="email"><span class="error"><?php echo $loginEmailError; ?></span>
+					<input class="field" name="loginEmail" placeholder="email" value="<?=$loginEmail;?>" type="text"><span class="error"><?php echo $loginEmailError; ?></span>
 
 					<br><br>
 

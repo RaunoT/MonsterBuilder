@@ -51,11 +51,13 @@
     		//var_dump($jsonf);
     		//echo "<br>";
 	    	if(file_put_contents(FILENAME, json_encode($jsonf))){
-	    		echo ("Saved successfully<br>");
+	    		return ("Saved successfully");
 	    	} else {
-	    		echo ("Error while saving<br>");
+	    		return ("Error while saving");
 	    	}
     	}
+  	} else {
+  		return "Error while saving";
   	}
     
     /*
@@ -69,7 +71,7 @@
 	    }
 	}
 	*/
-	
+
     // Getting data from DB
     // $.ajax({url:"../database.txt"}).done(function(data) {console.log(JSON.parse(data)["players"][0])})
 

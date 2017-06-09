@@ -1,5 +1,5 @@
 var player = {
-	"Name":user,
+	"name":user,
 	"pHead":0,
 	"pLeftHand":0,
 	"pChest":0,
@@ -101,10 +101,10 @@ function checkMonster() {
 
 function loadPlayer() {
 	for(var p=0; p<allPlayers.length; p++){
-		if(allPlayers[p].Name==player.Name){
+		if(allPlayers[p].name==player.name){
 
-			console.log(player.Name);
-			player.Name = allPlayers[p].Name;
+			console.log(player.name);
+			player.name = allPlayers[p].name;
 			player.pHead = allPlayers[p].pHead;
 			document.getElementById('pHead').style.backgroundColor = colors[player[pHead]-1];
 			player.pLeftHand = allPlayers[p].pLeftHand;
@@ -125,41 +125,40 @@ function loadServerFn() {
 
 	// POST server.php save=mingivaartus
 	var xmlDoc = new XMLHttpRequest();
-	xmlDoc.open('GET', 'database.txt', true);
+	xmlDoc.open('GET', '../database.txt', true);
 
 	xmlDoc.onreadystatechange = function() {
 		if (xmlDoc.readyState === 4 && xmlDoc.status === 200) {
-		// console.log(xmlDoc.responseText);
-		// tekstifaili sisu teen objektiks ja võtan väärtuse sisse
-		var JSobject = JSON.parse(xmlDoc.responseText);
-		allPlayers = JSobject;
-	}
-};
+			// console.log(xmlDoc.responseText);
+			// tekstifaili sisu teen objektiks ja võtan väärtuse sisse
+			var JSobject = JSON.parse(xmlDoc.responseText);
+			allPlayers = JSobject["players"];
+		}
+	};
 
-xmlDoc.send();
+	xmlDoc.send();
 
 }
 
 function saveServerFn() {
 	console.log('saveServer');
 
-	var playerString = JSON.stringify(player);
-	var stringToSave = "["+playerString+", "+playerString+"]";
+	var stringToSave = player;
 
-	console.log(stringToSave);
+	console.log(JSON.stringify(stringToSave));
 
 	// POST server.php save=mingivaartus
 	var xmlDoc = new XMLHttpRequest();
-	xmlDoc.open('POST', 'server.php', true);
+	xmlDoc.open('GET', '../server.php?save='+JSON.stringify(stringToSave), true);
 	xmlDoc.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-xmlDoc.onreadystatechange = function() {
-	if (xmlDoc.readyState === 4 && xmlDoc.status === 200) {
-		console.log(xmlDoc.responseText);
-	}
-};
+	xmlDoc.onreadystatechange = function() {
+		if (xmlDoc.readyState === 4 && xmlDoc.status === 200) {
+			console.log(xmlDoc.responseText);
+		}
+	};
 
-xmlDoc.send('save='+stringToSave);
+	xmlDoc.send();
 
 }
 
