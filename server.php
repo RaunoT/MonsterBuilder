@@ -1,22 +1,11 @@
 <?php
 
-    $allPlayers = array();
-
     define("FILENAME","database.json");
-    if(isset($_POST["save"]) && !empty($_POST["save"])){
-        saveToFile($_POST["save"]);
-    }
 
-    function saveToFile($stringToSave){
-        if(file_put_contents(FILENAME, $stringToSave)){
-            echo ('{"message":"saved successfully"}');
-        }
-    }
-
-    $myfile = fopen("database.txt", "r") or die("Unable to open file!");
-    $contents = fread($myfile,filesize("database.txt"));
-    fclose($myfile);
-    $jsonf = json_decode($contents);
+    $database = fopen("database.json", "r") or die("Unable to open file!");
+    $databaseContents = fread($database,filesize("database.json"));
+    fclose($database);
+    $jsonf = json_decode($databaseContents);
 
 
     function addToJson($newPlayer) {
@@ -35,23 +24,11 @@
     $toAdd = addToJson($jsonf->players[0], $jsonf->players);
     array_push($jsonf->players, $toAdd);
     if (file_put_contents(FILENAME, json_encode($jsonf))) {
-        //var_dump($jsonf);
+        echo "Player added to database";
     }
     
-    //print_r($jsonf->players);
-    //echo json_decode($contents);
-    //var_dump($jsonf->players[1]->Name);
     foreach ($jsonf->players as $t) {
-        //echo ($t->Name);
-        //array_push($allPlayers, $t->Name);
         echo($t->Name."<br>");
     }
-
-    //print_r($allPlayers);
-
-
-
-
-
 
 ?>
