@@ -54,36 +54,36 @@
 	  	</div>
 	</nav>
 
-		<div class="box" id="player">
-			<div id="playerScore"></div>
-			<div class="playerCreature" id="pHead"></div>
-			<div class="playerCreature" id="pLeftHand"></div>
-			<div class="playerCreature" id="pChest"></div>
-			<div class="playerCreature" id="pRightHand"></div>
-			<div class="playerCreature" id="pLeftLeg"></div>
-			<div class="playerCreature" id="pRightLeg"></div>
-		</div><!--.box player-->
+	<div class="box" id="player">
+		<div id="playerScore"></div>
+		<div class="playerCreature" id="pHead"></div>
+		<div class="playerCreature" id="pLeftHand"></div>
+		<div class="playerCreature" id="pChest"></div>
+		<div class="playerCreature" id="pRightHand"></div>
+		<div class="playerCreature" id="pLeftLeg"></div>
+		<div class="playerCreature" id="pRightLeg"></div>
+	</div><!--.box player-->
 
-		<div class="container">
+	<div class="container">
 
-			<a href="main.php"><div id="back"><span>Back</span></div></a>
+		<a href="main.php"><div id="back"><span>Back</span></div></a>
 
-			<div class="box" id="AI">
-				<div id="AIScore"></div>
-				<div class="AICreature" id="head"></div>
-				<div class="AICreature" id="leftHand"></div>
-				<div class="AICreature" id="chest"></div>
-				<div class="AICreature" id="rightHand"></div>
-				<div class="AICreature" id="leftLeg"></div>
-				<div class="AICreature" id="rightLeg"></div>
-			</div><!--.box AI-->
+		<div class="box" id="AI">
+			<div id="AIScore"></div>
+			<div class="AICreature" id="head"></div>
+			<div class="AICreature" id="leftHand"></div>
+			<div class="AICreature" id="chest"></div>
+			<div class="AICreature" id="rightHand"></div>
+			<div class="AICreature" id="leftLeg"></div>
+			<div class="AICreature" id="rightLeg"></div>
+		</div><!--.box AI-->
 
-			<div class="interface">
-				<div id="placeholder"></div>
-				<div class="btn" id="refresh">Reload</div>
-				<div class="btn" id="play">Play</div>
-			</div><!--interface-->
+		<div class="interface">
+			<div id="placeholder"></div>
+			<div class="btn" id="refresh">Reload</div>
+			<div class="btn" id="play">Play</div>
+		</div><!--interface-->
 
-		</div><!--container-->
-	</body>
+	</div><!--container-->
+</body>
 </html>

@@ -52,23 +52,15 @@
 	  	</div>
 	</nav>
 
-
-			<div class="box" id="savedPlayer">
-				<div id="savedPlayerScore"></div>
-				<div class="savedPlayerCreature" id="SPhead"></div>
-				<div class="savedPlayerCreature" id="SPleftHand"></div>
-				<div class="savedPlayerCreature" id="SPchest"></div>
-				<div class="savedPlayerCreature" id="SPrightHand"></div>
-				<div class="savedPlayerCreature" id="SPleftLeg"></div>
-				<div class="savedPlayerCreature" id="SPrightLeg"></div>
-			</div>
-
-
-
-
-			<a href="?logout=1" id="logoutBtn"><div id="logout"><span>Log out</span></div></a>
-
-
+	<div class="box" id="savedPlayer">
+		<div id="savedPlayerScore"></div>
+		<div class="savedPlayerCreature" id="SPhead"></div>
+		<div class="savedPlayerCreature" id="SPleftHand"></div>
+		<div class="savedPlayerCreature" id="SPchest"></div>
+		<div class="savedPlayerCreature" id="SPrightHand"></div>
+		<div class="savedPlayerCreature" id="SPleftLeg"></div>
+		<div class="savedPlayerCreature" id="SPrightLeg"></div>
+	</div>
 
 </body>
 </html>
