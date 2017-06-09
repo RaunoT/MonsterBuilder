@@ -113,18 +113,21 @@
 		<div class="row">
 	    	<div class="col-sm-4 col-sm-offset-4 text-center">
 	    		<h2>Login</h2>
-	    		<form method="POST" data-toggle="validator" role="form">
-	    			<div class="input-group has-feedback">
-	    				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-			    		<input class="form-control" name="loginEmail" placeholder="Email" value="<?=$loginEmail;?>" type="Email" data-error="Invalid email address!" required><!--<span class="error"><?php echo $loginEmailError; ?></span>-->
-			    		<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-			    		<div class="help-block with-errors"></div>
-			    	</div>
-			    	<br>
-			    	<div class="input-group has-feedback">
-			    		<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-			    		<input class="form-control" name="loginPassword" placeholder="Password" type="password" required><!--<span class="error"><?php echo $loginPasswordError; ?></span>-->
-			    	</div>
+	    		<form method="POST" data-toggle="validator">
+	    			<div class="form-group">
+		    			<div class="input-group">
+		    				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+				    		<input class="form-control" name="loginEmail" placeholder="Email" value="<?=$loginEmail;?>" type="email" data-error="Invalid email address!" required><!--<span class="error"><?php echo $loginEmailError; ?></span>-->
+				    	</div>
+				    	<div class="help-block with-errors"></div>
+				    </div>
+			    	<div class="form-group">
+				    	<div class="input-group">
+				    		<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+				    		<input class="form-control" name="loginPassword" placeholder="Password" type="password" required><!--<span class="error"><?php echo $loginPasswordError; ?></span>-->
+				    	</div>
+				    	<div class="help-block with-errors"></div>
+				    </div>
 			   		<br>
 		    		<input class="btn" type="submit" value="Log in">
 		    		<button type="button" class="btn" data-toggle="modal" data-target="#Signup">Sign up</button>

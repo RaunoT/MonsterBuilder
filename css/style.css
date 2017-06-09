@@ -2,6 +2,7 @@
 
 body{
   background: url(../assets/background.png);
+  background-size: cover;
 }
 
 h1{
