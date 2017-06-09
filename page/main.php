@@ -4,7 +4,7 @@
 
 	if (!isset($_SESSION["userId"])) {
 
-		header("Location: login.php");
+		header("Location: index.php");
 		exit();
 	}
 
@@ -12,7 +12,7 @@
 
 		session_destroy();
 
-		header("Location: login.php");
+		header("Location: index.php");
 		exit();
 	}
 
