@@ -7,18 +7,17 @@ body{
 h1{
 	text-align: center;
 	color: #fff;
-	font-family: 'Abril Fatface', cursive;
-	font-size: 5em;
+	font-family: 'Luckiest Guy', cursive;
+	font-size: 7.5em;
+}
+
+h1:hover{
+	color: #009600
 }
 
 h2{
-	font-family: 'Abril Fatface', cursive;
+	font-family: 'Luckiest Guy', cursive;
 	color: #fff;
-}
-
-.error {
-	color: red;
-	margin-left: 0.5em;
 }
 
 .btn{
@@ -28,17 +27,22 @@ h2{
 	padding: 0.5em;
 }
 
+.btn:hover{
+	color: #000;
+	background-color: #fff;
+}
+
 .btn:focus{
 	outline: none !important;
 }
 
-input{
-	outline: none;
-	border: none;
-	
-}
 
 /* Mitte korras */
+
+.error{
+	color: red;
+	margin-left: 0.5em;
+}
 
 #savedPlayer {
   width: 400px;
