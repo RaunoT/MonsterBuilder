@@ -20,12 +20,10 @@
         return $player;
     }
     
-
-    $toAdd = addToJson($jsonf->players[0], $jsonf->players);
-    array_push($jsonf->players, $toAdd);
-    if (file_put_contents(FILENAME, json_encode($jsonf))) {
-        echo "Player added to database<br>";
-    }
+  	if(isset($_POST["save"]) && !empty($_POST["save"])){
+    	$toAdd = addToJson($_POST["save"], $jsonf->players);
+    	array_push($jsonf->players, $toAdd);
+  	}
     
     foreach ($jsonf->players as $t) {
         echo($t->name."<br>");
