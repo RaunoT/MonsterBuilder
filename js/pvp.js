@@ -143,6 +143,7 @@ function loadPlayer() {
 function chooseEnemy() {
 	var searchingEnemy = document.getElementById('searchInput').value;
 	var searchingEnemyValue = -1;
+	document.getElementById('error').innerHTML = "";
 
 	if(searchingEnemy==="") {
 		document.getElementById('error').innerHTML = "Insert monster name";
@@ -158,15 +159,13 @@ function chooseEnemy() {
 		} else {
 			loadEnemy(searchingEnemyValue);
 		}
-
 	}
-
-
-
 }
 
 function randomEnemy() {
 	var randomlyChosenEnemy = Math.floor((Math.random() * allPlayers.length));
+	document.getElementById('error').innerHTML = "";
+	
 	if(allPlayers[randomlyChosenEnemy].Name==player.Name) {
 		randomEnemy();
 	} else {
@@ -222,6 +221,8 @@ xmlDoc.send();
 
 }
 
+
+
 function saveServerFn() {
 	console.log('saveServer');
 
@@ -244,6 +245,7 @@ xmlDoc.onreadystatechange = function() {
 xmlDoc.send('save='+stringToSave);
 
 }
+
 
 function startPlay() {
 	console.log("mäng algab");
