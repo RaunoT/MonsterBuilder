@@ -7,6 +7,14 @@
 		header("Location: index.php");
 		exit();
 	}
+	
+	if (isset($_GET["logout"])) {
+
+		session_destroy();
+
+		header("Location: index.php");
+		exit();
+	}
 
 	$user = $_SESSION["userName"];
 
@@ -40,6 +48,9 @@
 		      	<li><a href="main.php">Home</a></li>
 		      	<li class="active"><a href="pvp.php">PvP</a></li>
 		      	<li><a href="monster.php">PvAI</a></li>
+		    </ul>
+		    <ul class="nav navbar-nav navbar-right">
+		    	<li><a href="?logout=1">Logout</a></li>
 		    </ul>
 	  	</div>
 	</nav>
