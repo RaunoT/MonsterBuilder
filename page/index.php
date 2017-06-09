@@ -117,18 +117,17 @@
 	    			<div class="form-group">
 		    			<div class="input-group">
 		    				<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-				    		<input class="form-control" name="loginEmail" placeholder="Email" value="<?=$loginEmail;?>" type="email" data-error="Invalid email address!" required><!--<span class="error"><?php echo $loginEmailError; ?></span>-->
+				    		<input class="form-control" name="loginEmail" placeholder="Email" value="<?=$loginEmail;?>" type="email" data-error="Invalid email address!" required>
 				    	</div>
 				    	<div class="help-block with-errors"></div>
 				    </div>
 			    	<div class="form-group">
 				    	<div class="input-group">
 				    		<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-				    		<input class="form-control" name="loginPassword" placeholder="Password" type="password" required><!--<span class="error"><?php echo $loginPasswordError; ?></span>-->
+				    		<input class="form-control" name="loginPassword" placeholder="Password" type="password" required>
 				    	</div>
 				    	<div class="help-block with-errors"></div>
 				    </div>
-			   		<br>
 		    		<input class="btn" type="submit" value="Log in">
 		    		<button type="button" class="btn" data-toggle="modal" data-target="#Signup">Sign up</button>
     			</form>

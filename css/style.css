@@ -115,12 +115,6 @@ h2{
   background-color: #888;
 }
 
-.interface {
-  height: 300px;
-  width: 500px;
-  margin: 0px 150px 0px 150px;
-}
-
 a:link, a:visited {
   color: black;
   text-decoration: none;
@@ -306,12 +300,6 @@ a:link:active, a:visited:active {
 #rightLeg, #eRightLeg {
   margin-left: 203px;
   margin-top: 255px;
-}
-
-.interface {
-  height: 300px;
-  width: 500px;
-  margin: 0px 150px 0px 150px;
 }
 
 #searchBox {
