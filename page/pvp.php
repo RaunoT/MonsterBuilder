@@ -60,8 +60,9 @@
 			<div class="interface">
         <div id="placeholder">
           <div id="searchBox">
-            <input type="text" name="search" value="", placeholder="Search enemy by name">
+            <input id='searchInput' type="text" name="search" value="", placeholder="Search enemy by name">
           </div>
+					<span id="error"></span>
           <div id="search" class="sbtn">Search</div>
           <div id="random" class="sbtn">Random</div>
         </div>
