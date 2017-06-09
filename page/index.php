@@ -116,7 +116,7 @@
 	    		<form method="POST" data-toggle="validator">
 	    			<div class="form-group">
 		    			<div class="input-group">
-		    				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+		    				<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
 				    		<input class="form-control" name="loginEmail" placeholder="Email" value="<?=$loginEmail;?>" type="email" data-error="Invalid email address!" required><!--<span class="error"><?php echo $loginEmailError; ?></span>-->
 				    	</div>
 				    	<div class="help-block with-errors"></div>

@@ -1,8 +1,7 @@
 /* Korras */
 
 body{
-  background: url(../assets/background.png);
-  background-size: cover;
+	background-color: #000;
 }
 
 h1{
@@ -19,12 +18,12 @@ h1:hover{
 h2{
 	font-family: 'Luckiest Guy', cursive;
 	color: #fff;
+	font-size: 2.5em;
 }
 
 .btn{
 	color: #fff !important;
-	background-color: #333 !important;
-	border: none;
+	background-color: #009600 !important;
 	padding: 0.5em;
 }
 
@@ -35,6 +34,17 @@ h2{
 
 .btn:focus{
 	outline: none !important;
+}
+
+.modal-title{
+	font-size: 2.5em;
+	font-family: 'Luckiest Guy', cursive;
+	text-align: center;
+}
+
+.modal-content{
+	color: #fff;
+	background-color: #333;
 }
 
 /* Mitte korras */
