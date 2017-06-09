@@ -99,6 +99,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
     <!-- CSS -->
@@ -112,15 +113,17 @@
 		<div class="row">
 	    	<div class="col-sm-4 col-sm-offset-4 text-center">
 	    		<h2>Login</h2>
-	    		<form method="POST">
-	    			<div class="input-group">
+	    		<form method="POST" data-toggle="validator" role="form">
+	    			<div class="input-group has-feedback">
 	    				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-			    		<input class="form-control" name="loginEmail" placeholder="Email" value="<?=$loginEmail;?>" type="Email"><!--<span class="error"><?php echo $loginEmailError; ?></span>-->
+			    		<input class="form-control" name="loginEmail" placeholder="Email" value="<?=$loginEmail;?>" type="Email" data-error="Invalid email address!" required><!--<span class="error"><?php echo $loginEmailError; ?></span>-->
+			    		<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+			    		<div class="help-block with-errors"></div>
 			    	</div>
 			    	<br>
-			    	<div class="input-group">
+			    	<div class="input-group has-feedback">
 			    		<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-			    		<input class="form-control" name="loginPassword" placeholder="Password" type="password"><!--<span class="error"><?php echo $loginPasswordError; ?></span>-->
+			    		<input class="form-control" name="loginPassword" placeholder="Password" type="password" required><!--<span class="error"><?php echo $loginPasswordError; ?></span>-->
 			    	</div>
 			   		<br>
 		    		<input class="btn" type="submit" value="Log in">
