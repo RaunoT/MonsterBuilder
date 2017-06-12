@@ -330,20 +330,9 @@ a:link:active, a:visited:active {
   background-color: #ff9900;
 }
 
-#refresh {
-  float: left;
-  background-color: #ff9900;
-}
-
 #confirmer {
   float: left;
   background-color: #008ae6;
-}
-
-#play, #playPvP {
-  float: left;
-  margin-left: 100px;
-  background-color: #00e600;
 }
 
 a:link, a:visited {
@@ -356,42 +345,6 @@ a:link, a:visited {
 a:link:active, a:visited:active {
   color: black;
   outline: 0;
-}
-
-#back {
-  width: 200px;
-  height: 80px;
-  background: #992600;
-  margin-right: 0px;
-  margin-top: -40px;
-  position: relative;
-  float: right;
-  border-radius: 0px 5px 5px 0px;
-  line-height: 80px;
-  font-variant: small-caps;
-}
-
-#back:before {
-  content:"";
-  position: absolute;
-  border-bottom: 40px solid transparent;
-  border-right: 40px solid #992600;
-  border-top: 40px solid transparent;
-  height: 0px;
-  width: 0px;
-  margin-left:-40px;
-}
-
-#back>span {
-  display: inline-block;
-  width: 200px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 2em;
-}
-
-#back:hover {
-  cursor: pointer;
 }
 
 #playerName {
@@ -428,17 +381,3 @@ a:link:active, a:visited:active {
   font-size: 1.3em;
   font-weight: bold;
 }
-
-.box {
-  width: 300px;
-  background-color: rgba(238, 238, 238, 0.1);
-  border-radius: 5px;
-  padding-top: 35px;
-  padding-bottom: 35px;
-  margin-top: 20%;
-}
-
-.box:hover {
-  background-color: rgba(238, 238, 238, 0.3);
-}
-

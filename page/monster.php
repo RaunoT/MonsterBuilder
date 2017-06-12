@@ -52,10 +52,20 @@
 	    	</div>
 	    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			    <ul class="nav navbar-nav">
-			      	<li><a href="pvp.php">Singleplayer</a></li>
-			      	<li class="active"><a href="monster.php">Multiplayer</a></li>
+			    	<li class="active"><a href="monster.php">Singleplayer</a></li>
+			      	<li><a href="pvp.php">Multiplayer</a></li>
 			    </ul>
 			    <ul class="nav navbar-nav navbar-right">
+			    	<li>
+			    		<a id="play">
+			    			<span class="glyphicon glyphicon-play"></span>
+			    		</a>
+			    	</li>
+			    	<li>
+			    		<a href="monster.php">
+			    			<span class="glyphicon glyphicon-repeat"></span>
+			    		</a>
+			    	</li>
 			    	<li>
 						<a href="?logout=1">
 							<span class="glyphicon glyphicon-log-out"></span>
@@ -78,8 +88,6 @@
 
 	<div class="container">
 
-		<a href="main.php"><div id="back"><span>Back</span></div></a>
-
 		<div class="box" id="AI">
 			<div id="AIScore"></div>
 			<div class="AICreature" id="head"></div>
@@ -89,12 +97,6 @@
 			<div class="AICreature" id="leftLeg"></div>
 			<div class="AICreature" id="rightLeg"></div>
 		</div><!--.box AI-->
-
-		<div class="interface">
-			<div id="placeholder"></div>
-			<div class="btn" id="refresh">Reload</div>
-			<div class="btn" id="play">Play</div>
-		</div><!--interface-->
 
 	</div><!--container-->
 

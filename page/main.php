@@ -50,8 +50,8 @@
 	    	</div>
 	    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			    <ul class="nav navbar-nav">
-			      	<li><a href="pvp.php">Singleplayer</a></li>
-			      	<li><a href="monster.php">Multiplayer</a></li>
+			    	<li><a href="monster.php">Singleplayer</a></li>
+			      	<li><a href="pvp.php">Multiplayer</a></li>
 			    </ul>
 			    <ul class="nav navbar-nav navbar-right">
 			    	<li>
