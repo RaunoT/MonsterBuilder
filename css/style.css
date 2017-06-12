@@ -302,7 +302,6 @@ a:link:active, a:visited:active {
 }
 
 /* AI, vastase Monster */
-
 .AICreature, .enemyCreature {
   height: 100px;
   width: 100px;
