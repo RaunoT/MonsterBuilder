@@ -95,56 +95,38 @@
 		</div>
 	</div>
 	-->
-	<div class="col-sm-6">
-	<table>
-		<tr>
-			<td></td>
-			<td></td>
-			<td><div class="playerCreature" id="pHead"></div></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td><div class="playerCreature" id="pLeftHand"></div></td>
-			<td></td>
-			<td><div class="playerCreature" id="pChest"></div></td>
-			<td></td>
-			<td><div class="playerCreature" id="pRightHand"></div></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td><div class="playerCreature" id="pLeftLeg"></div></td>
-			<td></td>
-			<td><div class="playerCreature" id="pRightLeg"></div></td>
-			<td></td>
-		</tr>
-	</table>
-	</div>
-
-	<div class="col-sm-6">
-	<table>
-		<tr>
-			<td></td>
-			<td></td>
-			<td><div class="AICreature" id="head"></div></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td><div class="AICreature" id="leftHand"></div></td>
-			<td></td>
-			<td><div class="AICreature" id="chest"></div></td>
-			<td></td>
-			<td><div class="AICreature" id="rightHand"></div></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td><div class="AICreature" id="leftLeg"></div></td>
-			<td></td>
-			<td><div class="AICreature" id="rightLeg"></div></td>
-			<td></td>
-		</tr>
-	</table>
+	<div class="container-fluid">
+		
+			<div class="col-sm-6">
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-4"><div class="playerCreature" style="margin: 0 auto;" id="pHead"></div></div>
+			</div>
+			<div class="row"> tere</div>
+			<div class="row">
+				<div class="col-xs-4"><div class="playerCreature" style="margin: 0 auto;" id="pLeftHand"></div></div>
+				<div class="col-xs-4"><div class="playerCreature" style="margin: 0 auto;" id="pChest"></div></div>
+				<div class="col-xs-4"><div class="playerCreature" style="margin: 0 auto;" id="pRightHand"></div></div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-2"><div class="playerCreature" style="margin: 0 auto;" id="pLeftLeg"></div></div>
+				<div class="col-xs-4"><div class="playerCreature" style="margin: 0 auto;" id="pRightLeg"></div></div>
+			</div>
+			</div>
+			<div class="col-sm-6">
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-4"><div class="AICreature" style="margin: 0 auto;" id="head"></div></div>
+			</div>
+			<div class="row"> tere</div>
+			<div class="row">
+				<div class="col-xs-4"><div class="AICreature" style="margin: 0 auto;" id="leftHand"></div></div>
+				<div class="col-xs-4"><div class="AICreature" style="margin: 0 auto;" id="chest"></div></div>
+				<div class="col-xs-4"><div class="AICreature" style="margin: 0 auto;" id="leftLeg"></div></div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-2"><div class="AICreature" style="margin: 0 auto;" id="leftLeg"></div></div>
+				<div class="col-xs-4"><div class="AICreature" style="margin: 0 auto;" id="rightLeg"></div></div>
+			</div>
+			</div>
 	</div>
 
 </body>

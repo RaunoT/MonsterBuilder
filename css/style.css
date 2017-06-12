@@ -296,14 +296,18 @@ a:link:active, a:visited:active {
 
 /* Mängija Monster */
 .playerCreature {
-    height: 100px;
-    width: 100px;
+    height: 20vh;
+    width: 100%;
     background-color: #fff;
 }
 
 /* AI, vastase Monster */
 .AICreature, .enemyCreature {
-  height: 100px;
-  width: 100px;
-  background-color: #fff;
+    height: 20vh;
+    width: 100%;
+    background-color: #fff;
+}
+
+.col-sm-6 {
+    height: 500px;
 }
