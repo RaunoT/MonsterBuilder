@@ -68,6 +68,7 @@ h2{
 /* Nupud mängu kontrollimiseks navbaril */
 .playIcon{
     color: #009600;
+    margin-right: 15px;
 }
 
 .playIcon:hover{
@@ -97,36 +98,6 @@ h2{
   background-color: #404040;
 }
 
-#SPhead {
-  margin-left: 150px;
-  margin-top: 45px;
-}
-
-#SPleftHand {
-  margin-left: 45px;
-  margin-top: 150px;
-}
-
-#SPchest {
-  margin-left: 150px;
-  margin-top: 150px;
-}
-
-#SPrightHand {
-  margin-left: 255px;
-  margin-top: 150px;
-}
-
-#SPleftLeg {
-  margin-left: 97px;
-  margin-top: 255px;
-}
-
-#SPrightLeg {
-  margin-left: 203px;
-  margin-top: 255px;
-}
-
 #lContainer {
   float: right;
   height: 800px;
@@ -140,18 +111,6 @@ h2{
 #hallOfFame {
   height: 490px;
   background-color: #888;
-}
-
-a:link, a:visited {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-  outline: 0;
-}
-
-a:link:active, a:visited:active {
-  color: black;
-  outline: 0;
 }
 
 #PvP {
@@ -221,43 +180,6 @@ a:link:active, a:visited:active {
   font-size: 2em;
 }
 
-.playerCreature {
-  position: absolute;
-  height: 200px;
-  width: 200px;
-  background-color: #404040;
-}
-
-#pHead {
-  margin-left: 300px;
-  margin-top: 90px;
-}
-
-#pLeftHand {
-  margin-left: 90px;
-  margin-top: 300px;
-}
-
-#pChest {
-  margin-left: 300px;
-  margin-top: 300px;
-}
-
-#pRightHand {
-  margin-left: 510px;
-  margin-top: 300px;
-}
-
-#pLeftLeg {
-  margin-left: 195px;
-  margin-top: 510px;
-}
-
-#pRightLeg {
-  margin-left: 405px;
-  margin-top: 510px;
-}
-
 .container {
   float: right;
   height: 800px;
@@ -290,43 +212,6 @@ a:link:active, a:visited:active {
   -moz-user-select: none;
   -o-user-select: none;
   user-select: none;
-}
-
-.AICreature, .enemyCreature {
-  position: absolute;
-  height: 100px;
-  width: 100px;
-  background-color: #404040;
-}
-
-#head, #eHead {
-  margin-left: 150px;
-  margin-top: 45px;
-}
-
-#leftHand, #eLeftHand {
-  margin-left: 45px;
-  margin-top: 150px;
-}
-
-#chest, #eChest {
-  margin-left: 150px;
-  margin-top: 150px;
-}
-
-#rightHand, #eRightHand {
-  margin-left: 255px;
-  margin-top: 150px;
-}
-
-#leftLeg, #eLeftLeg {
-  margin-left: 97px;
-  margin-top: 255px;
-}
-
-#rightLeg, #eRightLeg {
-  margin-left: 203px;
-  margin-top: 255px;
 }
 
 #searchBox {
@@ -407,4 +292,19 @@ a:link:active, a:visited:active {
   line-height: 36px;
   font-size: 1.3em;
   font-weight: bold;
+}
+
+/* Mängija Monster */
+.playerCreature {
+    height: 100px;
+    width: 100px;
+    background-color: #fff;
+}
+
+/* AI, vastase Monster */
+
+.AICreature, .enemyCreature {
+  height: 100px;
+  width: 100px;
+  background-color: #fff;
 }
