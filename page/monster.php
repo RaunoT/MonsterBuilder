@@ -58,12 +58,12 @@
 			    <ul class="nav navbar-nav navbar-right">
 			    	<li>
 			    		<a id="play">
-			    			<span class="glyphicon glyphicon-play"></span>
+			    			<span class="glyphicon glyphicon-play playIcon"></span>
 			    		</a>
 			    	</li>
 			    	<li>
 			    		<a href="monster.php">
-			    			<span class="glyphicon glyphicon-repeat"></span>
+			    			<span class="glyphicon glyphicon-repeat playIcon"></span>
 			    		</a>
 			    	</li>
 			    	<li>
