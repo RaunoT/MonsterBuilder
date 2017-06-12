@@ -1,5 +1,10 @@
 /* Korras */
 
+/* Ilma selleta on ääred imelikud formidel */
+.form-control{
+    height: 36px;
+}
+
 body{
 	background-color: #000;
 }
@@ -45,6 +50,19 @@ h2{
 .modal-content{
 	color: #fff;
 	background-color: #333;
+}
+
+.modal-header{
+    border: none;
+}
+
+/* Modali sulgemis nupp */
+.close{
+    color: #fff;
+}
+
+.close:hover{
+    color: #fff;
 }
 
 /* Mitte korras */
