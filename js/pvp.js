@@ -129,13 +129,11 @@ function loadServerFn() {
 
 	xmlDoc.onreadystatechange = function() {
 		if (xmlDoc.readyState === 4 && xmlDoc.status === 200) {
-			// console.log(xmlDoc.responseText);
 			// tekstifaili sisu teen objektiks ja võtan väärtuse sisse
 			var JSobject = JSON.parse(xmlDoc.responseText);
 			allPlayers = JSobject["players"];
 		}
 	};
-
 	xmlDoc.send();
 
 }

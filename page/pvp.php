@@ -31,6 +31,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+  	<script type="text/javascript">
+  		var user = '<?php echo $user; ?>';
+  	</script>
+  	<script src="../js/pvp.js" charset="utf-8"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
     <!-- CSS -->
