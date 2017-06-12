@@ -4,7 +4,15 @@
 
 	if (!isset($_SESSION["userId"])) {
 
-		header("Location: login.php");
+		header("Location: index.php");
+		exit();
+	}
+
+	if (isset($_GET["logout"])) {
+
+		session_destroy();
+
+		header("Location: index.php");
 		exit();
 	}
 
@@ -12,18 +20,39 @@
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
-		<script src="../js/jquery-3.2.1.min.js" charset="utf-8"></script>
-		 <link type="text/css" rel="stylesheet" href="../css/style.css">
-		<script src="../js/javascript.js" charset="utf-8"></script>
-		<title>Monster</title>
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<title>Monster Builder</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+    <!-- CSS -->
+    <link type="text/css" rel="stylesheet" href="../css/style.css">
+    <!-- JS -->
+    <script src="../js/javascript.js"></script>
+</head>
+<body>
 
-	<body>
+	<!-- Fixed top navbar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+	    	<div class="navbar-header">
+	      		<a class="navbar-brand" href="#">Monster Builder</a>
+	    	</div>
+		    <ul class="nav navbar-nav">
+		      	<li><a href="main.php">Home</a></li>
+		      	<li><a href="pvp.php">PvP</a></li>
+		      	<li class="active"><a href="monster.php">PvAI</a></li>
+		    </ul>
+		    <ul class="nav navbar-nav navbar-right">
+		    	<li><a href="?logout=1">Logout</a></li>
+		    </ul>
+	  	</div>
+	</nav>
 
 		<div class="box" id="player">
 			<div id="playerScore"></div>
