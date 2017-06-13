@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#009600" />
 	<title>Monster Builder</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -11,7 +12,7 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <!-- CSS -->
     <link type="text/css" rel="stylesheet" href="../css/style.css">
     <!-- JS -->
@@ -34,8 +35,8 @@
 	    	</div>
 	    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			    <ul class="nav navbar-nav navbar-right">
-			    	<li class="active"><a href="singleplayer.html">Singleplayer</a></li>
-			      	<li><a href="multiplayer.html">Multiplayer</a></li>
+			    	<li class="active"><a href="singleplayer.html">Single-player</a></li>
+			      	<li><a href="multiplayer.html">Multi-player</a></li>
 			    </ul>
 			</div>
 	  	</div>
@@ -43,28 +44,29 @@
 
 	<div class="container-fluid">
 		<div class="col-sm-6">
+			<h1>Your monster</h1>
 			<div class="row">
 				<div class="col-xs-4 col-xs-offset-4">
-					<div class="playerCreature" id="pHead"></div>
+					<div class="playerCreature" id="pHead"><img src="../assets/monster/animal/anim_FACE_1.png" height="56.25vh" width="100vh" alt=""></div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-4">
-					<div class="playerCreature" id="pLeftHand"></div>
+					<div class="playerCreature" id="pLeftHand"><img src="../assets/monster/animal/anim_HAND_1.png" height="56.25vh" width="100vh" alt=""></div>
 				</div>
 				<div class="col-xs-4">
-					<div class="playerCreature" id="pChest"></div>
+					<div class="playerCreature" id="pChest"><img src="../assets/monster/animal/anim_BODY_1.png" height="56.25vh" width="100vh" alt=""></div>
 				</div>
 				<div class="col-xs-4">
-					<div class="playerCreature" id="pRightHand"></div>
+					<div class="playerCreature" id="pRightHand"><img src="../assets/monster/animal/anim_HAND_1.png" height="56.25vh" width="100vh" alt=""></div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-4 col-xs-offset-2">
-					<div class="playerCreature" id="pLeftLeg"></div>
+					<div class="playerCreature" id="pLeftLeg"><img src="../assets/monster/animal/anim_LEG_1.png" height="56.25vh" width="100vh" alt=""></div>
 				</div>
 				<div class="col-xs-4">
-					<div class="playerCreature" id="pRightLeg"></div>
+					<div class="playerCreature" id="pRightLeg"><img src="../assets/monster/animal/anim_LEG_1.png" height="56.25vh" width="100vh" alt=""></div>
 				</div>
 			</div>
 			<div class="row">
@@ -77,6 +79,7 @@
 			</div>
 		</div>
 		<div class="col-sm-6">
+			<h1>Enemy monster</h1>
 			<div class="row">
 				<div class="col-xs-4 col-xs-offset-4">
 					<div class="AICreature" id="head"></div>

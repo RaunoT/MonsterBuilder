@@ -1,7 +1,22 @@
 /* Lehekülg */
 body{
-	background-color: #444;
-  	padding-top: 70px;
+	background-color: #333;
+  	padding-top: 50px;
+}
+
+h1{
+	text-align: center;
+	margin: 15px;
+	color: #fff;
+	font-family: 'VT323', monospace;
+	color: #dc0000;
+	font-size: 3.5em;
+}
+
+img{
+	background-color: #fff;
+	display: block;
+	margin: 0 auto;
 }
 /* ----- */
 
@@ -24,9 +39,6 @@ body{
 /* Mängija Monster */
 .playerCreature {
     margin: 0 auto;
-    height: 20vh;
-    width: 100%;
-    background-color: #fff;
 }
 /* ----- */
 
@@ -44,14 +56,12 @@ body{
 /* ----- */
 
 /* Bootstrapi kastid */
-.col-sm-6 {
-    height: 500px;
-}
+
 /* ----- */
 
 /* Navbar tweaks */
 .navbar-brand, .nav.navbar-nav.navbar-right{
-	font-family: 'Patrick Hand SC', cursive !important;
+	font-family: 'VT323', monospace;
 	font-size: 2em;
 }
 
@@ -63,10 +73,6 @@ body{
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
 	background-color: #fff;
 	color: #000;
-}
-
-.navbar-toggle.collapsed{
-	
 }
 /* ----- */
 
