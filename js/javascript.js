@@ -44,6 +44,7 @@ window.onload = function(){
   pRightLeg.addEventListener("click", function() {changeValue(colors, pRightLeg, "pRightLeg");} );
   pRightLeg.addEventListener("mouseover", function() {pointer(pRightLeg);} );
 
+  var play = document.getElementById("play");
   play.addEventListener("click", function() {startPlay();} );
   play.addEventListener("mouseover", function() {pointer(play);} );
 
