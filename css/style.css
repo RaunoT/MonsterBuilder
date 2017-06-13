@@ -1,24 +1,25 @@
-/* Korras */
-
+/* Lehekülg */
 body{
-	background-color: #000;
-  padding-top: 70px;
+	background-color: #444;
+  	padding-top: 70px;
 }
+/* ----- */
 
 /* Nupud mis kontrollivad mängimist */
 .controlBtn{
-  color: #fff;
-  background-color: #009600;
-  border: none;
-  margin-top: 2.5em;
-  margin-bottom: 2.5em;
-  padding: 1em;
+  	color: #fff;
+  	background-color: #009600;
+  	border: none;
+  	margin-top: 2.5em;
+  	margin-bottom: 2.5em;
+  	padding: 1em;
 }
 
 .controlBtn:hover{
-  color: #000;
-  background-color: #fff;
+  	color: #000;
+  	background-color: #fff;
 }
+/* ----- */
 
 /* Mängija Monster */
 .playerCreature {
@@ -27,6 +28,7 @@ body{
     width: 100%;
     background-color: #fff;
 }
+/* ----- */
 
 /* AI, vastase Monster */
 .AICreature, .enemyCreature {
@@ -36,20 +38,39 @@ body{
     background-color: #fff;
 }
 
-.col-sm-6 {
-    height: 500px;
-}
-
 .opponentMonster{
     visibility: hidden;
 }
+/* ----- */
+
+/* Bootstrapi kastid */
+.col-sm-6 {
+    height: 500px;
+}
+/* ----- */
+
+/* Navbar tweaks */
+.navbar-brand, .nav.navbar-nav.navbar-right{
+	font-family: 'Patrick Hand SC', cursive !important;
+	font-size: 2em;
+}
+
+.navbar{
+	background-color: #000;
+	border: none;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+	background-color: #fff;
+	color: #000;
+}
+
+.navbar-toggle.collapsed{
+	
+}
+/* ----- */
 
 /* Mitte korras */
-
-.error{
-	color: red;
-	margin-left: 0.5em;
-}
 
 #savedPlayer {
   width: 400px;
@@ -66,60 +87,6 @@ body{
   width: 100px;
   background-color: #404040;
 }
-
-#lContainer {
-  float: right;
-  height: 800px;
-  width: 800px;
-  margin-top: 100px;
-  margin-right: 100px;
-  background-color: #666;
-  border-radius: 5px;
-}
-
-#hallOfFame {
-  height: 490px;
-  background-color: #888;
-}
-
-#PvP {
-  float: left;
-  background-color: #ff9900;
-  cursor: pointer;
-}
-
-#PvAI {
-  float: left;
-  margin-left: 100px;
-  background-color: #00e600;
-  cursor: pointer;
-}
-
-#logout {
-  width: 200px;
-  height: 80px;
-  background: #992600;
-  margin-right: 0px;
-  margin-top: -40px;
-  position: relative;
-  float: right;
-  border-radius: 5px;
-  line-height: 80px;
-  font-variant: small-caps;
-}
-
-#logout>span {
-  display: inline-block;
-  width: 200px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 2em;
-}
-
-#logout:hover {
-  cursor: pointer;
-}
-
 
 #player {
   float:left;
@@ -149,14 +116,6 @@ body{
   font-size: 2em;
 }
 
-.container {
-  float: right;
-  height: 800px;
-  width: 800px;
-  margin-top: 100px;
-  margin-right: 100px;
-}
-
 #AI, #enemy {
   width: 400px;
   height: 400px;
@@ -181,34 +140,6 @@ body{
   -moz-user-select: none;
   -o-user-select: none;
   user-select: none;
-}
-
-.sbtn {
-  display: inline-block;
-  float: left;
-  height: 32px;
-  width: 80px;
-  background-color: white;
-  border-radius: 5px;
-  margin-left: 60px;
-  margin-top: 70px;
-  text-align: center;
-  font-variant: small-caps;
-  font-weight: bold;
-  line-height: 32px;
-  cursor: pointer;
-}
-
-a:link, a:visited {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-  outline: 0;
-}
-
-a:link:active, a:visited:active {
-  color: black;
-  outline: 0;
 }
 
 #playerName {
