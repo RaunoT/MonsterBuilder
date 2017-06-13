@@ -64,8 +64,8 @@ window.onload = function(){
 	pRightLeg.addEventListener("click", function() {changeValue(colors, pRightLeg, "pRightLeg");} );
 	pRightLeg.addEventListener("mouseover", function() {pointer(pRightLeg);} );
 
-	confirmer.addEventListener("click", function() {confirmMonster();} );
-	confirmer.addEventListener("mouseover", function() {pointer(confirmer);} );
+	confirm.addEventListener("click", function() {confirmMonster();} );
+	confirm.addEventListener("mouseover", function() {pointer(confirm);} );
 
 	search.addEventListener("click", function() {chooseEnemy();} );
 	random.addEventListener("click", function() {randomEnemy();} );

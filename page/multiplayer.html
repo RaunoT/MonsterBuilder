@@ -10,10 +10,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
-  	<script type="text/javascript">
-  		var user = '<?php echo $user; ?>';
-  	</script>
-  	<script src="../js/pvp.js" charset="utf-8"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
     <!-- CSS -->
@@ -43,47 +39,73 @@
 	  	</div>
 	</nav>
 
-		<div class="box" id="player">
-			<div id="playerName"> <?php echo $user; ?> </div>
-			<div id="playerScore"></div>
-			<div class="playerCreature" id="pHead"></div>
-			<div class="playerCreature" id="pLeftHand"></div>
-			<div class="playerCreature" id="pChest"></div>
-			<div class="playerCreature" id="pRightHand"></div>
-			<div class="playerCreature" id="pLeftLeg"></div>
-			<div class="playerCreature" id="pRightLeg"></div>
-		</div><!--.box player-->
-
-		<div class="container">
-
-			<a href="main.php"><div id="back"><span>Back</span></div></a>
-
-			<div class="box" id="enemy">
-				<div id="enemyName"></div>
-				<div id="enemyScore"></div>
-				<div class="enemyCreature" id="eHead"></div>
-				<div class="enemyCreature" id="eLeftHand"></div>
-				<div class="enemyCreature" id="eChest"></div>
-				<div class="enemyCreature" id="eRightHand"></div>
-				<div class="enemyCreature" id="eLeftLeg"></div>
-				<div class="enemyCreature" id="eRightLeg"></div>
+	<div class="container-fluid">
+		<div class="col-sm-6">
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-4">
+					<div class="playerCreature" id="pHead"></div>
+				</div>
 			</div>
+			<div class="row">
+				<div class="col-xs-4">
+					<div class="playerCreature" id="pLeftHand"></div>
+				</div>
+				<div class="col-xs-4">
+					<div class="playerCreature" id="pChest"></div>
+				</div>
+				<div class="col-xs-4">
+					<div class="playerCreature" id="pRightHand"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-2">
+					<div class="playerCreature" id="pLeftLeg"></div>
+				</div>
+				<div class="col-xs-4">
+					<div class="playerCreature" id="pRightLeg"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-2 text-center">
+				</div>
+				<div class="col-xs-4 text-center">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-4">
+					<div class="enemyCreature" id="ehead"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4">
+					<div class="enemyCreature" id="eLeftHand"></div>
+				</div>
+				<div class="col-xs-4">
+					<div class="enemyCreature" id="eChest"></div>
+				</div>
+				<div class="col-xs-4">
+					<div class="enemyCreature" id="eRightHand"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-2">
+					<div class="enemyCreature" id="eLeftLeg"></div>
+				</div>
+				<div class="col-xs-4">
+					<div class="enemyCreature" id="eRightLeg"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-			<div class="interface">
-        <div id="placeholder">
-          <div id="searchBox">
-            <input id='searchInput' type="text" name="search" value="", placeholder="Search enemy by name">
-          </div>
-					<span id="error"></span>
-          <div id="search" class="sbtn">Search</div>
-          <div id="random" class="sbtn">Random</div>
-        </div>
 
-				<div class="btn" id="confirmer">Confirm</div>
-				<div class="btn" id="playPvP">Play</div>
-			</div><!--interface-->
-
-		</div><!--container-->
+    <input type="text" name="search" value="", placeholder="Search enemy by name">
+    <button type="button" id="search" class="controlBtn">Search</div>
+    <button type="button" id="random" class="controlBtn">Random</div>
+	<button type="button" id="confirm" class="controlBtn">Confirm</div>
+	<button type="button" id="playPvP" class="controlBtn">Play</div>
 
 </body>
 </html>

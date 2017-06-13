@@ -179,14 +179,6 @@ body{
   user-select: none;
 }
 
-#searchBox {
-  display: inline-block;
-  float: left;
-  height: 110px;
-  width: 180px;
-  margin-top: 70px;
-}
-
 .sbtn {
   display: inline-block;
   float: left;
@@ -201,15 +193,6 @@ body{
   font-weight: bold;
   line-height: 32px;
   cursor: pointer;
-}
-
-#random {
-  background-color: #ff9900;
-}
-
-#confirmer {
-  float: left;
-  background-color: #008ae6;
 }
 
 a:link, a:visited {
