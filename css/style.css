@@ -1,78 +1,21 @@
 /* Korras */
 
-/* Ilma selleta on ääred imelikud formidel */
-.form-control{
-    height: 36px;
-}
-
 body{
 	background-color: #000;
 }
 
-h1{
-	text-align: center;
-	color: #fff;
-	font-family: 'Luckiest Guy', cursive;
-	font-size: 7.5em;
+.controlBtn{
+  color: #fff;
+  background-color: #009600;
+  border: none;
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+  padding: 1em;
 }
 
-h1:hover{
-	color: #009600
-}
-
-h2{
-	font-family: 'Luckiest Guy', cursive;
-	color: #fff;
-	font-size: 2.5em;
-}
-
-.btn{
-	color: #fff !important;
-	background-color: #009600 !important;
-	padding: 0.5em;
-}
-
-.btn:hover{
-	color: #000 !important;
-	background-color: #fff !important;
-}
-
-.btn:focus{
-	outline: none !important;
-}
-
-.modal-title{
-	font-size: 2.5em;
-	font-family: 'Luckiest Guy', cursive;
-	text-align: center;
-}
-
-.modal-content{
-	color: #fff;
-	background-color: #333;
-}
-
-.modal-header{
-    border: none;
-}
-
-/* Modali sulgemis nupp */
-.close{
-    color: #fff;
-}
-
-.close:hover{
-    color: #fff;
-}
-
-/* Nupud mängu kontrollimiseks navbaril */
-.playIcon{
-    color: #009600;
-    margin-right: 15px;
-}
-
-.playIcon:hover{
-    color: #fff;
+.controlBtn:hover{
+  color: #000;
+  background-color: #fff;
 }
 
 /* Mitte korras */

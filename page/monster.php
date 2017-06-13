@@ -54,19 +54,7 @@
 			    </ul>
 			    <ul class="nav navbar-nav navbar-right">
 			    	<li>
-			    		<a id="play">
-			    			<span class="glyphicon glyphicon-play"></span>
-			    		</a>
-			    	</li>
-			    	<li>
-			    		<a href="monster.php">
-			    			<span class="glyphicon glyphicon-repeat"></span>
-			    		</a>
-			    	</li>
-			    	<li>
-						<a href="?logout=1">
-							<span class="glyphicon glyphicon-log-out"></span>
-						</a>
+						<a href="?logout=1">Log out</a>
 			    	</li>
 			    </ul>
 			</div>
@@ -97,6 +85,14 @@
 				</div>
 				<div class="col-xs-4">
 					<div class="playerCreature" style="margin: 0 auto;" id="pRightLeg"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-2 text-center">
+					<button type="button" class="controlBtn" id="play">Play</button>
+				</div>
+				<div class="col-xs-4 text-center">
+					<button type="button" class="controlBtn" onclick="location.href = 'monster.php';">Reset</button>
 				</div>
 			</div>
 		</div>
