@@ -73,60 +73,59 @@
 	  	</div>
 	</nav>
 
-	<!--
-	<div class="row">
-		<div class="col-sm-6">
-			<div id="playerScore"></div>
-			<div class="playerCreature" id="pHead"></div>
-			<div class="playerCreature" id="pLeftHand"></div>
-			<div class="playerCreature" id="pChest"></div>
-			<div class="playerCreature" id="pRightHand"></div>
-			<div class="playerCreature" id="pLeftLeg"></div>
-			<div class="playerCreature" id="pRightLeg"></div>
-		</div>
-		<div class="col-sm-6">
-			<div id="AIScore"></div>
-			<div class="AICreature" id="head"></div>
-			<div class="AICreature" id="leftHand"></div>
-			<div class="AICreature" id="chest"></div>
-			<div class="AICreature" id="rightHand"></div>
-			<div class="AICreature" id="leftLeg"></div>
-			<div class="AICreature" id="rightLeg"></div>
-		</div>
-	</div>
-	-->
 	<div class="container-fluid">
-		
-			<div class="col-sm-6">
+		<div class="col-sm-6">
 			<div class="row">
-				<div class="col-xs-4 col-xs-offset-4"><div class="playerCreature" style="margin: 0 auto;" id="pHead"></div></div>
-			</div>
-			<div class="row"> tere</div>
-			<div class="row">
-				<div class="col-xs-4"><div class="playerCreature" style="margin: 0 auto;" id="pLeftHand"></div></div>
-				<div class="col-xs-4"><div class="playerCreature" style="margin: 0 auto;" id="pChest"></div></div>
-				<div class="col-xs-4"><div class="playerCreature" style="margin: 0 auto;" id="pRightHand"></div></div>
+				<div class="col-xs-4 col-xs-offset-4">
+					<div class="playerCreature" style="margin: 0 auto;" id="pHead"></div>
+				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-4 col-xs-offset-2"><div class="playerCreature" style="margin: 0 auto;" id="pLeftLeg"></div></div>
-				<div class="col-xs-4"><div class="playerCreature" style="margin: 0 auto;" id="pRightLeg"></div></div>
-			</div>
-			</div>
-			<div class="col-sm-6">
-			<div class="row">
-				<div class="col-xs-4 col-xs-offset-4"><div class="AICreature" style="margin: 0 auto;" id="head"></div></div>
-			</div>
-			<div class="row"> tere</div>
-			<div class="row">
-				<div class="col-xs-4"><div class="AICreature" style="margin: 0 auto;" id="leftHand"></div></div>
-				<div class="col-xs-4"><div class="AICreature" style="margin: 0 auto;" id="chest"></div></div>
-				<div class="col-xs-4"><div class="AICreature" style="margin: 0 auto;" id="leftLeg"></div></div>
+				<div class="col-xs-4">
+					<div class="playerCreature" style="margin: 0 auto;" id="pLeftHand"></div>
+				</div>
+				<div class="col-xs-4">
+					<div class="playerCreature" style="margin: 0 auto;" id="pChest"></div>
+				</div>
+				<div class="col-xs-4">
+					<div class="playerCreature" style="margin: 0 auto;" id="pRightHand"></div>
+				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-4 col-xs-offset-2"><div class="AICreature" style="margin: 0 auto;" id="leftLeg"></div></div>
-				<div class="col-xs-4"><div class="AICreature" style="margin: 0 auto;" id="rightLeg"></div></div>
+				<div class="col-xs-4 col-xs-offset-2">
+					<div class="playerCreature" style="margin: 0 auto;" id="pLeftLeg"></div>
+				</div>
+				<div class="col-xs-4">
+					<div class="playerCreature" style="margin: 0 auto;" id="pRightLeg"></div>
+				</div>
 			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-4">
+					<div class="AICreature" style="margin: 0 auto;" id="head"></div>
+				</div>
 			</div>
+			<div class="row">
+				<div class="col-xs-4">
+					<div class="AICreature" style="margin: 0 auto;" id="leftHand"></div>
+				</div>
+				<div class="col-xs-4">
+					<div class="AICreature" style="margin: 0 auto;" id="chest"></div>
+				</div>
+				<div class="col-xs-4">
+					<div class="AICreature" style="margin: 0 auto;" id="leftLeg"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-2">
+					<div class="AICreature" style="margin: 0 auto;" id="leftLeg"></div>
+				</div>
+				<div class="col-xs-4">
+					<div class="AICreature" style="margin: 0 auto;" id="rightLeg"></div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 </body>
