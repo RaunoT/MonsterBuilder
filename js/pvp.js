@@ -1,5 +1,5 @@
 var player = {
-	"Name":user,
+	"name":user,
 	"pHead":0,
 	"pLeftHand":0,
 	"pChest":0,
@@ -64,8 +64,8 @@ window.onload = function(){
 	pRightLeg.addEventListener("click", function() {changeValue(colors, pRightLeg, "pRightLeg");} );
 	pRightLeg.addEventListener("mouseover", function() {pointer(pRightLeg);} );
 
-	confirmer.addEventListener("click", function() {confirmMonster();} );
-	confirmer.addEventListener("mouseover", function() {pointer(confirmer);} );
+	confirm.addEventListener("click", function() {confirmMonster();} );
+	confirm.addEventListener("mouseover", function() {pointer(confirm);} );
 
 	search.addEventListener("click", function() {chooseEnemy();} );
 	random.addEventListener("click", function() {randomEnemy();} );
@@ -113,10 +113,10 @@ function checkMonster() {
 
 function loadPlayer() {
 	for(var p=0; p<allPlayers.length; p++){
-		if(allPlayers[p].Name==player.Name){
+		if(allPlayers[p].name==player.name){
 
-			console.log(player.Name);
-			player.Name = allPlayers[p].Name;
+			console.log(player.name);
+			player.name = allPlayers[p].name;
 			player.pHead = allPlayers[p].pHead;
 			document.getElementById('pHead').style.backgroundColor = colors[player.pHead-1];
 			player.pLeftHand = allPlayers[p].pLeftHand;
@@ -220,56 +220,23 @@ function loadEnemy(chosenEnemy) {
 
 
 function loadServerFn() {
-	console.log('loadServer');
-
-	// POST server.php save=mingivaartus
-	var xmlDoc = new XMLHttpRequest();
-	xmlDoc.open('GET', '../database.txt', true);
-
-	xmlDoc.onreadystatechange = function() {
-		if (xmlDoc.readyState === 4 && xmlDoc.status === 200) {
-		// console.log(xmlDoc.responseText);
-			// tekstifaili sisu teen objektiks ja võtan väärtuse sisse
-		var JSobject = JSON.parse(xmlDoc.responseText);
-		allPlayers = JSobject;
-	}
-};
-
-xmlDoc.send();
-
+	$.ajax({
+		url: "../database.txt"
+	}).done(function(data) {
+		allPlayers = JSON.parse(data)["players"];
+		console.log('Loaded monsters from server.');
+	});
 }
 
 
 
 function saveServerFn() {
-	console.log('saveServer');
-
-	if(allPlayers.length===0) {
-		savePlayer();
-		stringToSave = "["+JSON.stringify(player)+"]";
-	} else if(checkPlayer()) {
-		savePlayer();
-		stringToSave = JSON.stringify(allPlayers);
-	} else {
-		allPlayers.push(player);
-		stringToSave = JSON.stringify(allPlayers);
-	}
-
-	console.log(stringToSave);
-
-	// POST server.php save=mingivaartus
-	var xmlDoc = new XMLHttpRequest();
-	xmlDoc.open('POST', 'server.php', true);
-	xmlDoc.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-	xmlDoc.onreadystatechange = function() {
-		if (xmlDoc.readyState === 4 && xmlDoc.status === 200) {
-			console.log(xmlDoc.responseText);
-		}
-	};
-
-	xmlDoc.send('save='+stringToSave);
-
+	$.ajax({
+		url: "../server.php?save="+JSON.stringify(player)
+	}).done(function(data) {
+		console.log('Saved monster to server.');
+		console.log(data);
+	});
 }
 
 function checkPlayer() {

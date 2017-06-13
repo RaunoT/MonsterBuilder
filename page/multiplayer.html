@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Monster Builder</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet">
+    <!-- CSS -->
+    <link type="text/css" rel="stylesheet" href="../css/style.css">
+    <!-- JS -->
+    <script src="../js/pvp.js"></script>
+</head>
+<body>
+
+	<!-- Fixed top navbar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+	    	<div class="navbar-header">
+	    		<!-- Burgermenüü -->
+	    		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+				</button>
+	      		<a class="navbar-brand" href="index.html">Monster Builder</a>
+	    	</div>
+	    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			    <ul class="nav navbar-nav navbar-right">
+			    	<li><a href="singleplayer.html">Singleplayer</a></li>
+			      	<li class="active"><a href="multiplayer.html">Multiplayer</a></li>
+			    </ul>
+			</div>
+	  	</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="col-sm-6">
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-4">
+					<div class="playerCreature" id="pHead"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4">
+					<div class="playerCreature" id="pLeftHand"></div>
+				</div>
+				<div class="col-xs-4">
+					<div class="playerCreature" id="pChest"></div>
+				</div>
+				<div class="col-xs-4">
+					<div class="playerCreature" id="pRightHand"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-2">
+					<div class="playerCreature" id="pLeftLeg"></div>
+				</div>
+				<div class="col-xs-4">
+					<div class="playerCreature" id="pRightLeg"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-2 text-center">
+				</div>
+				<div class="col-xs-4 text-center">
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="col-sm-12 opponentMonster">
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-4">
+						<div class="enemyCreature" id="ehead"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<div class="enemyCreature" id="eLeftHand"></div>
+					</div>
+					<div class="col-xs-4">
+						<div class="enemyCreature" id="eChest"></div>
+					</div>
+					<div class="col-xs-4">
+						<div class="enemyCreature" id="eRightHand"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-2">
+						<div class="enemyCreature" id="eLeftLeg"></div>
+					</div>
+					<div class="col-xs-4">
+						<div class="enemyCreature" id="eRightLeg"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12 opponentList">
+		</div>
+	</div>
+
+
+    <input type="text" name="search" value="", placeholder="Search enemy by name">
+    <button type="button" id="search" class="controlBtn">Search</div>
+    <button type="button" id="random" class="controlBtn">Random</div>
+	<button type="button" id="confirm" class="controlBtn">Confirm</div>
+	<button type="button" id="playPvP" class="controlBtn">Play</div>
+
+</body>
+</html>

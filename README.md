@@ -1,29 +1,35 @@
-#MonsterBuilder
+# MonsterBuilder
 Tarkvararenduse suvepraktika
 
+## eesmärk
 
-git käsklused:
+Two-player rock-paper-scissors type of game, where instead of rock, paper or scissors
+monsters body parts compete with eachother.
 
-// Tekitab uue branch'i lokaalselt
-git checkout -b "branchi nimi"
+## tööjaotus ja rühmaliikmed
 
-// Pushib uue branch'i github'i
-git push origin "branchi nimi"
+1. Ksenia Gennadevna Belorusskaja - Disainer
+2. Rando Tomingas - Programmeerija
+3. Rait Keernik - Programmeerija
+4. Tatjana Kuznetsova - Dokumentatsioon
+5. Rauno Tegelmann - Kujundus/Juhendamine/Koodihaldus
 
-// Branch'i kustutamine
-git push origin --delete "branchi nimi"
+## git käsklused
 
-// Ütleb mis branch'il praegu oled 
-git branch
+Tekitab uue branch'i lokaalselt
+* git checkout -b **branch name**
 
-// 
-git merge -
+Pushib uue branch'i github'i
+* git push origin **branch name**
 
+Branch'i kustutamine
+* git push origin --delete **branch name**
 
-Tööjaotus ja rühmaliikmed
+Ütleb mis branch'il praegu oled 
+* git branch
 
-Ksenia Gennadevna Belorusskaja - Disainer
-Rando Tomingas - Programmeerija
-Rait Keernik - Programmeerija
-Tatjana Kuznetsova - Dokumentatsioon
-Rauno Tegelmann - CSS
+Ühendab branch'id
+* git merge **branch name**
+
+Comittib sinna branch'i, kus sa praegu oled
+* git push origin **branch name**
