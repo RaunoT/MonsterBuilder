@@ -40,6 +40,10 @@ body{
     height: 500px;
 }
 
+.opponentMonster{
+    visibility: hidden;
+}
+
 /* Mitte korras */
 
 .error{
