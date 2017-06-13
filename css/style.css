@@ -5,6 +5,7 @@ body{
   padding-top: 70px;
 }
 
+/* Nupud mis kontrollivad mängimist */
 .controlBtn{
   color: #fff;
   background-color: #009600;
@@ -17,6 +18,26 @@ body{
 .controlBtn:hover{
   color: #000;
   background-color: #fff;
+}
+
+/* Mängija Monster */
+.playerCreature {
+    margin: 0 auto;
+    height: 20vh;
+    width: 100%;
+    background-color: #fff;
+}
+
+/* AI, vastase Monster */
+.AICreature, .enemyCreature {
+    margin: 0 auto;
+    height: 20vh;
+    width: 100%;
+    background-color: #fff;
+}
+
+.col-sm-6 {
+    height: 500px;
 }
 
 /* Mitte korras */
@@ -236,22 +257,4 @@ a:link:active, a:visited:active {
   line-height: 36px;
   font-size: 1.3em;
   font-weight: bold;
-}
-
-/* Mängija Monster */
-.playerCreature {
-    height: 20vh;
-    width: 100%;
-    background-color: #fff;
-}
-
-/* AI, vastase Monster */
-.AICreature, .enemyCreature {
-    height: 20vh;
-    width: 100%;
-    background-color: #fff;
-}
-
-.col-sm-6 {
-    height: 500px;
 }
