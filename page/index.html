@@ -15,35 +15,44 @@
 </head>
 <body>
 
-	<h1>Monster Builder</h1>
-	<br><br>
-	<div class="container-fluid">
-		<div class="row">
-	    	<div class="col-sm-4 col-sm-offset-4 text-center">
-	    		<h2>Login</h2>
-	    		<form method="POST" data-toggle="validator">
-	    			<div class="form-group">
-		    			<div class="input-group">
-		    				<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-				    		<input class="form-control" name="loginEmail" placeholder="Email" value="<?=$loginEmail;?>" type="email" data-error="Invalid email address!" required>
-				    	</div>
-				    	<div class="help-block with-errors"></div>
-				    </div>
-			    	<div class="form-group">
-				    	<div class="input-group">
-				    		<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-				    		<input class="form-control" name="loginPassword" placeholder="Password" type="password" required>
-				    	</div>
-				    	<div class="help-block with-errors"></div>
-				    </div>
-		    		<input class="btn" type="submit" value="Log in">
-		    		<button type="button" class="btn" data-toggle="modal" data-target="#Signup">Sign up</button>
-    			</form>
+	<!-- Fixed top navbar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+	    	<div class="navbar-header">
+	    		<!-- Burgermenüü -->
+	    		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+				</button>
+	      		<a class="navbar-brand" href="main.php">Monster Builder</a>
 	    	</div>
-	    </div>
+	    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			    <ul class="nav navbar-nav">
+			    	<li><a href="monster.php">Singleplayer</a></li>
+			      	<li><a href="pvp.php">Multiplayer</a></li>
+			    </ul>
+			    <ul class="nav navbar-nav navbar-right">
+			    	<li>
+						<a href="?logout=1">
+							<span class="glyphicon glyphicon-log-out"></span>
+						</a>
+			    	</li>
+			    </ul>
+			</div>
+	  	</div>
+	</nav>
+
+	<div class="box" id="savedPlayer">
+		<div id="savedPlayerScore"></div>
+		<div class="savedPlayerCreature" id="SPhead"></div>
+		<div class="savedPlayerCreature" id="SPleftHand"></div>
+		<div class="savedPlayerCreature" id="SPchest"></div>
+		<div class="savedPlayerCreature" id="SPrightHand"></div>
+		<div class="savedPlayerCreature" id="SPleftLeg"></div>
+		<div class="savedPlayerCreature" id="SPrightLeg"></div>
 	</div>
 
 </body>
 </html>
-
-<?php require("../assets/modal/signup.modal.php"); ?>
