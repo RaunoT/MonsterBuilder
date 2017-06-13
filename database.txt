@@ -1,1 +1,1 @@
-{"players":[{"name":"q","pHead":2,"pLeftHand":2,"pRightHand":2,"pChest":1,"pLeftLeg":1,"pRightLeg":2},{"name":"s","pHead":1,"pLeftHand":1,"pRightHand":1,"pChest":2,"pLeftLeg":1,"pRightLeg":1}]}
+{"players":[{"name":"q","pHead":2,"pLeftHand":2,"pRightHand":2,"pChest":1,"pLeftLeg":1,"pRightLeg":2},{"name":"s","pHead":1,"pLeftHand":1,"pRightHand":1,"pChest":2,"pLeftLeg":1,"pRightLeg":1},{"name":"user","pHead":0,"pLeftHand":0,"pRightHand":0,"pChest":0,"pLeftLeg":0,"pRightLeg":0}]}

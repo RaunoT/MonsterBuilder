@@ -202,43 +202,23 @@ function loadEnemy(chosenEnemy) {
 
 
 function loadServerFn() {
-	console.log('loadServer');
-
-	// POST server.php save=mingivaartus
-	var xmlDoc = new XMLHttpRequest();
-
-	xmlDoc.open('GET', '../database.txt', true);
-
-	xmlDoc.onreadystatechange = function() {
-		if (xmlDoc.readyState === 4 && xmlDoc.status === 200) {
-			// tekstifaili sisu teen objektiks ja võtan väärtuse sisse
-			var JSobject = JSON.parse(xmlDoc.responseText);
-			allPlayers = JSobject["players"];
-		}
-	};
-	xmlDoc.send();
+	$.ajax({
+		url: "../database.txt"
+	}).done(function(data) {
+		allPlayers = JSON.parse(data)["players"];
+		console.log('Loaded monsters from server.');
+	});
 }
 
 
 
 function saveServerFn() {
-	console.log('saveServer');
-
-	var stringToSave = player;
-
-	// POST server.php save=mingivaartus
-	var xmlDoc = new XMLHttpRequest();
-	xmlDoc.open('GET', '../server.php?save='+JSON.stringify(stringToSave), true);
-	xmlDoc.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-	xmlDoc.onreadystatechange = function() {
-		if (xmlDoc.readyState === 4 && xmlDoc.status === 200) {
-			console.log(xmlDoc.responseText);
-		}
-	};
-
-	xmlDoc.send();
-
+	$.ajax({
+		url: "../server.php?save="+JSON.stringify(player)
+	}).done(function(data) {
+		console.log('Saved monster to server.');
+		console.log(data);
+	});
 }
 
 
