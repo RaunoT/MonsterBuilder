@@ -1,25 +1,22 @@
+
 var player = {
-	"name":user,
+	"name":"",
 	"pHead":0,
 	"pLeftHand":0,
 	"pChest":0,
 	"pRightHand":0,
 	"pLeftLeg":0,
 	"pRightLeg":0,
-	"won":0,
-	"lost":0
 };
 
 var enemy = {
-	"Name":user,
+	"name":"",
 	"eHead":0,
 	"eLeftHand":0,
 	"eChest":0,
 	"eRightHand":0,
 	"eLeftLeg":0,
 	"eRightLeg":0,
-	"won":0,
-	"lost":0
 };
 
 var playerString = {};
@@ -29,21 +26,15 @@ var allPlayers =[];
 var colors = ["#ffc0cb", "#b3b3b3", "#966d4f"];// roosa, hõbedane, pruun
 var eTypes = ["eHead", "eLeftHand", "eChest", "eRightHand", "eLeftLeg", "eRightLeg"];
 var pTypes = ["pHead", "pLeftHand", "pChest", "pRightHand", "pLeftLeg", "pRightLeg"];
-var enemyCreatureParts = document.getElementsByClassName("enemyCreature");
-var playerPoints = 0;
-var enemyPoints = 0;
 
 window.onload = function(){
-
-// window.addEventListener("click", function(e) {
-// console.log(e);
-// });
 
 	loadServerFn();
 
 	setTimeout(function() {
-		loadPlayer();
+		loadEnemyList();
 	}, 100);
+
 
 
 	pHead.addEventListener("click", function() {changeValue(colors, pHead, "pHead");} );
@@ -64,14 +55,11 @@ window.onload = function(){
 	pRightLeg.addEventListener("click", function() {changeValue(colors, pRightLeg, "pRightLeg");} );
 	pRightLeg.addEventListener("mouseover", function() {pointer(pRightLeg);} );
 
-	confirm.addEventListener("click", function() {confirmMonster();} );
-	confirm.addEventListener("mouseover", function() {pointer(confirm);} );
+	save.addEventListener("click", function() {saveMonster();} );
+	save.addEventListener("mouseover", function() {pointer(save);} );
 
-	search.addEventListener("click", function() {chooseEnemy();} );
-	random.addEventListener("click", function() {randomEnemy();} );
-
-	playPvP.addEventListener("click", function() {startPlay();} );
-	playPvP.addEventListener("mouseover", function() {pointer(playPvP);} );
+	// playPvP.addEventListener("click", function() {startPlay();} );
+	// playPvP.addEventListener("mouseover", function() {pointer(playPvP);} );
 
 };
 
@@ -89,16 +77,33 @@ function pointer(object) {
 	object.style.cursor = "pointer";
 }
 
-function confirmMonster() {
+function saveServerFn() {
+	$.ajax({
+		url: "../server.php?save="+JSON.stringify(player)
+	}).done(function(data) {
+		console.log('Saved monster to server.');
+		console.log(data);
+	});
+}
+
+function saveMonster() {
 	if(checkMonster()==1) {
 
-		console.log("Monster väärib savemist!");
+    getName();
 
-		saveServerFn();
-
+    if(player.name !== "") {
+      console.log("Will save now");
+  		saveServerFn();
+    } else {
+      console.log("Insert a name for the monster");
+    }
 	} else {
-		console.log("Monstril tervis puha korrast ära!");
+		console.log("Monster not ready to save!");
 	}
+}
+
+function getName() {
+  player.name = document.getElementById('newName').value;
 }
 
 function checkMonster() {
@@ -111,277 +116,127 @@ function checkMonster() {
 	return ready;
 }
 
-function loadPlayer() {
-	for(var p=0; p<allPlayers.length; p++){
-		if(allPlayers[p].name==player.name){
-
-			console.log(player.name);
-			player.name = allPlayers[p].name;
-			player.pHead = allPlayers[p].pHead;
-			document.getElementById('pHead').style.backgroundColor = colors[player.pHead-1];
-			player.pLeftHand = allPlayers[p].pLeftHand;
-			document.getElementById('pLeftHand').style.backgroundColor = colors[player.pLeftHand-1];
-			player.pChest = allPlayers[p].pChest;
-			document.getElementById('pChest').style.backgroundColor = colors[player.pChest-1];
-			player.pRightHand = allPlayers[p].pRightHand;
-			document.getElementById('pRightHand').style.backgroundColor = colors[player.pRightHand-1];
-			player.pLeftLeg = allPlayers[p].pLeftLeg;
-			document.getElementById('pLeftLeg').style.backgroundColor = colors[player.pLeftLeg-1];
-			player.pRightLeg = allPlayers[p].pRightLeg;
-			document.getElementById('pRightLeg').style.backgroundColor = colors[player.pRightLeg-1];
-			player.won = allPlayers[p].won;
-			player.lost = allPlayers[p].lost;
-
-		}
-	}
-}
-
-function chooseEnemy() {
-	var searchingEnemy = document.getElementById('searchInput').value;
-	var searchingEnemyValue = -1;
-
-	clearMonster(enemy, eTypes);
-
-	document.getElementById('error').innerHTML = "";
-
-	if(searchingEnemy==="") {
-		document.getElementById('error').innerHTML = "Insert monster name";
-	} else {
-		for(var i=0; i<allPlayers.length; i++) {
-			if(allPlayers[i].Name==searchingEnemy) {
-				searchingEnemyValue = i;
-			}
-		}
-
-		if(searchingEnemyValue==-1) {
-			document.getElementById('error').innerHTML = "No such monster in the database";
-		} else {
-			loadEnemy(searchingEnemyValue);
-		}
-	}
-}
-
-function clearMonster(monsterToClear, list) {
-	// NB! clearing name might not be something you really really wanna do!
-	monsterToClear.Name = "";
-	document.getElementById('enemyName').innerHTML = "";
-
-	monsterToClear.eHead = 0;
-	document.getElementById(list[0]).style.backgroundColor = "#404040";
-	monsterToClear.eLeftHand = 0;
-	document.getElementById(list[1]).style.backgroundColor = "#404040";
-	monsterToClear.eChest = 0;
-	document.getElementById(list[2]).style.backgroundColor = "#404040";
-	monsterToClear.eRightHand = 0;
-	document.getElementById(list[3]).style.backgroundColor = "#404040";
-	monsterToClear.eLeftLeg = 0;
-	document.getElementById(list[4]).style.backgroundColor = "#404040";
-	monsterToClear.eRightLeg = 0;
-	document.getElementById(list[5]).style.backgroundColor = "#404040";
-}
-
-function randomEnemy() {
-	var randomlyChosenEnemy = Math.floor((Math.random() * allPlayers.length));
-	document.getElementById('error').innerHTML = "";
-
-	if(allPlayers[randomlyChosenEnemy].Name==player.Name) {
-		randomEnemy();
-	} else {
-		loadEnemy(randomlyChosenEnemy);
-	}
-}
-
-function loadEnemy(chosenEnemy) {
-	for(var e=0; e<allPlayers.length; e++){
-		if(allPlayers[e].Name==allPlayers[chosenEnemy].Name){
-
-			enemy.Name = allPlayers[e].Name;
-			document.getElementById('enemyName').innerHTML = enemy.Name;
-			enemy.eHead = allPlayers[e].pHead;
-			document.getElementById('eHead').style.backgroundColor = colors[enemy.eHead-1];
-			enemy.eLeftHand = allPlayers[e].pLeftHand;
-			document.getElementById('eLeftHand').style.backgroundColor = colors[enemy.eLeftHand-1];
-			enemy.eChest = allPlayers[e].pChest;
-			document.getElementById('eChest').style.backgroundColor = colors[enemy.eChest-1];
-			enemy.eRightHand = allPlayers[e].pRightHand;
-			document.getElementById('eRightHand').style.backgroundColor = colors[enemy.eRightHand-1];
-			enemy.eLeftLeg = allPlayers[e].pLeftLeg;
-			document.getElementById('eLeftLeg').style.backgroundColor = colors[enemy.eLeftLeg-1];
-			enemy.eRightLeg = allPlayers[e].pRightLeg;
-			document.getElementById('eRightLeg').style.backgroundColor = colors[enemy.eRightLeg-1];
-			enemy.won = allPlayers[e].won;
-			enemy.lost = allPlayers[e].lost;
-
-			console.log(enemy.Name);
-
-		}
-	}
-}
-
-
 function loadServerFn() {
 	$.ajax({
 		url: "../database.txt"
 	}).done(function(data) {
-		allPlayers = JSON.parse(data)["players"];
+		allPlayers = JSON.parse(data).players;
 		console.log('Loaded monsters from server.');
 	});
 }
 
+function loadEnemyList() {
 
-
-function saveServerFn() {
-	$.ajax({
-		url: "../server.php?save="+JSON.stringify(player)
-	}).done(function(data) {
-		console.log('Saved monster to server.');
-		console.log(data);
-	});
-}
-
-function checkPlayer() {
-	var savedBefore = false;
-	for(var i=0; i<allPlayers.length; i++){
-		if(allPlayers[i].Name==player.Name){
-			savedBefore = true;
-		}
+	if(allPlayers.length>0) {
+		var heading = document.createElement("h3");
+		var headingText = document.createTextNode("Choose an Enemy to fight with");
+		heading.appendChild(headingText);
+		document.getElementById("opponentList").appendChild(heading);
 	}
-	return savedBefore;
-}
 
-function savePlayer() {
-	for(var i=0; i<allPlayers.length; i++){
-		if(allPlayers[i].Name==player.Name){
+	for(var i=0; i<allPlayers.length; i++) {
 
-			console.log("starting update");
+		var oneEnemy = document.createElement("div");
+		oneEnemy.className = 'oneEnemy';
+		oneEnemy.id = 'enemy-'+i;
 
-			allPlayers[i].Name = player.Name;
-			allPlayers[i].pHead = player.pHead;
-			allPlayers[i].pLeftHand = player.pLeftHand;
-			allPlayers[i].pChest = player.pChest;
-			allPlayers[i].pRightHand = player.pRightHand;
-			allPlayers[i].pLeftLeg = player.pLeftLeg;
-			allPlayers[i].pRightLeg = player.pRightLeg;
-			allPlayers[i].won = player.won;
-			allPlayers[i].lost = player.lost;
+		var enemyNameSpan = document.createElement("span");
+		enemyNameSpan.className = 'enemyName';
+		var enemyName = document.createTextNode(allPlayers[i].name);
+		enemyNameSpan.appendChild(enemyName);
+		oneEnemy.appendChild(enemyNameSpan);
+		document.getElementById("opponentList").appendChild(oneEnemy);
 
-		}
+
+		var fightButton = document.createElement("span");
+		fightButton.className = 'fightButton';
+		var buttonName = document.createTextNode("Fight");
+		fightButton.appendChild(buttonName);
+		oneEnemy.appendChild(fightButton);
+		document.getElementById("opponentList").appendChild(oneEnemy);
+
 	}
 }
 
 
-function startPlay() {
-	console.log("mäng algab");
-
-	// Loen mõlema monsteri punktid kahe süsteemi kaudu kokku
-	for(var j=0; j<6; j++) {
-		enemyPoints += valuate(enemy[eTypes[j]], pTypes, player);
-	}
-
-	for(var k=0; k<6; k++) {
-		playerPoints += valuate(player[pTypes[k]], eTypes, enemy);
-	}
-
-	for(var l=0; l<6; l++) {
-		enemyPoints += valuate2(enemy[eTypes[l]], player[pTypes[l]]);
-	}
-
-	for(var m=0; m<6; m++) {
-		playerPoints += valuate2(player[pTypes[m]], enemy[eTypes[m]]);
-	}
 
 
 
-	// Kuvan punktid ja muudan võitja(te) punktide tausta kollaseks
-	var playerScore = document.getElementById('playerScore');
-	playerScore.innerHTML = getPlayerScore();
-
-	var enemyScore = document.getElementById('enemyScore');
-	enemyScore.innerHTML = getEnemyScore();
-
-	winner();
-}
-
-function valuate(partValue, list, subject) {
-	var points = 0;
-	if(partValue==1) {
-		for(var i=0; i<list.length; i++) {
-			if(subject[list[i]]==2 || subject[list[i]]===0){
-				points +=1;
-			}
-		}
-	}
-
-	else if(partValue==2) {
-		for(var j=0; j<list.length; j++) {
-			if(subject[list[j]]==3 || subject[list[j]]===0){
-				points +=1;
-			}
-		}
-	}
-
-	else if(partValue==3) {
-		for(var k=0; k<list.length; k++) {
-			if(subject[list[k]]==1 || subject[list[k]]===0){
-				points +=1;
-			}
-		}
-	}
-
-	return points;
-}
-
-function valuate2(subjectPartValue, partValue) {
-	var points = 0;
-	if(subjectPartValue==1) {
-		if(partValue==2 || partValue===0) {
-			points += 1;
-		}
-	}
-
-	if(subjectPartValue==2) {
-		if(partValue==3 || partValue===0) {
-			points += 1;
-		}
-	}
-
-	if(subjectPartValue==3) {
-		if(partValue==1 || partValue===0) {
-			points += 1;
-		}
-	}
-
-	return points;
-}
-
-
-function winner(){
-
-	enemyScore.style.backgroundColor = "#eee";
-	playerScore.style.backgroundColor = "#eee";
-
-	if(enemyPoints===0 && playerPoints===0) {}
-
-	else if(enemyPoints>playerPoints) {
-		enemyScore.style.backgroundColor = "yellow";
-	}
-
-	else if(enemyPoints<playerPoints) {
-		playerScore.style.backgroundColor = "yellow";
-	}
-
-	else{
-		enemyScore.style.backgroundColor = "yellow";
-		playerScore.style.backgroundColor = "yellow";
-	}
-}
-
-function getPlayerScore() {
-	this.score = playerPoints;
-	return score;
-}
-
-function getEnemyScore() {
-	this.score = enemyPoints;
-	return score;
-}
+//
+//
+// function loadEnemy(chosenEnemy) {
+// 	for(var e=0; e<allPlayers.length; e++){
+// 		if(allPlayers[e].Name==allPlayers[chosenEnemy].Name){
+//
+// 			enemy.Name = allPlayers[e].Name;
+// 			document.getElementById('enemyName').innerHTML = enemy.Name;
+// 			enemy.eHead = allPlayers[e].pHead;
+// 			document.getElementById('eHead').style.backgroundColor = colors[enemy.eHead-1];
+// 			enemy.eLeftHand = allPlayers[e].pLeftHand;
+// 			document.getElementById('eLeftHand').style.backgroundColor = colors[enemy.eLeftHand-1];
+// 			enemy.eChest = allPlayers[e].pChest;
+// 			document.getElementById('eChest').style.backgroundColor = colors[enemy.eChest-1];
+// 			enemy.eRightHand = allPlayers[e].pRightHand;
+// 			document.getElementById('eRightHand').style.backgroundColor = colors[enemy.eRightHand-1];
+// 			enemy.eLeftLeg = allPlayers[e].pLeftLeg;
+// 			document.getElementById('eLeftLeg').style.backgroundColor = colors[enemy.eLeftLeg-1];
+// 			enemy.eRightLeg = allPlayers[e].pRightLeg;
+// 			document.getElementById('eRightLeg').style.backgroundColor = colors[enemy.eRightLeg-1];
+// 			enemy.won = allPlayers[e].won;
+// 			enemy.lost = allPlayers[e].lost;
+//
+// 			console.log(enemy.Name);
+//
+// 		}
+// 	}
+// }
+//
+// function startPlay() {
+// 	console.log("mäng algab");
+//
+// 	for(var l=0; l<6; l++) {
+// 		enemyPoints += valuate(enemy[eTypes[l]], player[pTypes[l]]);
+// 	}
+//
+// 	for(var m=0; m<6; m++) {
+// 		playerPoints += valuate(player[pTypes[m]], enemy[eTypes[m]]);
+// 	}
+//
+// 	winner();
+// }
+//
+// function valuate(subjectPartValue, partValue) {
+// 	var points = 0;
+// 	if(subjectPartValue==1) {
+// 		if(partValue==2 || partValue===0) {
+// 			points += 1;
+// 		}
+// 	}
+//
+// 	if(subjectPartValue==2) {
+// 		if(partValue==3 || partValue===0) {
+// 			points += 1;
+// 		}
+// 	}
+//
+// 	if(subjectPartValue==3) {
+// 		if(partValue==1 || partValue===0) {
+// 			points += 1;
+// 		}
+// 	}
+// 	return points;
+// }
+//
+// function winner(){
+//
+// 	if(enemyPoints===0 && playerPoints===0) {}
+// 	else if(enemyPoints>playerPoints) {
+// 		console.log("Enemy won");
+// 	}
+// 	else if(enemyPoints<playerPoints) {
+// 		console.log("Player won");
+// 	}
+// 	else{
+// 		console.log("Draw");
+// 	}
+// }
