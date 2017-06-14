@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <!-- CSS -->
@@ -43,75 +42,80 @@
 	  	</div>
 	</nav>
 
+	<!-- Page heading -->
 	<h1>SINGLE-PLAYER MODE</h1>
+	<!-- Guides under heading -->
 	<h3 id="guide"><i>Loop through different bodyparts by clicking on the corresponding slot</i></h3>
 	<h3 id="opponentGuide"><i>After you click play, the computer will automatically generate an enemy monster for you</i></h3>
 
-	<div class="container-fluid">
-		<div class="col-sm-6">
-			<h2><span class="underline">YOUR MONSTER</span></h2>
-			<div class="scale">
-				<div class="row">
-					<div class="col-xs-4 col-xs-offset-4">
-						<img class="playerCreature" id="pHead" src="../assets/monster/starter/head_0.png">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-4">
-						<img class="playerCreature leftBodyPart" id="pLeftHand" src="../assets/monster/starter/hand_left_0.png">
-					</div>
-					<div class="col-xs-4">
-						<img class="playerCreature" class="playerCreature" id="pChest" src="../assets/monster/starter/body_0.png">
-					</div>
-					<div class="col-xs-4">
-						<img class="playerCreature rightBodyPart" id="pRightHand" src="../assets/monster/starter/hand_right_0.png">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-4 col-xs-offset-2">
-						<img class="playerCreature leftBodyPart" id="pLeftLeg" src="../assets/monster/starter/leg_left_0.png">
-					</div>
-					<div class="col-xs-4">
-						<img class="playerCreature rightBodyPart" id="pRightLeg" src="../assets/monster/starter/leg_right_0.png">
-					</div>
+	<!-- Players' monster -->
+	<div class="col-sm-6">
+		<h2><span class="underline">YOUR MONSTER</span></h2>
+		<div class="scale">
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-4">
+					<img class="playerCreature" id="pHead" src="../assets/monster/starter/head_0.png">
 				</div>
 			</div>
-			<!-- Control nupud -->
 			<div class="row">
-				<div class="col-xs-4 col-xs-offset-2 text-center">
-					<button type="button" class="controlBtn" id="play">Play</button>
+				<div class="col-xs-4">
+					<img class="playerCreature leftBodyPart" id="pLeftHand" src="../assets/monster/starter/hand_left_0.png">
 				</div>
-				<div class="col-xs-4 text-center">
-					<button type="button" id="refresh" class="controlBtn" onclick="location.href = 'singleplayer.html';">Reset</button>
+				<div class="col-xs-4">
+					<img class="playerCreature" id="pChest" src="../assets/monster/starter/body_0.png">
+				</div>
+				<div class="col-xs-4">
+					<img class="playerCreature rightBodyPart" id="pRightHand" src="../assets/monster/starter/hand_right_0.png">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-2">
+					<img class="playerCreature leftBodyPart" id="pLeftLeg" src="../assets/monster/starter/leg_left_0.png">
+				</div>
+				<div class="col-xs-4">
+					<img class="playerCreature rightBodyPart" id="pRightLeg" src="../assets/monster/starter/leg_right_0.png">
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-6">
-			<h2><span class="underline">ENEMY MONSTER</span></h2>
-			<div class="scale">
-				<div class="row">
-					<div class="col-xs-4 col-xs-offset-4">
-						<img class="AICreature" id="head" src="../assets/monster/starter/head_0.png">
-					</div>
+
+		<!-- Control buttons -->
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-4 text-center">
+				<button type="button" class="controlBtn" id="play">Play</button>
+			</div>
+			<div class="col-xs-2 text-center">
+				<button type="button" id="refresh" class="controlBtn" onclick="location.href = 'singleplayer.html';">Reset</button>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Random monster -->
+	<div class="col-sm-6">
+		<h2><span class="underline">ENEMY MONSTER</span></h2>
+		<div class="scale">
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-4">
+					<img class="AICreature" id="head" src="../assets/monster/starter/head_0.png">
 				</div>
-				<div class="row">
-					<div class="col-xs-4">
-						<img class="AICreature leftBodyPart" id="leftHand" src="../assets/monster/starter/hand_left_0.png">
-					</div>
-					<div class="col-xs-4">
-						<img class="AICreature" id="body" src="../assets/monster/starter/body_0.png">
-					</div>
-					<div class="col-xs-4">
-						<img class="AICreature rightBodyPart" id="rightHand" src="../assets/monster/starter/hand_right_0.png">
-					</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4">
+					<img class="AICreature leftBodyPart" id="leftHand" src="../assets/monster/starter/hand_left_0.png">
 				</div>
-				<div class="row">
-					<div class="col-xs-4 col-xs-offset-2">
-						<img class="AICreature leftBodyPart" id="leftLeg" src="../assets/monster/starter/leg_left_0.png">
-					</div>
-					<div class="col-xs-4">
-						<img class="AICreature rightBodyPart" id="rightLeg" src="../assets/monster/starter/leg_right_0.png">
-					</div>
+				<div class="col-xs-4">
+					<img class="AICreature" id="body" src="../assets/monster/starter/body_0.png">
+				</div>
+				<div class="col-xs-4">
+					<img class="AICreature rightBodyPart" id="rightHand" src="../assets/monster/starter/hand_right_0.png">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-2">
+					<img class="AICreature leftBodyPart" id="leftLeg" src="../assets/monster/starter/leg_left_0.png">
+				</div>
+				<div class="col-xs-4">
+					<img class="AICreature rightBodyPart" id="rightLeg" src="../assets/monster/starter/leg_right_0.png">
 				</div>
 			</div>
 		</div>
