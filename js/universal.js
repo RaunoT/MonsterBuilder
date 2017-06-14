@@ -22,12 +22,12 @@ var playerString = {};
 var stringToSave = {};
 var allPlayers =[];
 
-var headUrls = ["../assets/monster/robot/head_0.png", "../assets/monster/animal/head_0.png", "../assets/monster/human/head_0.png"];
-var chestUrls = ["../assets/monster/robot/body_0.png", "../assets/monster/animal/body_0.png", "../assets/monster/human/body_0.png"];
-var leftHandUrls = ["../assets/monster/robot/hand_left_0.png", "../assets/monster/animal/hand_left_0.png", "../assets/monster/human/hand_left_0.png"];
-var rightHandUrls = ["../assets/monster/robot/hand_right_0.png", "../assets/monster/animal/hand_right_0.png", "../assets/monster/human/hand_right_0.png"];
-var leftLegUrls = ["../assets/monster/robot/leg_left_0.png", "../assets/monster/animal/leg_left_0.png", "../assets/monster/human/leg_left_0.png"];
-var rightLegUrls = ["../assets/monster/robot/leg_right_0.png", "../assets/monster/animal/leg_right_0.png", "../assets/monster/human/leg_right_0.png"];
+var headUrls = [{"url":"../assets/monster/robot/head_0.png", "race":"robot"}, {"url":"../assets/monster/animal/head_0.png", "race":"animal"}, {"url":"../assets/monster/human/head_0.png", "race":"human"}];
+var chestUrls = [{"url":"../assets/monster/robot/body_0.png", "race":"robot"}, {"url":"../assets/monster/animal/body_0.png", "race":"animal"}, {"url":"../assets/monster/human/body_0.png", "race":"human"}];
+var leftHandUrls = [{"url":"../assets/monster/robot/hand_left_0.png", "race":"robot"}, {"url":"../assets/monster/animal/hand_left_0.png", "race":"animal"}, {"url":"../assets/monster/human/hand_left_0.png", "race":"human"}];
+var rightHandUrls = [{"url":"../assets/monster/robot/hand_right_0.png", "race":"robot"}, {"url":"../assets/monster/animal/hand_right_0.png", "race":"animal"}, {"url":"../assets/monster/human/hand_right_0.png", "race":"human"}];
+var leftLegUrls = [{"url":"../assets/monster/robot/leg_left_0.png", "race":"robot"}, {"url":"../assets/monster/animal/leg_left_0.png", "race":"animal"}, {"url":"../assets/monster/human/leg_left_0.png", "race":"human"}];
+var rightLegUrls = [{"url":"../assets/monster/robot/leg_right_0.png", "race":"robot"}, {"url":"../assets/monster/animal/leg_right_0.png", "race":"animal"}, {"url":"../assets/monster/human/leg_right_0.png", "race":"human"}];
 
 var eTypes = ["eHead", "eLeftHand", "eChest", "eRightHand", "eLeftLeg", "eRightLeg"];
 var pTypes = ["pHead", "pLeftHand", "pChest", "pRightHand", "pLeftLeg", "pRightLeg"];
@@ -48,28 +48,22 @@ window.onload = function(){
 
 };
 
-function changeValue(list, object, type) {
-	for(var i=0; i<list.length; i++);
-	player[type] += 1;
-
-	if (player[type] == list.length+1) {
-		player[type] = 1;
-	}
-	object.style.backgroundColor = list[player[type]-1];
-}
-
 function changePic(divId, bodyparts) {
 	var currentUrl = $("#"+divId+" img").attr("src");
+	var next = 0;
+	for (var i=0;i<bodyparts.length;i++) {
+		console.log(bodyparts[i]);
+		if (bodyparts[i]["url"] == currentUrl) {
+			var current = bodyparts.indexOf(bodyparts[i]);
+			if (bodyparts[current+1]) {
+				next = current+1;
+			} else {
+				next = 0;
+			}
+		}
+	}
 	$("#"+divId+" img").remove();
-	var current = bodyparts.indexOf(currentUrl);
-	console.log(current);
-	console.log(currentUrl);
-	$("#"+divId).prepend("<img src='"+bodyparts[current+1]+"'>");
-	console.log(bodyparts[current+1]);
-}
-
-function pointer(object) {
-	object.style.cursor = "pointer";
+	$("#"+divId).prepend("<img src='"+bodyparts[next]["url"]+"'>");
 }
 
 function saveServerFn() {
