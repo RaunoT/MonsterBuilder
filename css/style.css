@@ -1,4 +1,4 @@
-/* Lehekülg */
+/* Page */
 body{
 	background-color: #333;
   	padding-top: 50px;
@@ -27,6 +27,7 @@ img{
     width: 100%;
 }
 
+/* General scale value for monsters */
 .scale{
     margin: 0 auto;
     width: 30%;
@@ -46,7 +47,6 @@ img{
 	margin-left: 0 !important;
 }
 
-
 /* Buttons that control gameplay */
 .controlBtn{
   	color: #fff;
@@ -62,6 +62,7 @@ img{
   	background-color: #fff;
 }
 
+/* ??? */
 .opponentMonster{
     visibility: hidden;
 }
@@ -75,12 +76,14 @@ img{
 .navbar{
 	background-color: #000;
 	border: none;
+    margin: 0;
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
 	background-color: #fff;
 	color: #000;
 }
+
 
 
 /* Mitte korras */
@@ -99,78 +102,4 @@ img{
   height: 100px;
   width: 100px;
   background-color: #404040;
-}
-
-#player {
-  float:left;
-  height: 800px;
-  width: 800px;
-  margin-top: 100px;
-  margin-left: 100px;
-  background-color: #eee;
-  border-radius: 5px;
-}
-
-#playerScore {
-  position: absolute;
-  height: 100px;
-  width: 100px;
-  border-radius: 50px;
-  margin-left: 650px;
-  margin-top: 50px;
-  text-align: center;
-  line-height: 100px;
-  font-family: 'Rock Salt';
-  font-size: 2em;
-}
-
-#AI, #enemy {
-  width: 400px;
-  height: 400px;
-  margin-left: 200px;
-  margin-top: 90px;
-  background-color: #eee;
-  border-radius: 5px;
-}
-
-#AIScore, #enemyScore {
-  position: absolute;
-  height: 50px;
-  width: 50px;
-  border-radius: 25px;
-  margin-left: 25px;
-  margin-top: 25px;
-  text-align: center;
-  line-height: 50px;
-  font-family: 'Rock Salt';
-}
-
-#playerName {
-  position: absolute;
-  height: 70px;
-  width: 500px;
-  background-color: #331a00;
-  color: white;
-  margin: -35px 150px 0px 150px;
-  border-radius: 5px;
-  font-family: 'Amatic SC', cursive;
-  text-align: center;
-  line-height: 70px;
-  font-size: 2.6em;
-  font-weight: bold;
-}
-
-#enemyName {
-  position: absolute;
-  height: 36px;
-  width: 250px;
-  background-color: #331a00;
-  color: white;
-  margin: -18px 75px 0px 75px;
-  border-radius: 5px;
-  font-family: 'Amatic SC', cursive;
-  text-align: center;
-  line-height: 36px;
-  font-size: 1.3em;
-  font-weight: bold;
 }
