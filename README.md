@@ -1,5 +1,5 @@
 # MonsterBuilder
-![alt text](http://imgur.com/c90ad022-822e-44ad-8923-0c5b99d2701f "Screenshot")
+![alt text](https://github.com/RaunoT/MonsterBuilder/blob/design/assets/screenshot.PNG?raw=true "Screenshot")
 
 ## eesmärk
 
