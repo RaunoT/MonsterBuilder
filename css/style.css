@@ -6,15 +6,28 @@ body{
     user-select: none;
 }
 
+input{
+    color: #000;
+}
+
 h1{
 	text-align: center;
 	margin: 10px;
 	font-family: 'VT323', monospace;
-	color: #dc0000;
+	color: #ce6000;
 	font-size: 3.5em;
 }
 
+
 h2{
+    text-align: center;
+    margin: 10px;
+    font-family: 'VT323', monospace;
+    color: #ce6000;
+    font-size: 2em;
+}
+
+h3{
     text-align: center;
     font-size: 1em;
     margin: 0px;
@@ -25,6 +38,11 @@ h2{
 img{
 	display: block;
     width: 100%;
+}
+
+/* Underline for h2 */
+.underline {
+    border-bottom: #ce6000 0.1em solid;
 }
 
 /* General scale value for monsters */
@@ -40,26 +58,31 @@ img{
 
 /* Monster bodyparts */
 .leftBodyPart{
-	margin-right: 0 !important;
+	margin-right: 0;
 }
 
 .rightBodyPart{
-	margin-left: 0 !important;
+	margin-left: 0;
 }
 
 /* Buttons that control gameplay */
 .controlBtn{
   	color: #fff;
-  	background-color: #009600;
+  	background-color: #007800;
   	border: none;
   	margin-top: 2.5em;
   	margin-bottom: 2.5em;
   	padding: 1em;
+    border-radius: 15px;
 }
 
 .controlBtn:hover{
   	color: #000;
   	background-color: #fff;
+}
+
+.controlBtn:focus{
+    outline: none;
 }
 
 /* ??? */
@@ -77,6 +100,10 @@ img{
 	background-color: #000;
 	border: none;
     margin: 0;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a{
+    color: #afafaf;
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
@@ -103,3 +130,4 @@ img{
   width: 100px;
   background-color: #404040;
 }
+

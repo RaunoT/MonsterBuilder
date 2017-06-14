@@ -44,12 +44,12 @@
 	</nav>
 
 	<h1>MULTI-PLAYER MODE</h1>
-	<h2 id="guide"><i>Loop through different bodyparts by clicking on the corresponding slot</i></h2>
-	<h2 id="opponentGuide"><i>After you've created a monster,  either select an opponent from the list and click play or click random to receive a random enemy</i></h2>
+	<h3 id="guide"><i>Loop through different bodyparts by clicking on the corresponding slot</i></h3>
+	<h3 id="opponentGuide"><i>After you've created a monster,  either select an opponent from the list and click play or click random to receive a random enemy</i></h3>
 
 	<div class="container-fluid">
 		<div class="col-sm-6">
-			<h1>YOUR MONSTER</h1>
+			<h2><span class="underline">YOUR MONSTER</span></h2>
 			<div class="scale">
 				<div class="row">
 					<div class="col-xs-4 col-xs-offset-4">
@@ -76,9 +76,30 @@
 					</div>
 				</div>
 			</div>
+			<!-- Searchbar -->
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					<input type="text" name="search" value="", placeholder="Search enemy by name">
+				</div>
+			</div>
+			<!-- Control nupud -->
+			<div class="row">
+				<div class="col-xs-3 text-center">
+					<button type="button" id="playPvP" class="controlBtn">Play</button>
+				</div>
+				<div class="col-xs-3 text-center">
+					<button type="button" id="confirm" class="controlBtn">Confirm</button>
+				</div>
+				<div class="col-xs-3 text-center">
+					<button type="button" id="random" class="controlBtn">Random</button>
+				</div>
+				<div class="col-xs-3 text-center">
+					<button type="button" id="search" class="controlBtn">Search</button>
+				</div>
+			</div>
 		</div>
 		<div class="col-sm-6">
-			<h1>ENEMY MONSTER</h1>
+			<h2><span class="underline">ENEMY MONSTER</span></h2>
 			<div class="scale">
 				<div class="row">
 					<div class="col-xs-4 col-xs-offset-4">
@@ -107,13 +128,6 @@
 			</div>
 		</div>
 	</div>
-
-
-    <input type="text" name="search" value="", placeholder="Search enemy by name">
-    <button type="button" id="search" class="controlBtn">Search</div>
-    <button type="button" id="random" class="controlBtn">Random</div>
-	<button type="button" id="confirm" class="controlBtn">Confirm</div>
-	<button type="button" id="playPvP" class="controlBtn">Play</div>
 
 </body>
 </html>
