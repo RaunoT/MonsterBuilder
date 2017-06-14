@@ -1,21 +1,23 @@
 var player = {
-	"name":"",
-	"pHead":0,
-	"pLeftHand":0,
-	"pChest":0,
-	"pRightHand":0,
-	"pLeftLeg":0,
-	"pRightLeg":0,
+//	"name":"",
+	"Head":0,
+	"LeftHand":0,
+	"Chest":0,
+	"RightHand":0,
+	"LeftLeg":0,
+	"RightLeg":0,
+	"score":0,
 };
 
 var enemy = {
-	"Name":"",
-	"eHead":0,
-	"eLeftHand":0,
-	"eChest":0,
-	"eRightHand":0,
-	"eLeftLeg":0,
-	"eRightLeg":0,
+//	"name":"",
+	"Head":0,
+	"LeftHand":0,
+	"Chest":0,
+	"RightHand":0,
+	"LeftLeg":0,
+	"RightLeg":0,
+	"score":0,
 };
 
 var playerString = {};
@@ -24,12 +26,12 @@ var allPlayers =[];
 
 var assets = "../assets/monster/";
 
-var Head = [{"url":assets+"robot/head_0.png", "race":"robot"}, {"url":assets+"animal/head_0.png", "race":"animal"}, {"url":assets+"human/head_0.png", "race":"human"}];
-var Chest = [{"url":assets+"robot/body_0.png", "race":"robot"}, {"url":assets+"animal/body_0.png", "race":"animal"}, {"url":assets+"human/body_0.png", "race":"human"}];
-var LeftHand = [{"url":assets+"robot/hand_left_0.png", "race":"robot"}, {"url":assets+"animal/hand_left_0.png", "race":"animal"}, {"url":assets+"human/hand_left_0.png", "race":"human"}];
-var RightHand = [{"url":assets+"robot/hand_right_0.png", "race":"robot"}, {"url":assets+"animal/hand_right_0.png", "race":"animal"}, {"url":assets+"human/hand_right_0.png", "race":"human"}];
-var LeftLeg = [{"url":assets+"robot/leg_left_0.png", "race":"robot"}, {"url":assets+"animal/leg_left_0.png", "race":"animal"}, {"url":assets+"human/leg_left_0.png", "race":"human"}];
-var RightLeg = [{"url":assets+"robot/leg_right_0.png", "race":"robot"}, {"url":assets+"animal/leg_right_0.png", "race":"animal"}, {"url":assets+"human/leg_right_0.png", "race":"human"}];
+var Head = [{"url":assets+"robot/head_0.png", "race":1}, {"url":assets+"animal/head_0.png", "race":2}, {"url":assets+"human/head_0.png", "race":3}];
+var Chest = [{"url":assets+"robot/body_0.png", "race":1}, {"url":assets+"animal/body_0.png", "race":2}, {"url":assets+"human/body_0.png", "race":3}];
+var LeftHand = [{"url":assets+"robot/hand_left_0.png", "race":1}, {"url":assets+"animal/hand_left_0.png", "race":2}, {"url":assets+"human/hand_left_0.png", "race":3}];
+var RightHand = [{"url":assets+"robot/hand_right_0.png", "race":1}, {"url":assets+"animal/hand_right_0.png", "race":2}, {"url":assets+"human/hand_right_0.png", "race":3}];
+var LeftLeg = [{"url":assets+"robot/leg_left_0.png", "race":1}, {"url":assets+"animal/leg_left_0.png", "race":2}, {"url":assets+"human/leg_left_0.png", "race":3}];
+var RightLeg = [{"url":assets+"robot/leg_right_0.png", "race":1}, {"url":assets+"animal/leg_right_0.png", "race":2}, {"url":assets+"human/leg_right_0.png", "race":3}];
 
 var parts = {};
 parts["Head"] = Head;
@@ -57,6 +59,18 @@ window.onload = function(){
 
 	pRightLeg.addEventListener("click", function() {changePic("pRightLeg", RightLeg);} );
 
+	var play = document.getElementById("play");
+    play.addEventListener("click", function() {
+    	assignValues();
+    	if (checkMonster()) {
+    		resetScores();
+    		startPlay();
+    		assignValues();
+    		findVictor();
+    	} else {
+    		alert("Complete your monster.");
+    	}
+    } );
 };
 
 function currentBodypartIndex(bodyparts, url) {
@@ -69,8 +83,102 @@ function currentBodypartIndex(bodyparts, url) {
 	return current;
 }
 
+function raceFromUrl(partsList, url) {
+	return parts[partsList][currentBodypartIndex(parts[partsList], url)]["race"];
+}
+
+function assignValues() {
+	for (name in pTypes) {
+		var part = pTypes[name];
+		var partUrl = $("#"+part+" img").attr("src");
+		if (!partUrl.includes("starter")) {
+			player[part.slice(1)] = raceFromUrl(part.slice(1), partUrl);
+		}
+	}
+	for (name in eTypes) {
+		var part = eTypes[name];
+		var partUrl = $("#"+part+" img").attr("src");
+		if (!partUrl.includes("starter")) {
+			enemy[part.slice(1)] = raceFromUrl(part.slice(1), partUrl);
+		}
+	}
+}
+
+function resetScores() {
+	player["score"] = 0;
+    enemy["score"] = 0;
+	for (var i in player) {
+		$("#e"+i).removeClass("greyed");
+		$("#p"+i).removeClass("greyed");
+	}
+}
+
+function findVictor() {
+	for (var i in player) {
+		if (i != "name" && i != "score") {
+			if (player[i] != enemy[i]) {
+				var winningValue = calculate(player[i], enemy[i]);
+				if (player[i] == winningValue) {
+					$("#e"+i).addClass("greyed");
+				} else {
+					$("#p"+i).addClass("greyed");
+				}
+			} else {
+				enemy["score"] += 1;
+				player["score"] += 1;
+			}
+		}
+	}
+	if (player["score"] > enemy["score"]) {
+		alert("You win!");
+	} else {
+		alert("You lose!");
+	}
+}
+
+function calculate(player1, player2) {
+	// Robot > Human
+	// Human > Animal
+	// Animal > Robot
+	// robot - 1, animal - 2, human - 3
+	if(player1 == 1) {
+		if(player2 == 2) {
+			// player2 won
+			enemy["score"] += 1;
+			return 2;
+		} else { 
+			// player1 won
+			player["score"] += 1;
+			return 1;
+		}
+	}
+	if(player1 == 2) {
+		if(player2 == 3) {
+			// player2 won
+			enemy["score"] += 1;
+			return 3;
+		} else { 
+			// player1 won
+			player["score"] += 1;
+			return 2;
+		}
+	}
+	if(player1 == 3) {
+		if(player2 == 1) {
+			// player2 won
+			enemy["score"] += 1;
+			return 1;
+		} else { 
+			// player1 won
+			player["score"] += 1;
+			return 3;
+		}
+	}
+}
+
 function changePic(divId, bodyparts) {
 	var currentUrl = $("#"+divId+" img").attr("src");
+	$("#"+divId).removeClass("greyed");
 	var current = currentBodypartIndex(bodyparts, currentUrl);
 	if (bodyparts[current+1]) {
 		var next = current+1;
@@ -121,13 +229,12 @@ function checkMonster() {
 }
 
 function startPlay() {
-    console.log("mäng algab");
+    console.log("Fight!");
 
 // Loosin arvuti monsterile väärtused
-    for (var i=0;i<aIParts.length;i++) {
-        var partDiv = (aIParts[i]);
-        var partName = aIParts[i].slice(2);
-        console.log(aIParts[i].slice(2));
+    for (var i=0;i<eTypes.length;i++) {
+        var partDiv = (eTypes[i]);
+        var partName = eTypes[i].slice(1);
         giveAIValue(partDiv, parts[partName]);
     }
 }
@@ -140,6 +247,14 @@ function giveAIValue(divId, bodyparts) {
     var value = randomizer(bodyparts.length);
     $("#"+divId+" img").remove();
     $("#"+divId).prepend("<img src='"+bodyparts[value]["url"]+"'>");
-    console.log(bodyparts);
-    console.log(value);
+}
+
+function checkMonster() {
+	var ready = true;
+	for(var i=0; i<pTypes.length; i++) {
+		if(player[pTypes[i].slice(1)]===0){
+			ready = false;
+		}
+	}
+	return ready;
 }

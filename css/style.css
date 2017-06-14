@@ -1,103 +1,109 @@
 /* Page */
 body{
-	background-color: #333;
-  	padding-top: 50px;
-    color: #fff;
-    user-select: none;
+    background-color: #333;
+        padding-top: 50px;
+        color: #fff;
+        user-select: none;
 }
 
 h1{
-	text-align: center;
-	margin: 10px;
-	font-family: 'VT323', monospace;
-	color: #dc0000;
-	font-size: 3.5em;
+    text-align: center;
+    margin: 10px;
+    font-family: 'VT323', monospace;
+    color: #dc0000;
+    font-size: 3.5em;
 }
 
 h2{
-    text-align: center;
-    font-size: 1em;
-    margin: 0px;
-    margin-bottom: 10px;
-    color: #afafaf;
+        text-align: center;
+        font-size: 1em;
+        margin: 0px;
+        margin-bottom: 10px;
+        color: #afafaf;
 }
 
 img{
-	display: block;
-    width: 100%;
+        display: block;
+        width: 100%;
 }
 
 /* General scale value for monsters */
 .scale{
-    margin: 0 auto;
-    width: 30%;
+        margin: 0 auto;
+        width: 30%;
 }
 
 /* Remove spacing from between bodyparts */
 .col-xs-4{
-	padding: 0;
+    padding: 0;
 }
 
 /* Monster bodyparts */
 .leftBodyPart{
-	margin-right: 0 !important;
+    margin-right: 0 !important;
 }
 
 .rightBodyPart{
-	margin-left: 0 !important;
+    margin-left: 0 !important;
 }
 
 /* Buttons that control gameplay */
 .controlBtn{
-  	color: #fff;
-  	background-color: #009600;
-  	border: none;
-  	margin-top: 2.5em;
-  	margin-bottom: 2.5em;
-  	padding: 1em;
+        color: #fff;
+        background-color: #009600;
+        border: none;
+        margin-top: 2.5em;
+        margin-bottom: 2.5em;
+        padding: 1em;
 }
 
 .controlBtn:hover{
-  	color: #000;
-  	background-color: #fff;
+        color: #000;
+        background-color: #fff;
 }
 
 /* ??? */
 .opponentMonster{
-    visibility: hidden;
+        visibility: hidden;
 }
 
 /* Navbar */
 .navbar-brand, .nav.navbar-nav.navbar-right{
-	font-family: 'VT323', monospace;
-	font-size: 2em;
+    font-family: 'VT323', monospace;
+    font-size: 2em;
 }
 
 .navbar{
-	background-color: #000;
-	border: none;
-    margin: 0;
+    background-color: #000;
+    border: none;
+        margin: 0;
 }
 
 .navbar-inverse .navbar-nav>.AIScoretive>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
-	background-color: #fff;
-	color: #000;
+    background-color: #fff;
+    color: #000;
 }
 
 /* Mitte korras */
 
 #savedPlayer {
-  width: 400px;
-  height: 400px;
-  margin-left: 200px;
-  margin-top: 90px;
-  background-color: #eee;
-  border-radius: 5px;
+    width: 400px;
+    height: 400px;
+    margin-left: 200px;
+    margin-top: 90px;
+    background-color: #eee;
+    border-radius: 5px;
 }
 
 .savedPlayerCreature {
-  position: absolute;
-  height: 100px;
-  width: 100px;
-  background-color: #404040;
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-color: #404040;
+}
+
+.greyed {
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+    filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
 }
