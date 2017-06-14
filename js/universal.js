@@ -22,12 +22,12 @@ var playerString = {};
 var stringToSave = {};
 var allPlayers =[];
 
-var headUrls = [{"url":"../assets/monster/robot/head_0.png", "race":"robot"}, {"url":"../assets/monster/animal/head_0.png", "race":"animal"}, {"url":"../assets/monster/human/head_0.png", "race":"human"}];
-var chestUrls = [{"url":"../assets/monster/robot/body_0.png", "race":"robot"}, {"url":"../assets/monster/animal/body_0.png", "race":"animal"}, {"url":"../assets/monster/human/body_0.png", "race":"human"}];
-var leftHandUrls = [{"url":"../assets/monster/robot/hand_left_0.png", "race":"robot"}, {"url":"../assets/monster/animal/hand_left_0.png", "race":"animal"}, {"url":"../assets/monster/human/hand_left_0.png", "race":"human"}];
-var rightHandUrls = [{"url":"../assets/monster/robot/hand_right_0.png", "race":"robot"}, {"url":"../assets/monster/animal/hand_right_0.png", "race":"animal"}, {"url":"../assets/monster/human/hand_right_0.png", "race":"human"}];
-var leftLegUrls = [{"url":"../assets/monster/robot/leg_left_0.png", "race":"robot"}, {"url":"../assets/monster/animal/leg_left_0.png", "race":"animal"}, {"url":"../assets/monster/human/leg_left_0.png", "race":"human"}];
-var rightLegUrls = [{"url":"../assets/monster/robot/leg_right_0.png", "race":"robot"}, {"url":"../assets/monster/animal/leg_right_0.png", "race":"animal"}, {"url":"../assets/monster/human/leg_right_0.png", "race":"human"}];
+var headUrls = [{"url":"../assets/monster/starte/head_0.png", "race":"starter"}, {"url":"../assets/monster/robot/head_0.png", "race":"robot"}, {"url":"../assets/monster/animal/head_0.png", "race":"animal"}, {"url":"../assets/monster/human/head_0.png", "race":"human"}];
+var chestUrls = [{"url":"../assets/monster/starte/body_0.png", "race":"starter"}, {"url":"../assets/monster/robot/body_0.png", "race":"robot"}, {"url":"../assets/monster/animal/body_0.png", "race":"animal"}, {"url":"../assets/monster/human/body_0.png", "race":"human"}];
+var leftHandUrls = [{"url":"../assets/monster/starte/hand_left_0.png", "race":"starter"}, {"url":"../assets/monster/robot/hand_left_0.png", "race":"robot"}, {"url":"../assets/monster/animal/hand_left_0.png", "race":"animal"}, {"url":"../assets/monster/human/hand_left_0.png", "race":"human"}];
+var rightHandUrls = [{"url":"../assets/monster/starte/hand_right_0.png", "race":"starter"}, {"url":"../assets/monster/robot/hand_right_0.png", "race":"robot"}, {"url":"../assets/monster/animal/hand_right_0.png", "race":"animal"}, {"url":"../assets/monster/human/hand_right_0.png", "race":"human"}];
+var leftLegUrls = [{"url":"../assets/monster/starte/leg_left_0.png", "race":"starter"}, {"url":"../assets/monster/robot/leg_left_0.png", "race":"robot"}, {"url":"../assets/monster/animal/leg_left_0.png", "race":"animal"}, {"url":"../assets/monster/human/leg_left_0.png", "race":"human"}];
+var rightLegUrls = [{"url":"../assets/monster/starte/leg_right_0.png", "race":"starter"}, {"url":"../assets/monster/robot/leg_right_0.png", "race":"robot"}, {"url":"../assets/monster/animal/leg_right_0.png", "race":"animal"}, {"url":"../assets/monster/human/leg_right_0.png", "race":"human"}];
 
 var eTypes = ["eHead", "eLeftHand", "eChest", "eRightHand", "eLeftLeg", "eRightLeg"];
 var pTypes = ["pHead", "pLeftHand", "pChest", "pRightHand", "pLeftLeg", "pRightLeg"];
@@ -48,19 +48,24 @@ window.onload = function(){
 
 };
 
+function currentBodypartIndex(bodyparts, url) {
+	var current = 0;
+	for (var i=0;i<bodyparts.length;i++) {
+		if (bodyparts[i]["url"] == url) {
+			current = bodyparts.indexOf(bodyparts[i]);
+		}
+	}
+	return current;
+}
+
 function changePic(divId, bodyparts) {
 	var currentUrl = $("#"+divId+" img").attr("src");
-	var next = 0;
-	for (var i=0;i<bodyparts.length;i++) {
-		console.log(bodyparts[i]);
-		if (bodyparts[i]["url"] == currentUrl) {
-			var current = bodyparts.indexOf(bodyparts[i]);
-			if (bodyparts[current+1]) {
-				next = current+1;
-			} else {
-				next = 0;
-			}
-		}
+	var current = currentBodypartIndex(bodyparts, currentUrl);
+	console.log(current);
+	if (bodyparts[current+1]) {
+		var next = current+1;
+	} else {
+		var next = 1;
 	}
 	$("#"+divId+" img").remove();
 	$("#"+divId).prepend("<img src='"+bodyparts[next]["url"]+"'>");
