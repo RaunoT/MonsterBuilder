@@ -6,15 +6,12 @@
 Two-player rock-paper-scissors type of game, where instead of rock, paper or scissors,
 monsters body parts compete with eachother.
 
-The game was made as part of a ??? at Tallinn University.
+The game was made as part of a Software Development course at Tallinn University.
 
 The logic for the game is browser based and written in JavaScript. The visual aspects are handled by HTML/CSS.
 
-You can try the game out at ???
-
-## License
-
-???
+You can try the game by downloading the repository and giving r/w permissions for database.txt to all users. To launch, open page/index.html.
+Requirements: Must have PHP installed
 
 ## Tööjaotus ja rühmaliikmed
 
