@@ -3,6 +3,7 @@ body{
 	background-color: #333;
   	padding-top: 50px;
     color: #fff;
+    user-select: none;
 }
 
 h1{
@@ -18,13 +19,12 @@ h2{
     font-size: 1em;
     margin: 0px;
     margin-bottom: 10px;
+    color: #afafaf;
 }
 
 img{
 	display: block;
-  	user-select: none;
     width: 100%;
-
 }
 
 .scale{
@@ -61,21 +61,6 @@ img{
 .controlBtn:hover{
   	color: #000;
   	background-color: #fff;
-}
-
-
-/* Mängija Monster */
-.playerCreature {
-    margin: 0 auto;
-}
-
-
-/* AI, vastase Monster */
-.AICreature, .enemyCreature {
-    margin: 0 auto;
-    height: 20vh;
-    width: 100%;
-    background-color: #fff;
 }
 
 .opponentMonster{
@@ -139,11 +124,6 @@ img{
   text-align: center;
   line-height: 100px;
   font-family: 'Rock Salt';
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
   font-size: 2em;
 }
 
@@ -166,11 +146,6 @@ img{
   text-align: center;
   line-height: 50px;
   font-family: 'Rock Salt';
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
 }
 
 #playerName {
@@ -186,11 +161,6 @@ img{
   line-height: 70px;
   font-size: 2.6em;
   font-weight: bold;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
 }
 
 #enemyName {
