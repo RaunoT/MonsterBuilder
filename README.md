@@ -11,7 +11,7 @@ The game was made as part of a software development course at Tallinn University
 The logic for the game is written in JavaScript/PHP and the visual aspects are handled by HTML/CSS.
 
 
-## How to play
+## Where to play
 
 You can play the game by downloading the repository and giving r/w permissions for database.txt to all users. 
 To launch, open page/index.html. The game is browser-based so requires no additional installations besides PHP.
