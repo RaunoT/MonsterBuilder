@@ -1,12 +1,22 @@
-# MonsterBuilder
+# Monster Builder
 ![alt text](https://github.com/RaunoT/MonsterBuilder/blob/design/assets/screenshot.PNG?raw=true "Screenshot")
 
-## eesmärk
+## Introduction
 
-Two-player rock-paper-scissors type of game, where instead of rock, paper or scissors
+Two-player rock-paper-scissors type of game, where instead of rock, paper or scissors,
 monsters body parts compete with eachother.
 
-## tööjaotus ja rühmaliikmed
+The game was made as part of a ??? at Tallinn University.
+
+The logic for the game is browser based and written in JavaScript. The visual aspects are handled by HTML/CSS.
+
+You can try the game out at ???
+
+## License
+
+???
+
+## Tööjaotus ja rühmaliikmed
 
 1. Ksenia Gennadevna Belorusskaja - Disainer
 2. Rando Tomingas - Programmeerija
