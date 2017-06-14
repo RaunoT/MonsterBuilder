@@ -29,16 +29,15 @@ img{
 
 .scale{
     margin: 0 auto;
-    width: 35%;
+    width: 30%;
 }
 
-/* Et kehaosade vahel ei oleks vahed */
+/* Remove spacing from between bodyparts */
 .col-xs-4{
 	padding: 0;
 }
 
-
-/* Monsteri kehaosad */
+/* Monster bodyparts */
 .leftBodyPart{
 	margin-right: 0 !important;
 }
@@ -48,7 +47,7 @@ img{
 }
 
 
-/* Nupud mis kontrollivad mängimist */
+/* Buttons that control gameplay */
 .controlBtn{
   	color: #fff;
   	background-color: #009600;
@@ -66,11 +65,8 @@ img{
 .opponentMonster{
     visibility: hidden;
 }
-/* Bootstrapi kastid */
 
-
-
-/* Navbar tweaks */
+/* Navbar */
 .navbar-brand, .nav.navbar-nav.navbar-right{
 	font-family: 'VT323', monospace;
 	font-size: 2em;
