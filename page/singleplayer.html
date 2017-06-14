@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Color Android status bar -->
+    <meta name="theme-color" content="#009600" />
 	<title>Monster Builder</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -11,7 +13,7 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <!-- CSS -->
     <link type="text/css" rel="stylesheet" href="../css/style.css">
     <!-- JS -->
@@ -34,71 +36,81 @@
 	    	</div>
 	    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			    <ul class="nav navbar-nav navbar-right">
-			    	<li class="active"><a href="singleplayer.html">Singleplayer</a></li>
-			      	<li><a href="multiplayer.html">Multiplayer</a></li>
+			    	<li class="active"><a href="singleplayer.html">Single-player</a></li>
+			      	<li><a href="multiplayer.html">Multi-player</a></li>
 			    </ul>
 			</div>
 	  	</div>
 	</nav>
 
+	<h1>SINGLE-PLAYER MODE</h1>
+	<h2 id="guide"><i>Loop through different bodyparts by clicking on the corresponding slot</i></h2>
+	<h2 id="opponentGuide"><i>After you click play, the computer will automatically generate an enemy monster for you</i></h2>
+
 	<div class="container-fluid">
 		<div class="col-sm-6">
-			<div class="row">
-				<div class="col-xs-4 col-xs-offset-4">
-					<div class="playerCreature" id="pHead"></div>
+			<h1>YOUR MONSTER</h1>
+			<div class="scale">
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-4">
+						<img class="playerCreature" id="pHead" src="../assets/monster/starter/head.png">
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-4">
-					<div class="playerCreature" id="pLeftHand"></div>
+				<div class="row">
+					<div class="col-xs-4">
+						<img class="playerCreature leftBodyPart" id="pLeftHand" src="../assets/monster/starter/hand_left.png">
+					</div>
+					<div class="col-xs-4">
+						<img class="playerCreature" class="playerCreature" id="pChest" src="../assets/monster/starter/body.png">
+					</div>
+					<div class="col-xs-4">
+						<img class="playerCreature rightBodyPart" id="pRightHand" src="../assets/monster/starter/hand_right.png">
+					</div>
 				</div>
-				<div class="col-xs-4">
-					<div class="playerCreature" id="pChest"></div>
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-2">
+						<img class="playerCreature leftBodyPart" id="pLeftLeg" src="../assets/monster/starter/leg_left.png">
+					</div>
+					<div class="col-xs-4">
+						<img class="playerCreature rightBodyPart" id="pRightLeg" src="../assets/monster/starter/leg_right.png">
+					</div>
 				</div>
-				<div class="col-xs-4">
-					<div class="playerCreature" id="pRightHand"></div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-4 col-xs-offset-2">
-					<div class="playerCreature" id="pLeftLeg"></div>
-				</div>
-				<div class="col-xs-4">
-					<div class="playerCreature" id="pRightLeg"></div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-4 col-xs-offset-2 text-center">
-					<button type="button" class="controlBtn" id="play">Play</button>
-				</div>
-				<div class="col-xs-4 text-center">
-					<button type="button" class="controlBtn" onclick="location.href = 'singleplayer.html';">Reset</button>
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-2 text-center">
+						<button type="button" class="controlBtn" id="play">Play</button>
+					</div>
+					<div class="col-xs-4 text-center">
+						<button type="button" id="refresh" class="controlBtn" onclick="location.href = 'singleplayer.html';">Reset</button>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-sm-6">
-			<div class="row">
-				<div class="col-xs-4 col-xs-offset-4">
-					<div class="AICreature" id="head"></div>
+			<h1>ENEMY MONSTER</h1>
+			<div class="scale">
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-4">
+						<img class="AICreature" id="head" src="../assets/monster/starter/head.png">
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-4">
-					<div class="AICreature" id="leftHand"></div>
+				<div class="row">
+					<div class="col-xs-4">
+						<img class="AICreature leftBodyPart" id="leftHand" src="../assets/monster/starter/hand_left.png">
+					</div>
+					<div class="col-xs-4">
+						<img class="AICreature" id="body" src="../assets/monster/starter/body.png">
+					</div>
+					<div class="col-xs-4">
+						<img class="AICreature rightBodyPart" id="rightHand" src="../assets/monster/starter/hand_right.png">
+					</div>
 				</div>
-				<div class="col-xs-4">
-					<div class="AICreature" id="chest"></div>
-				</div>
-				<div class="col-xs-4">
-					<div class="AICreature" id="leftLeg"></div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-4 col-xs-offset-2">
-					<div class="AICreature" id="leftLeg"></div>
-				</div>
-				<div class="col-xs-4">
-					<div class="AICreature" id="rightLeg"></div>
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-2">
+						<img class="AICreature leftBodyPart" id="leftLeg" src="../assets/monster/starter/leg_left.png">
+					</div>
+					<div class="col-xs-4">
+						<img class="AICreature rightBodyPart" id="rightLeg" src="../assets/monster/starter/leg_right.png">
+					</div>
 				</div>
 			</div>
 		</div>

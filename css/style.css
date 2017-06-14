@@ -1,11 +1,53 @@
 /* Lehekülg */
 body{
-	background-color: #444;
-  	padding-top: 70px;
+	background-color: #333;
+  	padding-top: 50px;
+    color: #fff;
+    user-select: none;
 }
-/* ----- */
 
-/* Nupud mis kontrollivad mängimist */
+h1{
+	text-align: center;
+	margin: 10px;
+	font-family: 'VT323', monospace;
+	color: #dc0000;
+	font-size: 3.5em;
+}
+
+h2{
+    text-align: center;
+    font-size: 1em;
+    margin: 0px;
+    margin-bottom: 10px;
+    color: #afafaf;
+}
+
+img{
+	display: block;
+    width: 100%;
+}
+
+.scale{
+    margin: 0 auto;
+    width: 30%;
+}
+
+/* Remove spacing from between bodyparts */
+.col-xs-4{
+	padding: 0;
+}
+
+/* Monster bodyparts */
+.leftBodyPart{
+	margin-right: 0 !important;
+}
+
+.rightBodyPart{
+	margin-left: 0 !important;
+}
+
+
+/* Buttons that control gameplay */
 .controlBtn{
   	color: #fff;
   	background-color: #009600;
@@ -19,39 +61,14 @@ body{
   	color: #000;
   	background-color: #fff;
 }
-/* ----- */
-
-/* Mängija Monster */
-.playerCreature {
-    margin: 0 auto;
-    height: 20vh;
-    width: 100%;
-    background-color: #fff;
-}
-/* ----- */
-
-/* AI, vastase Monster */
-.AICreature, .enemyCreature {
-    margin: 0 auto;
-    height: 20vh;
-    width: 100%;
-    background-color: #fff;
-}
 
 .opponentMonster{
     visibility: hidden;
 }
-/* ----- */
 
-/* Bootstrapi kastid */
-.col-sm-6 {
-    height: 500px;
-}
-/* ----- */
-
-/* Navbar tweaks */
+/* Navbar */
 .navbar-brand, .nav.navbar-nav.navbar-right{
-	font-family: 'Patrick Hand SC', cursive !important;
+	font-family: 'VT323', monospace;
 	font-size: 2em;
 }
 
@@ -64,11 +81,6 @@ body{
 	background-color: #fff;
 	color: #000;
 }
-
-.navbar-toggle.collapsed{
-
-}
-/* ----- */
 
 /* Mitte korras */
 
@@ -108,11 +120,6 @@ body{
   text-align: center;
   line-height: 100px;
   font-family: 'Rock Salt';
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
   font-size: 2em;
 }
 
@@ -135,11 +142,6 @@ body{
   text-align: center;
   line-height: 50px;
   font-family: 'Rock Salt';
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
 }
 
 #playerName {
@@ -155,11 +157,6 @@ body{
   line-height: 70px;
   font-size: 2.6em;
   font-weight: bold;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
 }
 
 #enemyName {

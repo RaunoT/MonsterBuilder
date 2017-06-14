@@ -1,12 +1,19 @@
-# MonsterBuilder
-Tarkvararenduse suvepraktika
+# Monster Builder
+![alt text](https://github.com/RaunoT/MonsterBuilder/blob/design/assets/screenshot.PNG?raw=true "Screenshot")
 
-## eesmärk
+## Introduction
 
-Two-player rock-paper-scissors type of game, where instead of rock, paper or scissors
+Two-player rock-paper-scissors type of game, where instead of rock, paper or scissors,
 monsters body parts compete with eachother.
 
-## tööjaotus ja rühmaliikmed
+The game was made as part of a Software Development course at Tallinn University.
+
+The logic for the game is browser based and written in JavaScript. The visual aspects are handled by HTML/CSS.
+
+You can try the game by downloading the repository and giving r/w permissions for database.txt to all users. To launch, open page/index.html.
+Requirements: Must have PHP installed
+
+## Tööjaotus ja rühmaliikmed
 
 1. Ksenia Gennadevna Belorusskaja - Disainer
 2. Rando Tomingas - Programmeerija
@@ -29,7 +36,7 @@ Branch'i kustutamine
 * git branch
 
 Ühendab branch'id
-* git merge **branch name**
+* git merge origin **branch name**
 
 Comittib sinna branch'i, kus sa praegu oled
 * git push origin **branch name**

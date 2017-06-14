@@ -48,9 +48,21 @@ window.onload = function(){
   play.addEventListener("click", function() {startPlay();} );
   play.addEventListener("mouseover", function() {pointer(play);} );
 
-  refresh.addEventListener("click", function() {refreshPage();} );
-  refresh.addEventListener("mouseover", function() {pointer(refresh);} );
+  play.addEventListener("click", function() {
+    document.getElementById("guide").innerHTML = "<i>The winning bodyparts have been highlighted</i>";
+  });
 
+  play.addEventListener("click", function() {
+    document.getElementById("opponentGuide").innerHTML = "<br>";
+  });
+
+  document.getElementById("refresh").addEventListener("click", function(){
+    document.getElementById("opponentGuide").innerHTML = "<i>After you click play, the computer will automatically generate an enemy monster for you</i>";
+  });
+
+  document.getElementById("refresh").addEventListener("click", function(){
+    document.getElementById("guide").innerHTML = "<i>Loop through different bodyparts by clicking on the corresponding slot</i>";
+  });
 };
 
 
@@ -157,10 +169,6 @@ function valuate2(subjectPartValue, partValue) {
   	}
   }
   return points;
-}
-
-function refreshPage() {
-  window.location.reload();
 }
 
 function winner(){
