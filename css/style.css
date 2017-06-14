@@ -1,13 +1,13 @@
 /* Page */
-body{
-	background-color: #333;
-  	padding-top: 50px;
-    color: #fff;
-    user-select: none;
+body {
+    background-color: #333;
+        padding-top: 50px;
+        color: #fff;
+        user-select: none;
 }
 
 
-h1{
+h1 {
 	text-align: center;
 	margin: 10px;
 	font-family: 'VT323', monospace;
@@ -16,7 +16,7 @@ h1{
 }
 
 
-h2{
+h2 {
     text-align: center;
     margin: 10px;
     font-family: 'VT323', monospace;
@@ -24,7 +24,7 @@ h2{
     font-size: 2em;
 }
 
-h3{
+h3 {
     text-align: center;
     font-size: 1em;
     margin: 0px;
@@ -32,7 +32,7 @@ h3{
     color: #afafaf;
 }
 
-img{
+img {
     width: 100%;
 }
 
@@ -48,8 +48,8 @@ img{
 }
 
 /* Remove spacing from between bodyparts */
-.col-xs-4{
-	padding: 0;
+.col-xs-4 {
+    padding: 0;
 }
 
 /* Buttons that control gameplay */
@@ -64,8 +64,8 @@ img{
 }
 
 .controlBtn:hover{
-  	color: #000;
-  	background-color: #fff;
+        color: #000;
+        background-color: #fff;
 }
 
 .controlBtn:focus{
@@ -74,14 +74,14 @@ img{
 
 /* Navbar */
 .navbar-brand, .nav.navbar-nav.navbar-right{
-	font-family: 'VT323', monospace;
-	font-size: 2em;
+    font-family: 'VT323', monospace;
+    font-size: 2em;
 }
 
 .navbar{
-	background-color: #000;
-	border: none;
-    margin: 0;
+    background-color: #000;
+    border: none;
+        margin: 0;
 }
 
 .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a{
@@ -96,4 +96,10 @@ img{
 /* ??? */
 .opponentMonster{
     visibility: hidden;
+}
+
+.greyed {
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+    filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
 }

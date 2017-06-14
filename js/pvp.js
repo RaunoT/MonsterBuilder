@@ -70,7 +70,7 @@ window.onload = function(){
 	search.addEventListener("click", function() {chooseEnemy();} );
 	random.addEventListener("click", function() {randomEnemy();} );
 
-
+	playPvP.addEventListener("click", function() {startPlay();} );
 	playPvP.addEventListener("mouseover", function() {pointer(playPvP);} );
 
 };
@@ -91,14 +91,10 @@ function pointer(object) {
 
 function confirmMonster() {
 	if(checkMonster()==1) {
-		var playerString = JSON.stringify(player);
+
 		console.log("Monster väärib savemist!");
 
-	// console.log(playerString);
-	//
-	// saveServerFn();
-
-	/////////////////////////////////////////////////pooooooooooleli
+		saveServerFn();
 
 	} else {
 		console.log("Monstril tervis puha korrast ära!");
@@ -143,6 +139,9 @@ function loadPlayer() {
 function chooseEnemy() {
 	var searchingEnemy = document.getElementById('searchInput').value;
 	var searchingEnemyValue = -1;
+
+	clearMonster(enemy, eTypes);
+
 	document.getElementById('error').innerHTML = "";
 
 	if(searchingEnemy==="") {
@@ -162,10 +161,29 @@ function chooseEnemy() {
 	}
 }
 
+function clearMonster(monsterToClear, list) {
+	// NB! clearing name might not be something you really really wanna do!
+	monsterToClear.Name = "";
+	document.getElementById('enemyName').innerHTML = "";
+
+	monsterToClear.eHead = 0;
+	document.getElementById(list[0]).style.backgroundColor = "#404040";
+	monsterToClear.eLeftHand = 0;
+	document.getElementById(list[1]).style.backgroundColor = "#404040";
+	monsterToClear.eChest = 0;
+	document.getElementById(list[2]).style.backgroundColor = "#404040";
+	monsterToClear.eRightHand = 0;
+	document.getElementById(list[3]).style.backgroundColor = "#404040";
+	monsterToClear.eLeftLeg = 0;
+	document.getElementById(list[4]).style.backgroundColor = "#404040";
+	monsterToClear.eRightLeg = 0;
+	document.getElementById(list[5]).style.backgroundColor = "#404040";
+}
+
 function randomEnemy() {
 	var randomlyChosenEnemy = Math.floor((Math.random() * allPlayers.length));
 	document.getElementById('error').innerHTML = "";
-	
+
 	if(allPlayers[randomlyChosenEnemy].Name==player.Name) {
 		randomEnemy();
 	} else {
@@ -221,49 +239,74 @@ function saveServerFn() {
 	});
 }
 
+function checkPlayer() {
+	var savedBefore = false;
+	for(var i=0; i<allPlayers.length; i++){
+		if(allPlayers[i].Name==player.Name){
+			savedBefore = true;
+		}
+	}
+	return savedBefore;
+}
+
+function savePlayer() {
+	for(var i=0; i<allPlayers.length; i++){
+		if(allPlayers[i].Name==player.Name){
+
+			console.log("starting update");
+
+			allPlayers[i].Name = player.Name;
+			allPlayers[i].pHead = player.pHead;
+			allPlayers[i].pLeftHand = player.pLeftHand;
+			allPlayers[i].pChest = player.pChest;
+			allPlayers[i].pRightHand = player.pRightHand;
+			allPlayers[i].pLeftLeg = player.pLeftLeg;
+			allPlayers[i].pRightLeg = player.pRightLeg;
+			allPlayers[i].won = player.won;
+			allPlayers[i].lost = player.lost;
+
+		}
+	}
+}
+
 
 function startPlay() {
 	console.log("mäng algab");
-	// Loosin arvuti monsterile väärtused
-	for(var i=0; i<AICreatureParts.length; i++) {
-		giveAIValue(AICreatureParts[i], types[i]);
-	}
+
 	// Loen mõlema monsteri punktid kahe süsteemi kaudu kokku
-	for(var j=0; j<types.length; j++) {
-		AIPoints += valuate(valueCounter[types[j]], pTypes);
+	for(var j=0; j<6; j++) {
+		enemyPoints += valuate(enemy[eTypes[j]], pTypes, player);
 	}
 
-	for(var k=0; k<types.length; k++) {
-		playerPoints += valuate(valueCounter[pTypes[k]], types);
+	for(var k=0; k<6; k++) {
+		playerPoints += valuate(player[pTypes[k]], eTypes, enemy);
 	}
 
-	for(var l=0; l<types.length; l++) {
-		AIPoints += valuate2(valueCounter[types[l]], valueCounter[pTypes[l]]);
+	for(var l=0; l<6; l++) {
+		enemyPoints += valuate2(enemy[eTypes[l]], player[pTypes[l]]);
 	}
 
-	for(var m=0; m<pTypes.length; m++) {
-		playerPoints += valuate2(valueCounter[pTypes[m]], valueCounter[types[m]]);
+	for(var m=0; m<6; m++) {
+		playerPoints += valuate2(player[pTypes[m]], enemy[eTypes[m]]);
 	}
+
+
 
 	// Kuvan punktid ja muudan võitja(te) punktide tausta kollaseks
 	var playerScore = document.getElementById('playerScore');
 	playerScore.innerHTML = getPlayerScore();
 
-	var AIScore = document.getElementById('AIScore');
-	AIScore.innerHTML = getAIScore();
+	var enemyScore = document.getElementById('enemyScore');
+	enemyScore.innerHTML = getEnemyScore();
 
 	winner();
 }
 
-function randomizer() {
-	return Math.floor((Math.random() * 3) + 1);
-}
-
-function valuate(partValue, list) {
+function valuate(partValue, list, subject) {
 	var points = 0;
 	if(partValue==1) {
 		for(var i=0; i<list.length; i++) {
-			if(valueCounter[list[i]]==2 || valueCounter[list[i]]===0){
+			if(subject[list[i]]==2 || subject[list[i]]===0){
 				points +=1;
 			}
 		}
@@ -271,7 +314,7 @@ function valuate(partValue, list) {
 
 	else if(partValue==2) {
 		for(var j=0; j<list.length; j++) {
-			if(valueCounter[list[j]]==3 || valueCounter[list[j]]===0){
+			if(subject[list[j]]==3 || subject[list[j]]===0){
 				points +=1;
 			}
 		}
@@ -279,7 +322,7 @@ function valuate(partValue, list) {
 
 	else if(partValue==3) {
 		for(var k=0; k<list.length; k++) {
-			if(valueCounter[list[k]]==1 || valueCounter[list[k]]===0){
+			if(subject[list[k]]==1 || subject[list[k]]===0){
 				points +=1;
 			}
 		}
@@ -314,21 +357,21 @@ function valuate2(subjectPartValue, partValue) {
 
 function winner(){
 
-	AIScore.style.backgroundColor = "#eee";
+	enemyScore.style.backgroundColor = "#eee";
 	playerScore.style.backgroundColor = "#eee";
 
-	if(AIPoints===0 && playerPoints===0) {}
+	if(enemyPoints===0 && playerPoints===0) {}
 
-	else if(AIPoints>playerPoints) {
-		AIScore.style.backgroundColor = "yellow";
+	else if(enemyPoints>playerPoints) {
+		enemyScore.style.backgroundColor = "yellow";
 	}
 
-	else if(AIPoints<playerPoints) {
+	else if(enemyPoints<playerPoints) {
 		playerScore.style.backgroundColor = "yellow";
 	}
 
 	else{
-		AIScore.style.backgroundColor = "yellow";
+		enemyScore.style.backgroundColor = "yellow";
 		playerScore.style.backgroundColor = "yellow";
 	}
 }
@@ -338,7 +381,7 @@ function getPlayerScore() {
 	return score;
 }
 
-function getAIScore() {
-	this.score = AIPoints;
+function getEnemyScore() {
+	this.score = enemyPoints;
 	return score;
 }
