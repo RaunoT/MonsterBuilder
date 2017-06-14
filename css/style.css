@@ -2,27 +2,35 @@
 body{
 	background-color: #333;
   	padding-top: 50px;
+    color: #fff;
 }
 
 h1{
 	text-align: center;
 	margin: 10px;
-	color: #fff;
 	font-family: 'VT323', monospace;
 	color: #dc0000;
 	font-size: 3.5em;
 }
 
+h2{
+    text-align: center;
+    font-size: 1em;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
 img{
 	background-color: #fff;
 	display: block;
-  user-select: none;
+  	user-select: none;
 }
 
 /* Et kehaosade vahel ei oleks vahed */
 .col-xs-4{
 	padding: 0;
 }
+
 
 /* Monsteri kehaosad */
 .leftBodyPart{
