@@ -36,7 +36,7 @@ Branch'i kustutamine
 * git branch
 
 Ühendab branch'id
-* git merge **branch name**
+* git merge origin **branch name**
 
 Comittib sinna branch'i, kus sa praegu oled
 * git push origin **branch name**
