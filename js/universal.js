@@ -22,32 +22,29 @@ var playerString = {};
 var stringToSave = {};
 var allPlayers =[];
 
-var colors = ["#ffc0cb", "#b3b3b3", "#966d4f"];// roosa, hõbedane, pruun
+var headUrls = ["../assets/monster/starter/head_0.png", "../assets/monster/robot/head_0.png", "../assets/monster/animal/head_0.png", "../assets/monster/human/head_0.png"];
+var chestUrls = ["../assets/monster/starter/body_0.png", "../assets/monster/robot/body_0.png", "../assets/monster/animal/body_0.png", "../assets/monster/human/body_0.png"];
+var leftHandUrls = ["../assets/monster/starter/hand_left_0.png", "../assets/monster/robot/hand_left_0.png", "../assets/monster/animal/hand_left_0.png", "../assets/monster/human/hand_left_0.png"];
+var rightHandUrls = ["../assets/monster/starter/hand_right_0.png", "../assets/monster/robot/hand_right_0.png", "../assets/monster/animal/hand_right_0.png", "../assets/monster/human/hand_right_0.png"];
+var leftLegUrls = ["../assets/monster/starter/leg_left_0.png", "../assets/monster/robot/leg_left_0.png", "../assets/monster/animal/leg_left_0.png", "../assets/monster/human/leg_left_0.png"];
+var rightLegUrls = ["../assets/monster/starter/leg_right_0.png", "../assets/monster/robot/leg_right_0.png", "../assets/monster/animal/leg_right_0.png", "../assets/monster/human/leg_right_0.png"];
+
 var eTypes = ["eHead", "eLeftHand", "eChest", "eRightHand", "eLeftLeg", "eRightLeg"];
 var pTypes = ["pHead", "pLeftHand", "pChest", "pRightHand", "pLeftLeg", "pRightLeg"];
 
 window.onload = function(){
 
-	pHead.addEventListener("click", function() {changeValue(colors, pHead, "pHead");} );
-	pHead.addEventListener("mouseover", function() {pointer(pHead);} );
+	pHead.addEventListener("click", function() {changePic("pHead", headUrls);} );
 
-	pLeftHand.addEventListener("click", function() {changeValue(colors, pLeftHand, "pLeftHand");} );
-	pLeftHand.addEventListener("mouseover", function() {pointer(pLeftHand);} );
+	pChest.addEventListener("click", function() {changePic("pChest", chestUrls);} );
 
-	pChest.addEventListener("click", function() {changeValue(colors, pChest, "pChest");} );
-	pChest.addEventListener("mouseover", function() {pointer(pChest);} );
+	pLeftHand.addEventListener("click", function() {changePic("pLeftHand", leftHandUrls);} );
 
-	pRightHand.addEventListener("click", function() {changeValue(colors, pRightHand, "pRightHand");} );
-	pRightHand.addEventListener("mouseover", function() {pointer(pRightHand);} );
+	pRightHand.addEventListener("click", function() {changePic("pRightHand", rightHandUrls);} );
 
-	pLeftLeg.addEventListener("click", function() {changeValue(colors, pLeftLeg, "pLeftLeg");} );
-	pLeftLeg.addEventListener("mouseover", function() {pointer(pLeftLeg);} );
+	pLeftLeg.addEventListener("click", function() {changePic("pLeftLeg", leftLegUrls);} );
 
-	pRightLeg.addEventListener("click", function() {changeValue(colors, pRightLeg, "pRightLeg");} );
-	pRightLeg.addEventListener("mouseover", function() {pointer(pRightLeg);} );
-
-	save.addEventListener("click", function() {saveMonster();} );
-	save.addEventListener("mouseover", function() {pointer(save);} );
+	pRightLeg.addEventListener("click", function() {changePic("pRightLeg", rightLegUrls);} );
 
 };
 
@@ -59,6 +56,16 @@ function changeValue(list, object, type) {
 		player[type] = 1;
 	}
 	object.style.backgroundColor = list[player[type]-1];
+}
+
+function changePic(divId, bodyparts) {
+	var currentUrl = $("#"+divId+" img").attr("src");
+	$("#"+divId+" img").remove();
+	var current = bodyparts.indexOf(currentUrl);
+	console.log(current);
+	console.log(currentUrl);
+	$("#"+divId).prepend("<img src='"+headUrls[current+1]+"'>");
+	console.log(headUrls[current+1]);
 }
 
 function pointer(object) {
