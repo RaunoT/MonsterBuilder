@@ -21,9 +21,15 @@ h2{
 }
 
 img{
-	background-color: #fff;
 	display: block;
   	user-select: none;
+    width: 100%;
+
+}
+
+.scale{
+    margin: 0 auto;
+    width: 35%;
 }
 
 /* Et kehaosade vahel ei oleks vahed */
