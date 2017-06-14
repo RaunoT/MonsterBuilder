@@ -63,14 +63,6 @@ img{
   	background-color: #fff;
 }
 
-/* AI, vastase Monster */
-.AICreature, .enemyCreature {
-    margin: 0 auto;
-    height: 20vh;
-    width: 100%;
-    background-color: #fff;
-}
-
 .opponentMonster{
     visibility: hidden;
 }
