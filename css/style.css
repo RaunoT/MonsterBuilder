@@ -6,7 +6,7 @@ body{
 
 h1{
 	text-align: center;
-	margin: 15px;
+	margin: 10px;
 	color: #fff;
 	font-family: 'VT323', monospace;
 	color: #dc0000;
@@ -16,9 +16,23 @@ h1{
 img{
 	background-color: #fff;
 	display: block;
-	margin: 0 auto;
+  user-select: none;
 }
-/* ----- */
+
+/* Et kehaosade vahel ei oleks vahed */
+.col-xs-4{
+	padding: 0;
+}
+
+/* Monsteri kehaosad */
+.leftBodyPart{
+	margin-right: 0 !important;
+}
+
+.rightBodyPart{
+	margin-left: 0 !important;
+}
+
 
 /* Nupud mis kontrollivad mängimist */
 .controlBtn{
@@ -34,13 +48,13 @@ img{
   	color: #000;
   	background-color: #fff;
 }
-/* ----- */
+
 
 /* Mängija Monster */
 .playerCreature {
     margin: 0 auto;
 }
-/* ----- */
+
 
 /* AI, vastase Monster */
 .AICreature, .enemyCreature {
@@ -53,11 +67,9 @@ img{
 .opponentMonster{
     visibility: hidden;
 }
-/* ----- */
-
 /* Bootstrapi kastid */
 
-/* ----- */
+
 
 /* Navbar tweaks */
 .navbar-brand, .nav.navbar-nav.navbar-right{
@@ -74,7 +86,7 @@ img{
 	background-color: #fff;
 	color: #000;
 }
-/* ----- */
+
 
 /* Mitte korras */
 
