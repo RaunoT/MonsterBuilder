@@ -12,12 +12,15 @@ var valueCounter = {
     "leftLeg": 0,
     "rightLeg":0
 };
-var Head = [{"url":"../assets/monster/robot/head_0.png", "race":"robot"}, {"url":"../assets/monster/animal/head_0.png", "race":"animal"}, {"url":"../assets/monster/human/head_0.png", "race":"human"}];
-var Chest = [{"url":"../assets/monster/robot/body_0.png", "race":"robot"}, {"url":"../assets/monster/animal/body_0.png", "race":"animal"}, {"url":"../assets/monster/human/body_0.png", "race":"human"}];
-var LeftHand = [{"url":"../assets/monster/robot/hand_left_0.png", "race":"robot"}, {"url":"../assets/monster/animal/hand_left_0.png", "race":"animal"}, {"url":"../assets/monster/human/hand_left_0.png", "race":"human"}];
-var RightHand = [{"url":"../assets/monster/robot/hand_right_0.png", "race":"robot"}, {"url":"../assets/monster/animal/hand_right_0.png", "race":"animal"}, {"url":"../assets/monster/human/hand_right_0.png", "race":"human"}];
-var LeftLeg = [{"url":"../assets/monster/robot/leg_left_0.png", "race":"robot"}, {"url":"../assets/monster/animal/leg_left_0.png", "race":"animal"}, {"url":"../assets/monster/human/leg_left_0.png", "race":"human"}];
-var RightLeg = [{"url":"../assets/monster/robot/leg_right_0.png", "race":"robot"}, {"url":"../assets/monster/animal/leg_right_0.png", "race":"animal"}, {"url":"../assets/monster/human/leg_right_0.png", "race":"human"}];
+
+var assets = "../assets/monster/";
+
+var Head = [{"url":assets+"robot/head_0.png", "race":"robot"}, {"url":assets+"animal/head_0.png", "race":"animal"}, {"url":assets+"human/head_0.png", "race":"human"}];
+var Chest = [{"url":assets+"robot/body_0.png", "race":"robot"}, {"url":assets+"animal/body_0.png", "race":"animal"}, {"url":assets+"human/body_0.png", "race":"human"}];
+var LeftHand = [{"url":assets+"robot/hand_left_0.png", "race":"robot"}, {"url":assets+"animal/hand_left_0.png", "race":"animal"}, {"url":assets+"human/hand_left_0.png", "race":"human"}];
+var RightHand = [{"url":assets+"robot/hand_right_0.png", "race":"robot"}, {"url":assets+"animal/hand_right_0.png", "race":"animal"}, {"url":assets+"human/hand_right_0.png", "race":"human"}];
+var LeftLeg = [{"url":assets+"robot/leg_left_0.png", "race":"robot"}, {"url":assets+"animal/leg_left_0.png", "race":"animal"}, {"url":assets+"human/leg_left_0.png", "race":"human"}];
+var RightLeg = [{"url":assets+"robot/leg_right_0.png", "race":"robot"}, {"url":assets+"animal/leg_right_0.png", "race":"animal"}, {"url":assets+"human/leg_right_0.png", "race":"human"}];
 
 var parts = {};
 parts["Head"] = Head;
@@ -68,35 +71,3 @@ window.onload = function(){
 };
 
 
-function changeValue(list, object, type) {
-    for(var i=0; i<list.length; i++);
-    valueCounter[type] += 1;
-    if (valueCounter[type] == list.length+1) {
-        valueCounter[type] = 1;
-    }
-    object.style.backgroundColor = list[valueCounter[type]-1];
-}
-
-function startPlay() {
-    console.log("mäng algab");
-
-// Loosin arvuti monsterile väärtused
-    for (var i=0;i<aIParts.length;i++) {
-        var partDiv = (aIParts[i]);
-        var partName = aIParts[i].slice(2);
-        console.log(aIParts[i].slice(2));
-        giveAIValue(partDiv, parts[partName]);
-    }
-}
-
-function randomizer(numberOfParts) {
-    return Math.floor((Math.random() * numberOfParts));
-}
-
-function giveAIValue(divId, bodyparts) {
-    var value = randomizer(bodyparts.length);
-    $("#"+divId+" img").remove();
-    $("#"+divId).prepend("<img src='"+bodyparts[value]["url"]+"'>");
-    console.log(bodyparts);
-    console.log(value);
-}
