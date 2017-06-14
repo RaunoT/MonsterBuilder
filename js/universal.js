@@ -22,12 +22,12 @@ var playerString = {};
 var stringToSave = {};
 var allPlayers =[];
 
-var headUrls = ["../assets/monster/starter/head_0.png", "../assets/monster/robot/head_0.png", "../assets/monster/animal/head_0.png", "../assets/monster/human/head_0.png"];
-var chestUrls = ["../assets/monster/starter/body_0.png", "../assets/monster/robot/body_0.png", "../assets/monster/animal/body_0.png", "../assets/monster/human/body_0.png"];
-var leftHandUrls = ["../assets/monster/starter/hand_left_0.png", "../assets/monster/robot/hand_left_0.png", "../assets/monster/animal/hand_left_0.png", "../assets/monster/human/hand_left_0.png"];
-var rightHandUrls = ["../assets/monster/starter/hand_right_0.png", "../assets/monster/robot/hand_right_0.png", "../assets/monster/animal/hand_right_0.png", "../assets/monster/human/hand_right_0.png"];
-var leftLegUrls = ["../assets/monster/starter/leg_left_0.png", "../assets/monster/robot/leg_left_0.png", "../assets/monster/animal/leg_left_0.png", "../assets/monster/human/leg_left_0.png"];
-var rightLegUrls = ["../assets/monster/starter/leg_right_0.png", "../assets/monster/robot/leg_right_0.png", "../assets/monster/animal/leg_right_0.png", "../assets/monster/human/leg_right_0.png"];
+var headUrls = ["../assets/monster/robot/head_0.png", "../assets/monster/animal/head_0.png", "../assets/monster/human/head_0.png"];
+var chestUrls = ["../assets/monster/robot/body_0.png", "../assets/monster/animal/body_0.png", "../assets/monster/human/body_0.png"];
+var leftHandUrls = ["../assets/monster/robot/hand_left_0.png", "../assets/monster/animal/hand_left_0.png", "../assets/monster/human/hand_left_0.png"];
+var rightHandUrls = ["../assets/monster/robot/hand_right_0.png", "../assets/monster/animal/hand_right_0.png", "../assets/monster/human/hand_right_0.png"];
+var leftLegUrls = ["../assets/monster/robot/leg_left_0.png", "../assets/monster/animal/leg_left_0.png", "../assets/monster/human/leg_left_0.png"];
+var rightLegUrls = ["../assets/monster/robot/leg_right_0.png", "../assets/monster/animal/leg_right_0.png", "../assets/monster/human/leg_right_0.png"];
 
 var eTypes = ["eHead", "eLeftHand", "eChest", "eRightHand", "eLeftLeg", "eRightLeg"];
 var pTypes = ["pHead", "pLeftHand", "pChest", "pRightHand", "pLeftLeg", "pRightLeg"];
@@ -64,8 +64,8 @@ function changePic(divId, bodyparts) {
 	var current = bodyparts.indexOf(currentUrl);
 	console.log(current);
 	console.log(currentUrl);
-	$("#"+divId).prepend("<img src='"+headUrls[current+1]+"'>");
-	console.log(headUrls[current+1]);
+	$("#"+divId).prepend("<img src='"+bodyparts[current+1]+"'>");
+	console.log(bodyparts[current+1]);
 }
 
 function pointer(object) {
