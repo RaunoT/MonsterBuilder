@@ -1,80 +1,90 @@
-/* Lehekülg */
-body{
-	background-color: #333;
-  	padding-top: 50px;
+/* Page */
+body {
+    background-color: #333;
+    padding-top: 50px;
     color: #fff;
     user-select: none;
 }
 
-h1{
+h1 {
 	text-align: center;
 	margin: 10px;
 	font-family: 'VT323', monospace;
-	color: #dc0000;
+	color: #ce6000;
 	font-size: 3.5em;
 }
 
-h2{
+h2 {
+    text-align: center;
+    margin: 10px;
+    font-family: 'VT323', monospace;
+    color: #ce6000;
+    font-size: 2em;
+}
+
+h3 {
     text-align: center;
     font-size: 1em;
     margin: 0px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     color: #afafaf;
 }
 
-img{
-	display: block;
+img {
     width: 100%;
+    cursor: pointer;
 }
 
+/* Underline for h2 */
+.underline {
+    border-bottom: #ce6000 0.1em solid;
+}
+
+/* Scale value for monsters */
 .scale{
     margin: 0 auto;
-    width: 30%;
+    width: 32%;
 }
 
 /* Remove spacing from between bodyparts */
-.col-xs-4{
-	padding: 0;
+.col-xs-4 {
+    padding: 0;
 }
-
-/* Monster bodyparts */
-.leftBodyPart{
-	margin-right: 0 !important;
-}
-
-.rightBodyPart{
-	margin-left: 0 !important;
-}
-
 
 /* Buttons that control gameplay */
 .controlBtn{
   	color: #fff;
-  	background-color: #009600;
+  	background-color: #007800;
   	border: none;
   	margin-top: 2.5em;
   	margin-bottom: 2.5em;
   	padding: 1em;
+    border-radius: 15px;
 }
 
 .controlBtn:hover{
-  	color: #000;
-  	background-color: #fff;
+    color: #000;
+    background-color: #fff;
 }
 
-.opponentMonster{
-    visibility: hidden;
+.controlBtn:focus{
+    outline: none;
 }
 
 /* Navbar */
 .navbar-brand, .nav.navbar-nav.navbar-right{
-	font-family: 'VT323', monospace;
-	font-size: 2em;
+    font-family: 'VT323', monospace;
+    font-size: 2em;
 }
 
 .navbar{
-	background-color: #000;
-	border: none;
+    background-color: #000;
+    border: none;
+    margin: 0;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a{
+    color: #afafaf;
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
@@ -82,72 +92,9 @@ img{
 	color: #000;
 }
 
-/* Mitte korras */
-
-#savedPlayer {
-  width: 400px;
-  height: 400px;
-  margin-left: 200px;
-  margin-top: 90px;
-  background-color: #eee;
-  border-radius: 5px;
-}
-
-.savedPlayerCreature {
-  position: absolute;
-  height: 100px;
-  width: 100px;
-  background-color: #404040;
-}
-
-#player {
-  float:left;
-  height: 800px;
-  width: 800px;
-  margin-top: 100px;
-  margin-left: 100px;
-  background-color: #eee;
-  border-radius: 5px;
-}
-
-#playerScore {
-  position: absolute;
-  height: 100px;
-  width: 100px;
-  border-radius: 50px;
-  margin-left: 650px;
-  margin-top: 50px;
-  text-align: center;
-  line-height: 100px;
-  font-family: 'Rock Salt';
-  font-size: 2em;
-}
-
-#AI, #enemy {
-  width: 400px;
-  height: 400px;
-  margin-left: 200px;
-  margin-top: 90px;
-  background-color: #eee;
-  border-radius: 5px;
-}
-
-#AIScore, #enemyScore {
-  position: absolute;
-  height: 50px;
-  width: 50px;
-  border-radius: 25px;
-  margin-left: 25px;
-  margin-top: 25px;
-  text-align: center;
-  line-height: 50px;
-  font-family: 'Rock Salt';
-}
-
-input {
-	color: #000;
-}
-
-#visibleEnemy {
-	display: none;
+/* Adds filters to loosing bodyparts */
+.greyed {
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+    filter: grayscale(1) brightness(0.25); /* Microsoft Edge and Firefox 35+ */
 }
