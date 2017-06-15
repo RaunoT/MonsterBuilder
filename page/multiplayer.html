@@ -17,7 +17,7 @@
     <!-- CSS -->
     <link type="text/css" rel="stylesheet" href="../css/style.css">
     <!-- JS -->
-    <script src="../js/universal.js"></script>
+    <!-- <script src="../js/universal.js"></script> -->
 		<script src="../js/pvp.js"></script>
 </head>
 <body>
@@ -50,7 +50,7 @@
 
 	<div class="container-fluid">
 		<div class="col-sm-6">
-			<h1>YOUR MONSTER</h1>
+			<h1 id="playerName">YOUR MONSTER</h1>
 			<div class="scale">
 				<div class="row">
 					<div class="col-xs-4 col-xs-offset-4">
@@ -78,8 +78,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-6">
-			<h1>ENEMY MONSTER</h1>
+		<div class="col-sm-6" id="visibleEnemy">
+			<h1 id="enemyName">ENEMY MONSTER</h1>
 			<div class="scale">
 				<div class="row">
 					<div class="col-xs-4 col-xs-offset-4">
@@ -106,14 +106,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-12" id="opponentList"></div>
 		</div>
+		<div class="col-sm-6" id="opponentList"></div>
 	</div>
 
-
-  <input type="text" name="newName" id="newName" value="", placeholder="Insert monster name">
-	<button type="button" id="save" class="controlBtn">Save</div>
-	<button type="button" id="playPvP" class="controlBtn">Play</div>
+  <input type="text" name="newName" id="newName" value="" maxlength="20" placeholder="Insert monster name">
+	<button type="button" id="save" class="controlBtn">Save</button>
+	<div id="inFightButtons">
+		<button type="button" id="playAgain" class="controlBtn">playAgain</button>
+		<button type="button" id="backButton" class="controlBtn">Back</button>
+	</div>
 
 </body>
 </html>

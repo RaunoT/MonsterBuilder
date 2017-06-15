@@ -144,36 +144,10 @@ img{
   font-family: 'Rock Salt';
 }
 
-#playerName {
-  position: absolute;
-  height: 70px;
-  width: 500px;
-  background-color: #331a00;
-  color: white;
-  margin: -35px 150px 0px 150px;
-  border-radius: 5px;
-  font-family: 'Amatic SC', cursive;
-  text-align: center;
-  line-height: 70px;
-  font-size: 2.6em;
-  font-weight: bold;
-}
-
-#enemyName {
-  position: absolute;
-  height: 36px;
-  width: 250px;
-  background-color: #331a00;
-  color: white;
-  margin: -18px 75px 0px 75px;
-  border-radius: 5px;
-  font-family: 'Amatic SC', cursive;
-  text-align: center;
-  line-height: 36px;
-  font-size: 1.3em;
-  font-weight: bold;
-}
-
 input {
 	color: #000;
+}
+
+#visibleEnemy {
+	display: none;
 }

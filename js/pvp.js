@@ -35,6 +35,7 @@ window.onload = function(){
 		loadEnemyList();
 	}, 100);
 
+	document.getElementById("inFightButtons").style.display = 'none';
 
 	pHead.addEventListener("click", function() {changeValue(colors, pHead, "pHead");} );
 	pHead.addEventListener("mouseover", function() {pointer(pHead);} );
@@ -58,16 +59,35 @@ window.onload = function(){
 	save.addEventListener("mouseover", function() {pointer(save);} );
 
 	document.querySelector('body').addEventListener('click', function(event) {
-	  if (event.target.tagName.toLowerCase() === 'button') {
-			console.log(event.target.id);
-			loadEnemy(parseInt(event.target.id));
+	  if (event.target.id == 'backButton') {
+			back();
 	  }
 	});
 
-	// playPvP.addEventListener("click", function() {startPlay();} );
-	// playPvP.addEventListener("mouseover", function() {pointer(playPvP);} );
+	document.querySelector('body').addEventListener('click', function(event) {
+	  if (event.target.className == 'fightButton') {
+			fight(event.target.id);
+	  }
+	});
 
 };
+
+function back() {
+	document.getElementById("opponentList").style.display = 'block';
+	document.getElementById("visibleEnemy").style.display = 'none';
+	document.getElementById("inFightButtons").style.display = 'none';
+}
+
+function fight(enemy) {
+	if(checkMonster()==1) {
+		document.getElementById("opponentList").style.display = 'none';
+		document.getElementById("visibleEnemy").style.display = 'block';
+		document.getElementById("inFightButtons").style.display = 'block';
+		loadEnemy(parseInt(enemy));
+	} else {
+		console.log("Make a monster first");
+	}
+}
 
 function changeValue(list, object, type) {
 	for(var i=0; i<list.length; i++);
@@ -95,11 +115,16 @@ function saveServerFn() {
 function saveMonster() {
 	if(checkMonster()==1) {
 
+		document.getElementById("opponentList").style.display = 'block';
+		document.getElementById("visibleEnemy").style.display = 'none';
+		document.getElementById("inFightButtons").style.display = 'none';
+
     getName();
 
     if(player.name !== "") {
       console.log("Will save now");
   		saveServerFn();
+			document.getElementById('playerName').innerHTML = player.name;
     } else {
       console.log("Insert a name for the monster");
     }
@@ -138,6 +163,11 @@ function loadEnemyList() {
 		var headingText = document.createTextNode("Choose an Enemy to fight with");
 		heading.appendChild(headingText);
 		document.getElementById("opponentList").appendChild(heading);
+	} else {
+		var emptyListHeading = document.createElement("h3");
+		var emptyListHeadingText = document.createTextNode("No saved monsters yet, be first!");
+		emptyListHeading.appendChild(emptyListHeadingText);
+		document.getElementById("opponentList").appendChild(emptyListHeading);
 	}
 
 	for(var i=0; i<allPlayers.length; i++) {
@@ -169,8 +199,8 @@ function loadEnemy(chosenEnemy) {
 	for(var e=0; e<allPlayers.length; e++){
 		if(allPlayers[e].name==allPlayers[chosenEnemy].name){
 
-			// enemy.Name = allPlayers[e].name;
-			// document.getElementById('enemyName').innerHTML = enemy.name;
+			enemy.name = allPlayers[e].name;
+			document.getElementById('enemyName').innerHTML = enemy.name;
 			enemy.eHead = allPlayers[e].pHead;
 			document.getElementById('eHead').style.backgroundColor = colors[enemy.eHead-1];
 			enemy.eLeftHand = allPlayers[e].pLeftHand;
@@ -189,53 +219,3 @@ function loadEnemy(chosenEnemy) {
 		}
 	}
 }
-
-// function startPlay() {
-// 	console.log("mäng algab");
-//
-// 	for(var l=0; l<6; l++) {
-// 		enemyPoints += valuate(enemy[eTypes[l]], player[pTypes[l]]);
-// 	}
-//
-// 	for(var m=0; m<6; m++) {
-// 		playerPoints += valuate(player[pTypes[m]], enemy[eTypes[m]]);
-// 	}
-//
-// 	winner();
-// }
-//
-// function valuate(subjectPartValue, partValue) {
-// 	var points = 0;
-// 	if(subjectPartValue==1) {
-// 		if(partValue==2 || partValue===0) {
-// 			points += 1;
-// 		}
-// 	}
-//
-// 	if(subjectPartValue==2) {
-// 		if(partValue==3 || partValue===0) {
-// 			points += 1;
-// 		}
-// 	}
-//
-// 	if(subjectPartValue==3) {
-// 		if(partValue==1 || partValue===0) {
-// 			points += 1;
-// 		}
-// 	}
-// 	return points;
-// }
-//
-// function winner(){
-//
-// 	if(enemyPoints===0 && playerPoints===0) {}
-// 	else if(enemyPoints>playerPoints) {
-// 		console.log("Enemy won");
-// 	}
-// 	else if(enemyPoints<playerPoints) {
-// 		console.log("Player won");
-// 	}
-// 	else{
-// 		console.log("Draw");
-// 	}
-// }
