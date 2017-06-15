@@ -36,7 +36,6 @@ window.onload = function(){
 	}, 100);
 
 
-
 	pHead.addEventListener("click", function() {changeValue(colors, pHead, "pHead");} );
 	pHead.addEventListener("mouseover", function() {pointer(pHead);} );
 
@@ -57,6 +56,13 @@ window.onload = function(){
 
 	save.addEventListener("click", function() {saveMonster();} );
 	save.addEventListener("mouseover", function() {pointer(save);} );
+
+	document.querySelector('body').addEventListener('click', function(event) {
+	  if (event.target.tagName.toLowerCase() === 'button') {
+			console.log(event.target.id);
+			loadEnemy(parseInt(event.target.id));
+	  }
+	});
 
 	// playPvP.addEventListener("click", function() {startPlay();} );
 	// playPvP.addEventListener("mouseover", function() {pointer(playPvP);} );
@@ -138,7 +144,6 @@ function loadEnemyList() {
 
 		var oneEnemy = document.createElement("div");
 		oneEnemy.className = 'oneEnemy';
-		oneEnemy.id = 'enemy-'+i;
 
 		var enemyNameSpan = document.createElement("span");
 		enemyNameSpan.className = 'enemyName';
@@ -148,8 +153,9 @@ function loadEnemyList() {
 		document.getElementById("opponentList").appendChild(oneEnemy);
 
 
-		var fightButton = document.createElement("span");
+		var fightButton = document.createElement("button");
 		fightButton.className = 'fightButton';
+		fightButton.id = i;
 		var buttonName = document.createTextNode("Fight");
 		fightButton.appendChild(buttonName);
 		oneEnemy.appendChild(fightButton);
@@ -159,38 +165,31 @@ function loadEnemyList() {
 }
 
 
+function loadEnemy(chosenEnemy) {
+	for(var e=0; e<allPlayers.length; e++){
+		if(allPlayers[e].name==allPlayers[chosenEnemy].name){
 
+			// enemy.Name = allPlayers[e].name;
+			// document.getElementById('enemyName').innerHTML = enemy.name;
+			enemy.eHead = allPlayers[e].pHead;
+			document.getElementById('eHead').style.backgroundColor = colors[enemy.eHead-1];
+			enemy.eLeftHand = allPlayers[e].pLeftHand;
+			document.getElementById('eLeftHand').style.backgroundColor = colors[enemy.eLeftHand-1];
+			enemy.eChest = allPlayers[e].pChest;
+			document.getElementById('eChest').style.backgroundColor = colors[enemy.eChest-1];
+			enemy.eRightHand = allPlayers[e].pRightHand;
+			document.getElementById('eRightHand').style.backgroundColor = colors[enemy.eRightHand-1];
+			enemy.eLeftLeg = allPlayers[e].pLeftLeg;
+			document.getElementById('eLeftLeg').style.backgroundColor = colors[enemy.eLeftLeg-1];
+			enemy.eRightLeg = allPlayers[e].pRightLeg;
+			document.getElementById('eRightLeg').style.backgroundColor = colors[enemy.eRightLeg-1];
 
+			console.log(enemy.eHead);
 
-//
-//
-// function loadEnemy(chosenEnemy) {
-// 	for(var e=0; e<allPlayers.length; e++){
-// 		if(allPlayers[e].Name==allPlayers[chosenEnemy].Name){
-//
-// 			enemy.Name = allPlayers[e].Name;
-// 			document.getElementById('enemyName').innerHTML = enemy.Name;
-// 			enemy.eHead = allPlayers[e].pHead;
-// 			document.getElementById('eHead').style.backgroundColor = colors[enemy.eHead-1];
-// 			enemy.eLeftHand = allPlayers[e].pLeftHand;
-// 			document.getElementById('eLeftHand').style.backgroundColor = colors[enemy.eLeftHand-1];
-// 			enemy.eChest = allPlayers[e].pChest;
-// 			document.getElementById('eChest').style.backgroundColor = colors[enemy.eChest-1];
-// 			enemy.eRightHand = allPlayers[e].pRightHand;
-// 			document.getElementById('eRightHand').style.backgroundColor = colors[enemy.eRightHand-1];
-// 			enemy.eLeftLeg = allPlayers[e].pLeftLeg;
-// 			document.getElementById('eLeftLeg').style.backgroundColor = colors[enemy.eLeftLeg-1];
-// 			enemy.eRightLeg = allPlayers[e].pRightLeg;
-// 			document.getElementById('eRightLeg').style.backgroundColor = colors[enemy.eRightLeg-1];
-// 			enemy.won = allPlayers[e].won;
-// 			enemy.lost = allPlayers[e].lost;
-//
-// 			console.log(enemy.Name);
-//
-// 		}
-// 	}
-// }
-//
+		}
+	}
+}
+
 // function startPlay() {
 // 	console.log("mäng algab");
 //

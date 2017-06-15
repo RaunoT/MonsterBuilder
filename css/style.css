@@ -173,3 +173,7 @@ img{
   font-size: 1.3em;
   font-weight: bold;
 }
+
+input {
+	color: #000;
+}
