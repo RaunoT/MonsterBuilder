@@ -16,7 +16,7 @@
     <!-- CSS -->
     <link type="text/css" rel="stylesheet" href="../css/style.css">
     <!-- JS -->
-	<script src="../js/pvp.js"></script>
+	<script src="../js/universal.js"></script>
 </head>
 <body>
 
@@ -46,69 +46,73 @@
 	<h1>MULTI-PLAYER MODE</h1>
 	<!-- Guides under heading -->
 	<h3 id="guide"><i>Loop through different bodyparts by clicking on the corresponding slot</i></h3>
-	<h3 id="opponentGuide"><i>After you've created a monster,  either select an opponent from the list and click play or click random to receive a random enemy</i></h3>
+	<h3 id="opponentGuide"><i>After you click play, the computer will automatically generate an enemy monster for you</i></h3>
 
-	<div class="col-sm-6">
-		<h2><span class="underline" id="playerName">YOUR MONSTER</span></h2>
-		<div class="scale">
-			<div class="row">
-				<div class="col-xs-4 col-xs-offset-4">
-					<img class="playerCreature" id="pHead" src="../assets/monster/starter/head.png">
+	<div class="container-fluid">
+		<div class="col-sm-6">
+			<h2><span class="underline">YOUR MONSTER</span></h2>
+			<div class="scale">
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-4" id="pHead">
+						<img src="../assets/monster/starter/head_0.png">
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-4">
-					<img class="playerCreature leftBodyPart" id="pLeftHand" src="../assets/monster/starter/hand_left.png">
+				<div class="row">
+					<div class="col-xs-4" id="pLeftHand">
+						<img src="../assets/monster/starter/hand_left_0.png">
+					</div>
+					<div class="col-xs-4" id="pChest">
+						<img src="../assets/monster/starter/body_0.png">
+					</div>
+					<div class="col-xs-4" id="pRightHand">
+						<img src="../assets/monster/starter/hand_right_0.png">
+					</div>
 				</div>
-				<div class="col-xs-4">
-					<img class="playerCreature" class="playerCreature" id="pChest" src="../assets/monster/starter/body.png">
-				</div>
-				<div class="col-xs-4">
-					<img class="playerCreature rightBodyPart" id="pRightHand" src="../assets/monster/starter/hand_right.png">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-4 col-xs-offset-2">
-					<img class="playerCreature leftBodyPart" id="pLeftLeg" src="../assets/monster/starter/leg_left.png">
-				</div>
-				<div class="col-xs-4">
-					<img class="playerCreature rightBodyPart" id="pRightLeg" src="../assets/monster/starter/leg_right.png">
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-2" id="pLeftLeg">
+						<img src="../assets/monster/starter/leg_left_0.png">
+					</div>
+					<div class="col-xs-4" id="pRightLeg">
+						<img src="../assets/monster/starter/leg_right_0.png">
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	
-	<div class="col-sm-6" id="visibleEnemy">
-		<h1 id="enemyName">ENEMY MONSTER</h1>
-		<div class="scale">
-			<div class="row">
-				<div class="col-xs-4 col-xs-offset-4">
-					<img class="enemyCreature" id="eHead" src="../assets/monster/starter/head_0.png">
+	<!-- Opponent monster -->
+		<div class="col-sm-6" style="display: none;">
+			<h2><span class="underline">ENEMY MONSTER</span></h2>
+			<div class="scale">
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-4" id="eHead">
+						<img src="../assets/monster/starter/head_0.png">
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-4">
-					<img class="enemyCreature" id="eLeftHand" src="../assets/monster/starter/hand_left_0.png">
+				<div class="row">
+					<div class="col-xs-4" id="eLeftHand">
+						<img src="../assets/monster/starter/hand_left_0.png">
+					</div>
+					<div class="col-xs-4" id="eChest">
+						<img src="../assets/monster/starter/body_0.png">
+					</div>
+					<div class="col-xs-4" id="eRightHand">
+						<img src="../assets/monster/starter/hand_right_0.png">
+					</div>
 				</div>
-				<div class="col-xs-4">
-					<img class="enemyCreature" id="eBody" src="../assets/monster/starter/body_0.png">
-				</div>
-				<div class="col-xs-4">
-					<img class="enemyCreature pull-left" id="eRightHand" src="../assets/monster/starter/hand_right_0.png">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-4 col-xs-offset-2">
-					<img class="enemyCreature" id="eLeftLeg" src="../assets/monster/starter/leg_left_0.png">
-				</div>
-				<div class="col-xs-4">
-					<img class="enemyCreature" id="eRightLeg" src="../assets/monster/starter/leg_right_0.png">
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-2" id="eLeftLeg">
+						<img src="../assets/monster/starter/leg_left_0.png">
+					</div>
+					<div class="col-xs-4" id="eRightLeg">
+						<img src="../assets/monster/starter/leg_right_0.png">
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-sm-6" id="opponentList"></div>
-	</div>
-	<!-- Searchbar -->
+
+	<!-- Monster name bar -->
+
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="input-group">

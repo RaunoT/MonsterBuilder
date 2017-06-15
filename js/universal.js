@@ -49,9 +49,11 @@ var aIParts = ["aIHead", "aILeftHand", "aIChest", "aIRightHand", "aILeftLeg", "a
 
 window.onload = function(){
 
-	document.getElementById("reset").addEventListener("click", function() {
-		reset();
-	});
+	if (document.getElementById("reset")) {
+		document.getElementById("reset").addEventListener("click", function() {
+			reset();
+		});
+	}
 
 	pHead.addEventListener("click", function() {changePic("pHead", Head, false);} );
 
@@ -66,18 +68,20 @@ window.onload = function(){
 	pRightLeg.addEventListener("click", function() {changePic("pRightLeg", RightLeg, false);} );
 
 	var play = document.getElementById("play");
-    play.addEventListener("click", function() {
-    	assignValues();
-    	if (checkMonster()) {
-    		resetScores();
-    		startPlay();
-    		assignValues();
-    		document.getElementById("guide").innerHTML = "<i>The winning bodyparts have been highlighted</i>";
-        	document.getElementById("opponentGuide").innerHTML = findVictor();
-    	} else {
-    		alert("Complete your monster.");
-    	}
-    } );
+    if (play) {
+    	play.addEventListener("click", function() {
+	    	assignValues();
+	    	if (checkMonster()) {
+	    		resetScores();
+	    		startPlay();
+	    		assignValues();
+	    		document.getElementById("guide").innerHTML = "<i>The winning bodyparts have been highlighted</i>";
+	        	document.getElementById("opponentGuide").innerHTML = findVictor();
+	    	} else {
+	    		alert("Complete your monster.");
+	    	}
+	    });
+    }
 };
 
 function currentBodypartIndex(bodyparts, url) {
