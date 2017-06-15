@@ -27,22 +27,22 @@ To launch, open page/index.html. The game is browser-based so requires no additi
 ## git käsklused
 
 Tekitab uue branch'i lokaalselt
-* git checkout -b `branch name`
+`git checkout -b **branch name**`
 
 Pushib uue branch'i github'i
-* git push origin `branch name`
+`git push origin **branch name**`
 
 Branch'i kustutamine
-* git push origin --delete `branch name`
+`git push origin --delete **branch name**`
 
 Ütleb mis branch'il praegu oled 
-* git branch
+`git branch`
 
 Ühendab branch'id
-* git merge origin `branch name`
+`git merge origin **branch name**`
 
 Comittib sinna branch'i, kus sa praegu oled
-* git push origin `branch name`
+`git push origin **branch name**`
 
 Võtab teisest branch'ist kõige uuemad failid
-* git pull origin `branch name`
+`git pull origin **branch name**`
