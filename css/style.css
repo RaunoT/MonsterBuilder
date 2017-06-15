@@ -1,11 +1,10 @@
 /* Page */
 body {
     background-color: #333;
-        padding-top: 50px;
-        color: #fff;
-        user-select: none;
+    padding-top: 50px;
+    color: #fff;
+    user-select: none;
 }
-
 
 h1 {
 	text-align: center;
@@ -14,7 +13,6 @@ h1 {
 	color: #ce6000;
 	font-size: 3.5em;
 }
-
 
 h2 {
     text-align: center;
@@ -34,6 +32,7 @@ h3 {
 
 img {
     width: 100%;
+    cursor: pointer;
 }
 
 /* Underline for h2 */
@@ -64,8 +63,8 @@ img {
 }
 
 .controlBtn:hover{
-        color: #000;
-        background-color: #fff;
+    color: #000;
+    background-color: #fff;
 }
 
 .controlBtn:focus{
@@ -81,7 +80,7 @@ img {
 .navbar{
     background-color: #000;
     border: none;
-        margin: 0;
+    margin: 0;
 }
 
 .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a{
@@ -98,8 +97,9 @@ img {
     visibility: hidden;
 }
 
+/* Adds filters to loosing bodyparts */
 .greyed {
     filter: gray; /* IE6-9 */
     -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
-    filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+    filter: grayscale(1) brightness(0.25); /* Microsoft Edge and Firefox 35+ */
 }

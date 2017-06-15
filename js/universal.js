@@ -66,7 +66,8 @@ window.onload = function(){
     		resetScores();
     		startPlay();
     		assignValues();
-    		findVictor();
+    		document.getElementById("guide").innerHTML = "<i>The winning bodyparts have been highlighted</i>";
+        	document.getElementById("opponentGuide").innerHTML = findVictor();
     	} else {
     		alert("Complete your monster.");
     	}
@@ -130,9 +131,11 @@ function findVictor() {
 		}
 	}
 	if (player["score"] > enemy["score"]) {
-		alert("You win!");
+		$("#opponentGuide").css("color", "#009600");
+		return "You win!";
 	} else {
-		alert("You lose!");
+		$("#opponentGuide").css("color", "#dc0000");
+		return "You lose!";
 	}
 }
 
