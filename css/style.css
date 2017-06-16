@@ -41,8 +41,11 @@ img {
 }
 
 /* Scale value for monsters */
-.scale{
+
+.scalee{
     margin: 0 auto;
+    /*
+    */
     width: 32%;
 }
 
@@ -98,3 +101,53 @@ img {
     -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
     filter: grayscale(1) brightness(0.25); /* Microsoft Edge and Firefox 35+ */
 }
+
+/*
+#pHead {
+}
+
+#pChest {
+    background: url("../assets/monster/bodies.png") no-repeat;
+    background-position-x: 0px;
+    width: 220px;
+    height: 374px;
+    
+}
+
+#pRightHand {
+    background: url("../assets/monster/arms_right.png") no-repeat;
+    background-position-x: 0px;
+    width: 220px;
+    height: 374px;
+    
+}
+
+#pLeftHand {
+    background: url("../assets/monster/arms_left.png") no-repeat;
+    background-position-x: 0px;
+    width: 220px;
+    height: 374px;
+    
+}
+
+#pRightLeg {
+    background: url("../assets/monster/legs_right.png") no-repeat;
+    background-position-x: 0px;
+    width: 220px;
+    height: 374px;
+    
+}
+
+#pLeftLeg {
+    background: url("../assets/monster/legs_left.png") no-repeat;
+    background-position-x: 0px;
+    width: 220px;
+    height: 374px;
+    
+}
+
+#why {
+    position: relative;
+    clip: rect(0px,220px,220px,0px);
+}
+*/ 

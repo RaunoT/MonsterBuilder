@@ -20,15 +20,27 @@ var enemy = {
 	"score":0,
 };
 
+var numberOfRaces = 3+1;
+
+var partis = [{"offset":220,"race":0}, {"offset":440,"race":1}, {"offset":660,"race":2}, {"offset":880,"race":3}, {"offset":1100,"race":1}, {"offset":1320,"race":2}, {"offset":1540,"race":3}, {"offset":1760,"race":1}, {"offset":1980,"race":2}, {"offset":2200,"race":3}]
+
+
 var allPlayers = [];
 var playerString = {};
 var stringToSave = {};
 var allPlayers =[];
 
-var assets = "../assets/monster/";
 
 // Human = 3, Animal = 2, Robot = 1
 
+var heads = {"url":"../assets/monster/heads.png", "parts":partis};
+var chests = {"url":"../assets/monster/bodies.png", "parts":partis};
+var rightArms = {"url":"../assets/monster/arms_right.png", "parts":partis};
+var leftArms = {"url":"../assets/monster/arms_left.png", "parts":partis};
+var rightLegs = {"url":"../assets/monster/legs_right.png", "parts":partis};
+var leftLegs = {"url":"../assets/monster/legs_left.png", "parts":partis};
+/*
+var assets = "../assets/monster/";
 var Head = [{"url":assets+"starter/head_0.png", "race":0}, {"url":assets+"robot/head_0.png", "race":1}, {"url":assets+"animal/head_0.png", "race":2}, {"url":assets+"human/head_0.png", "race":3}, {"url":assets+"human/head_1.png", "race":3}];
 var Chest = [{"url":assets+"starter/body_0.png", "race":0}, {"url":assets+"robot/body_0.png", "race":1}, {"url":assets+"animal/body_0.png", "race":2}, {"url":assets+"human/body_0.png", "race":3}, {"url":assets+"human/body_1.png", "race":3}];
 var LeftHand = [{"url":assets+"starter/hand_left_0.png", "race":0}, {"url":assets+"robot/hand_left_0.png", "race":1}, {"url":assets+"animal/hand_left_0.png", "race":2}, {"url":assets+"human/hand_left_0.png", "race":3}, {"url":assets+"human/hand_left_1.png", "race":3}];
@@ -43,6 +55,7 @@ parts["LeftHand"] = LeftHand;
 parts["RightHand"] = RightHand;
 parts["LeftLeg"] = LeftLeg;
 parts["RightLeg"] = RightLeg;
+*/
 
 var eTypes = ["eHead", "eLeftHand", "eChest", "eRightHand", "eLeftLeg", "eRightLeg"];
 var pTypes = ["pHead", "pLeftHand", "pChest", "pRightHand", "pLeftLeg", "pRightLeg"];
@@ -65,17 +78,17 @@ window.onload = function(){
 		});
 	}
 
-	document.getElementById("pHead").addEventListener("click", function() {changePic("pHead", Head, false);} );
+	document.getElementById("pHead").addEventListener("click", function() {changePic("pHead", false);} );
 
-	document.getElementById("pChest").addEventListener("click", function() {changePic("pChest", Chest, false);} );
+	document.getElementById("pChest").addEventListener("click", function() {changePic("pChest", false);} );
 
-	document.getElementById("pLeftHand").addEventListener("click", function() {changePic("pLeftHand", LeftHand, false);} );
+	document.getElementById("pLeftHand").addEventListener("click", function() {changePic("pLeftHand", false);} );
 
-	document.getElementById("pRightHand").addEventListener("click", function() {changePic("pRightHand", RightHand, false);} );
+	document.getElementById("pRightHand").addEventListener("click", function() {changePic("pRightHand", false);} );
 
-	document.getElementById("pLeftLeg").addEventListener("click", function() {changePic("pLeftLeg", LeftLeg, false);} );
+	document.getElementById("pLeftLeg").addEventListener("click", function() {changePic("pLeftLeg", false);} );
 
-	document.getElementById("pRightLeg").addEventListener("click", function() {changePic("pRightLeg", RightLeg, false);} );
+	document.getElementById("pRightLeg").addEventListener("click", function() {changePic("pRightLeg", false);} );
 
 	var play = document.getElementById("play");
     if (play) {
@@ -155,8 +168,8 @@ function reset() {
 			enemy[i] = 0;
 			$("#e"+i).removeClass("greyed");
 			$("#p"+i).removeClass("greyed");
-			changePic("p"+i, parts[i], true);
-			changePic("e"+i, parts[i], true);
+			changePic("p"+i, true);
+			changePic("e"+i, true);
 		}
 		player["score"] = 0;
 		enemy["score"] = 0;
@@ -196,8 +209,8 @@ function calculate(player1, player2) {
 	// Human > Animal
 	// Animal > Robot
 	// robot - 1, animal - 2, human - 3
-	if(player1 == 1) {
-		if(player2 == 2) {
+	if(player1 % numberOfRaces == 1) {
+		if(player2 % numberOfRaces == 2) {
 			// player2 won
 			enemy["score"] += 1;
 			return 2;
@@ -207,8 +220,8 @@ function calculate(player1, player2) {
 			return 1;
 		}
 	}
-	if(player1 == 2) {
-		if(player2 == 3) {
+	if(player1 % numberOfRaces == 2) {
+		if(player2 % numberOfRaces == 3) {
 			// player2 won
 			enemy["score"] += 1;
 			return 3;
@@ -218,8 +231,8 @@ function calculate(player1, player2) {
 			return 2;
 		}
 	}
-	if(player1 == 3) {
-		if(player2 == 1) {
+	if(player1 % numberOfRaces == 3) {
+		if(player2 % numberOfRaces == 1) {
 			// player2 won
 			enemy["score"] += 1;
 			return 1;
@@ -231,20 +244,27 @@ function calculate(player1, player2) {
 	}
 }
 
-function changePic(divId, bodyparts, reset) {
-	var currentUrl = $("#"+divId+" img").attr("src");
-	$("#"+divId).removeClass("greyed");
-	var current = currentBodypartIndex(bodyparts, currentUrl);
-	if (bodyparts[current+1]) {
-		var next = current+1;
+function pictureEnemy(divId, numberOfParts, random) {
+	if (random) {
+		var offset = randomizer(numberOfParts) * -220;
 	} else {
-		var next = 1;
+		var offset = enemy[divId.slice(1)] * -220;
+	}
+	$("#"+divId).css("background-position-x", offset+"px");
+}
+
+function changePic(divId, reset) {
+	var currentOffset = parseInt($("#"+divId).css("background-position-x"));
+	$("#"+divId).removeClass("greyed");
+	if (currentOffset > -1980) {
+		var newOffset = currentOffset - 220;
+	} else {
+		var newOffset = -220;
 	} 
 	if (reset) {
-		var next = 0;
+		var newOffset = 0;
 	}
-	$("#"+divId+" img").remove();
-	$("#"+divId).prepend("<img src='"+bodyparts[next]["url"]+"'>");
+	$("#"+divId).css("background-position-x", newOffset+"px");
 }
 
 function saveServerFn() {
@@ -313,16 +333,6 @@ function startPlay() {
 
 function randomizer(numberOfParts) {
     return Math.floor((Math.random() * (numberOfParts-1))+1);
-}
-
-function pictureEnemy(divId, bodyparts, random) {
-	if (random) {
-		var value = randomizer(bodyparts.length);
-	} else {
-		var value = enemy[divId.slice(1)];
-	}
-    $("#"+divId+" img").remove();
-    $("#"+divId).prepend("<img src='"+bodyparts[value]["url"]+"'>");
 }
 
 function loadEnemyList() {
