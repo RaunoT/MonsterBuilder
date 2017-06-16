@@ -96,7 +96,7 @@ window.onload = function(){
 
     if (document.getElementById("opponentList")) {
     	document.querySelector('body').addEventListener('click', function(event) {
-			if (event.target.className == 'fightButton') {
+			if (event.target.className == 'fightButton controlBtn') {
 				assignValues();
 				if (checkMonster()) {
 					fight(event.target.id);
@@ -302,7 +302,7 @@ function startPlay() {
 	        var partName = eTypes[i].slice(1);
 	        pictureEnemy(partDiv, parts[partName], true);
 	    }
-	} else if ($("#multiPlayer")) {
+	} else if (document.getElementById("multiPlayer")) {
 		console.log("multiPlayer");
 		for (var i=0;i<eTypes.length;i++) {
 	        var partDiv = (eTypes[i]);
