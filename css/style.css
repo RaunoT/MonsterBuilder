@@ -102,8 +102,11 @@ img {
     filter: grayscale(1) brightness(0.25); /* Microsoft Edge and Firefox 35+ */
 }
 
-/*
 #pHead {
+    background: url("../assets/monster/heads.png") no-repeat;
+    background-position-x: 0px;
+    width: 220px;
+    height: 220px;
 }
 
 #pChest {
@@ -146,8 +149,5 @@ img {
     
 }
 
-#why {
-    position: relative;
-    clip: rect(0px,220px,220px,0px);
-}
+/*
 */ 
