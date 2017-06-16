@@ -53,17 +53,17 @@ window.onload = function(){
 		reset();
 	});
 
-	pHead.addEventListener("click", function() {changePic("pHead", Head, false);} );
+	document.getElementById("pHead").addEventListener("click", function() {changePic("pHead", Head, false);} );
 
-	pChest.addEventListener("click", function() {changePic("pChest", Chest, false);} );
+	document.getElementById("pChest").addEventListener("click", function() {changePic("pChest", Chest, false);} );
 
-	pLeftHand.addEventListener("click", function() {changePic("pLeftHand", LeftHand, false);} );
+	document.getElementById("pLeftHand").addEventListener("click", function() {changePic("pLeftHand", LeftHand, false);} );
 
-	pRightHand.addEventListener("click", function() {changePic("pRightHand", RightHand, false);} );
+	document.getElementById("pRightHand").addEventListener("click", function() {changePic("pRightHand", RightHand, false);} );
 
-	pLeftLeg.addEventListener("click", function() {changePic("pLeftLeg", LeftLeg, false);} );
+	document.getElementById("pLeftLeg").addEventListener("click", function() {changePic("pLeftLeg", LeftLeg, false);} );
 
-	pRightLeg.addEventListener("click", function() {changePic("pRightLeg", RightLeg, false);} );
+	document.getElementById("pRightLeg").addEventListener("click", function() {changePic("pRightLeg", RightLeg, false);} );
 
 	var play = document.getElementById("play");
     play.addEventListener("click", function() {
