@@ -96,7 +96,13 @@ window.onload = function(){
     if (document.getElementById("opponentList")) {
     	document.querySelector('body').addEventListener('click', function(event) {
 			if (event.target.className == 'fightButton') {
-				fight(event.target.id);
+				assignValues();
+				if (checkMonster()) {
+					fight(event.target.id);
+					startPlay();
+					document.getElementById("guide").innerHTML = "<i>The winning bodyparts have been highlighted</i>";
+		        	document.getElementById("opponentGuide").innerHTML = findVictor();
+		        }
 			}
 		});
     }
@@ -251,7 +257,7 @@ function saveServerFn() {
 }
 
 function saveMonster() {
-	if(checkMonster()==1) {
+	if(checkMonster()) {
 
     getName();
 
@@ -271,10 +277,13 @@ function getName() {
 }
 
 function checkMonster() {
-	var ready = 1;
-	for(var i=0; i<pTypes.length; i++) {
-		if(player[pTypes[i]]===0){
-			ready = 0;
+	var ready = true;
+	for (i in player) {
+		if (i != "name" && i != "score") {
+			if (player[i] == 0) {
+				console.log("Complete your monster first");
+				return false;
+			}
 		}
 	}
 	return ready;
@@ -283,32 +292,37 @@ function checkMonster() {
 function startPlay() {
     console.log("Fight!");
 
-// Loosin arvuti monsterile väärtused
-    for (var i=0;i<eTypes.length;i++) {
-        var partDiv = (eTypes[i]);
-        var partName = eTypes[i].slice(1);
-        giveAIValue(partDiv, parts[partName]);
-    }
+	if (document.getElementById("singlePlayer")) {
+		console.log("singlePlayer");
+		// Loosin arvuti monsterile väärtused
+	    for (var i=0;i<eTypes.length;i++) {
+	        var partDiv = (eTypes[i]);
+	        var partName = eTypes[i].slice(1);
+	        pictureEnemy(partDiv, parts[partName], true);
+	    }
+	} else if ($("#multiPlayer")) {
+		console.log("multiPlayer");
+		for (var i=0;i<eTypes.length;i++) {
+	        var partDiv = (eTypes[i]);
+	        var partName = eTypes[i].slice(1);
+	        pictureEnemy(partDiv, parts[partName], false);
+	    }
+	}
+
 }
 
 function randomizer(numberOfParts) {
     return Math.floor((Math.random() * (numberOfParts-1))+1);
 }
 
-function giveAIValue(divId, bodyparts) {
-	var value = randomizer(bodyparts.length);
+function pictureEnemy(divId, bodyparts, random) {
+	if (random) {
+		var value = randomizer(bodyparts.length);
+	} else {
+		var value = enemy[divId.slice(1)];
+	}
     $("#"+divId+" img").remove();
     $("#"+divId).prepend("<img src='"+bodyparts[value]["url"]+"'>");
-}
-
-function checkMonster() {
-	var ready = true;
-	for(var i=0; i<pTypes.length; i++) {
-		if(player[pTypes[i].slice(1)]===0){
-			ready = false;
-		}
-	}
-	return ready;
 }
 
 function loadEnemyList() {
@@ -352,24 +366,8 @@ function loadEnemyList() {
 function loadEnemy(chosenEnemy) {
 	for(var e=0; e<allPlayers.length; e++){
 		if(allPlayers[e].name==allPlayers[chosenEnemy].name){
-
-			enemy.name = allPlayers[e].name;
-			document.getElementById('enemyName').innerHTML = enemy.name;
-			enemy.eHead = allPlayers[e].pHead;
-			document.getElementById('eHead').style.backgroundColor = colors[enemy.eHead-1];
-			enemy.eLeftHand = allPlayers[e].pLeftHand;
-			document.getElementById('eLeftHand').style.backgroundColor = colors[enemy.eLeftHand-1];
-			enemy.eChest = allPlayers[e].pChest;
-			document.getElementById('eChest').style.backgroundColor = colors[enemy.eChest-1];
-			enemy.eRightHand = allPlayers[e].pRightHand;
-			document.getElementById('eRightHand').style.backgroundColor = colors[enemy.eRightHand-1];
-			enemy.eLeftLeg = allPlayers[e].pLeftLeg;
-			document.getElementById('eLeftLeg').style.backgroundColor = colors[enemy.eLeftLeg-1];
-			enemy.eRightLeg = allPlayers[e].pRightLeg;
-			document.getElementById('eRightLeg').style.backgroundColor = colors[enemy.eRightLeg-1];
-
-			console.log(enemy.eHead);
-
+			enemy = allPlayers[e];
+			assignValues();
 		}
 	}
 }
@@ -380,5 +378,14 @@ function loadServerFn() {
 	}).done(function(data) {
 		allPlayers = JSON.parse(data).players;
 		console.log('Loaded monsters from server.');
+		for (enemies in allPlayers) {
+			allPlayers[enemies]["score"] = 0;
+		}
 	});
+}
+
+function fight(enemy) {
+	document.getElementById("opponentList").style.display = 'none';
+	document.getElementById("enemyMonster").style.display = 'block';
+	loadEnemy(parseInt(enemy));
 }
