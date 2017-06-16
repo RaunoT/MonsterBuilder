@@ -46,11 +46,11 @@
 	<h1>MULTI-PLAYER MODE</h1>
 	<!-- Guides under heading -->
 	<h3 id="guide"><i>Loop through different bodyparts by clicking on the corresponding slot</i></h3>
-	<h3 id="opponentGuide"><i>After you click play, the computer will automatically generate an enemy monster for you</i></h3>
+	<h3 id="opponentGuide"><i>After you click fight, the computer will automatically generate an enemy monster for you</i></h3>
 
 	<div class="container-fluid">
 		<div class="col-sm-6" id="playerMonster">
-			<h2><span class="underline">YOUR MONSTER</span></h2>
+			<h2><span class="underline" id="playerName">YOUR MONSTER</span></h2>
 			<div class="scale">
 				<div class="row">
 					<div class="col-xs-4 col-xs-offset-4" id="pHead">
@@ -78,10 +78,10 @@
 				</div>
 			</div>
 		</div>
-	
+
 	<!-- Opponent monster -->
 		<div class="col-sm-6" id="enemyMonster" style="display: none;">
-			<h2><span class="underline">ENEMY MONSTER</span></h2>
+			<h2><span class="underline" id="enemyName">ENEMY MONSTER</span></h2>
 			<div class="scale">
 				<div class="row">
 					<div class="col-xs-4 col-xs-offset-4" id="eHead">
@@ -125,6 +125,5 @@
 			</div>
 		</div>
 	</div>
-	<div id="multiPlayer" style="display: none;"></div>
 </body>
 </html>

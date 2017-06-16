@@ -98,3 +98,7 @@ img {
     -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
     filter: grayscale(1) brightness(0.25); /* Microsoft Edge and Firefox 35+ */
 }
+
+input {
+  color: #000;
+}

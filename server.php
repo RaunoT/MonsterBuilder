@@ -26,20 +26,20 @@
 	}
 
     function addToJson($newPlayer) {
-        if (!property_exists($newPlayer, "name") || !property_exists($newPlayer, "pHead") || !property_exists($newPlayer, "pLeftHand") || !property_exists($newPlayer, "pRightHand") || !property_exists($newPlayer, "pChest") || !property_exists($newPlayer, "pLeftLeg") || !property_exists($newPlayer, "pRightLeg")) {
+        if (!property_exists($newPlayer, "name") || !property_exists($newPlayer, "Head") || !property_exists($newPlayer, "LeftHand") || !property_exists($newPlayer, "RightHand") || !property_exists($newPlayer, "Chest") || !property_exists($newPlayer, "LeftLeg") || !property_exists($newPlayer, "RightLeg")) {
             return "Not a coompleted robot";
         }
         $player = new Stdclass();
         $player->name = $newPlayer->name;
-        $player->pHead = $newPlayer->pHead;
-        $player->pLeftHand = $newPlayer->pLeftHand;
-        $player->pRightHand = $newPlayer->pRightHand;
-        $player->pChest = $newPlayer->pChest;
-        $player->pLeftLeg = $newPlayer->pLeftLeg;
-        $player->pRightLeg = $newPlayer->pRightLeg;
+        $player->Head = $newPlayer->Head;
+        $player->LeftHand = $newPlayer->LeftHand;
+        $player->RightHand = $newPlayer->RightHand;
+        $player->Chest = $newPlayer->Chest;
+        $player->LeftLeg = $newPlayer->LeftLeg;
+        $player->RightLeg = $newPlayer->RightLeg;
         return $player;
     }
-    
+
     if (isset($_GET["save"]) && !empty($_GET["save"])){
         $toAdd = addToJson(json_decode($_GET["save"]));
         if (is_object($toAdd)) {
@@ -74,7 +74,7 @@
                     array_push($jsonf->players, $toAdd);
                 }
             }
-            
+
             //var_dump($jsonf);
             //echo "<br>";
             if (file_put_contents(FILENAME, json_encode($jsonf))){
@@ -86,9 +86,9 @@
     } else {
         return "Error while saving";
     }
-    
-    
-	
+
+
+
 
     // Getting data from DB
     // $.ajax({url:"../database.txt"}).done(function(data) {console.log(JSON.parse(data)["players"][0])})

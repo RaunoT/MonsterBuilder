@@ -1,5 +1,5 @@
 var player = {
-//	"name":"",
+	"name":"",
 	"Head":0,
 	"LeftHand":0,
 	"Chest":0,
@@ -10,7 +10,7 @@ var player = {
 };
 
 var enemy = {
-//	"name":"",
+	"name":"",
 	"Head":0,
 	"LeftHand":0,
 	"Chest":0,
@@ -77,6 +77,8 @@ window.onload = function(){
 
 	document.getElementById("pRightLeg").addEventListener("click", function() {changePic("pRightLeg", RightLeg, false);} );
 
+	document.getElementById("save").addEventListener("click", function() {saveMonster();} );
+
 	var play = document.getElementById("play");
     if (play) {
     	play.addEventListener("click", function() {
@@ -106,7 +108,46 @@ window.onload = function(){
 			}
 		});
     }
+
+		document.querySelector('body').addEventListener('click', function(event) {
+		  if (event.target.id == 'backButton') {
+				back();
+		  }
+		});
 };
+
+function saveMonster() {
+	assignValues();
+	if(checkMonster()) {
+
+		document.getElementById("opponentList").style.display = 'block';
+		document.getElementById("enemyMonster").style.display = 'none';
+		document.getElementById("guide").innerHTML = "<i>Loop through different bodyparts by clicking on the corresponding slot</i>";
+		document.getElementById("opponentGuide").innerHTML = "<i>After you click fight, the computer will automatically generate an enemy monster for you</i>";
+		$("#opponentGuide").css("color", "#afafaf");
+
+    getName();
+
+    if(player.name !== "") {
+      console.log("Will save now");
+  		saveServerFn();
+			document.getElementById('playerName').innerHTML = player.name;
+			document.getElementById('newName').value = "";
+    } else {
+      console.log("Insert a name for the monster");
+    }
+	} else {
+		console.log("Monster not ready to save!");
+	}
+}
+
+function back() {
+	document.getElementById("opponentList").style.display = 'block';
+	document.getElementById("enemyMonster").style.display = 'none';
+	document.getElementById("guide").innerHTML = "<i>Loop through different bodyparts by clicking on the corresponding slot</i>";
+	document.getElementById("opponentGuide").innerHTML = "<i>After you click fight, the computer will automatically generate an enemy monster for you</i>";
+	$("#opponentGuide").css("color", "#afafaf");
+}
 
 function currentBodypartIndex(bodyparts, url) {
 	var current = -1;
@@ -162,7 +203,7 @@ function reset() {
 		enemy["score"] = 0;
 	}
 	document.getElementById("guide").innerHTML = "<i>Loop through different bodyparts by clicking on the corresponding slot</i>";
-	document.getElementById("opponentGuide").innerHTML = "<i>After you've created a monster,  either select an opponent from the list and click play or click random to receive a random enemy</i>";
+	document.getElementById("opponentGuide").innerHTML = "<i>After you click fight, the computer will automatically generate an enemy monster for you</i>";
 	$("#opponentGuide").css("color", "#afafaf");
 }
 
@@ -201,7 +242,7 @@ function calculate(player1, player2) {
 			// player2 won
 			enemy["score"] += 1;
 			return 2;
-		} else { 
+		} else {
 			// player1 won
 			player["score"] += 1;
 			return 1;
@@ -212,7 +253,7 @@ function calculate(player1, player2) {
 			// player2 won
 			enemy["score"] += 1;
 			return 3;
-		} else { 
+		} else {
 			// player1 won
 			player["score"] += 1;
 			return 2;
@@ -223,7 +264,7 @@ function calculate(player1, player2) {
 			// player2 won
 			enemy["score"] += 1;
 			return 1;
-		} else { 
+		} else {
 			// player1 won
 			player["score"] += 1;
 			return 3;
@@ -239,7 +280,7 @@ function changePic(divId, bodyparts, reset) {
 		var next = current+1;
 	} else {
 		var next = 1;
-	} 
+	}
 	if (reset) {
 		var next = 0;
 	}
@@ -248,28 +289,13 @@ function changePic(divId, bodyparts, reset) {
 }
 
 function saveServerFn() {
+	console.log(player);
 	$.ajax({
 		url: "../server.php?save="+JSON.stringify(player)
 	}).done(function(data) {
 		console.log('Saved monster to server.');
 		console.log(data);
 	});
-}
-
-function saveMonster() {
-	if(checkMonster()) {
-
-    getName();
-
-    if(player.name !== "") {
-      console.log("Will save now");
-  		saveServerFn();
-    } else {
-      console.log("Insert a name for the monster");
-    }
-	} else {
-		console.log("Monster not ready to save!");
-	}
 }
 
 function getName() {
@@ -368,6 +394,7 @@ function loadEnemy(chosenEnemy) {
 		if(allPlayers[e].name==allPlayers[chosenEnemy].name){
 			enemy = allPlayers[e];
 			assignValues();
+			document.getElementById('enemyName').innerHTML = enemy.name;
 		}
 	}
 }
