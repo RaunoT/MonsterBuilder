@@ -73,7 +73,7 @@ img {
 
 /* Navbar */
 .navbar-brand, .nav.navbar-nav.navbar-right {
-    font-family: 'VT323', monospace;
+    font-family: 'Patrick Hand SC', cursive;
     font-size: 2em;
 }
 
@@ -88,8 +88,8 @@ img {
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
-	background-color: #fff;
-	color: #000;
+	background-color: #dc0000;
+	color: #fff;
 }
 
 /* Adds filters to loosing bodyparts */
@@ -111,12 +111,17 @@ img {
 
 .form-group {
     margin: 0;
-    margin-top: 5px;
+    margin-top: 1em;
 }
 
 /* Fight button that starts combat in multiplayer */
 .fightButton {
     margin-right: 1em;
+}
+
+/* Buttons that appear after a battle has started in multiplayer mode */
+#inFightButtons {
+    
 }
 
 /* List of available opponents on multiplayer page */

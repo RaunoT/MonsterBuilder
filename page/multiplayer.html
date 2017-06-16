@@ -13,6 +13,7 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet">
     <!-- CSS -->
     <link type="text/css" rel="stylesheet" href="../css/style.css">
     <!-- JS -->
@@ -20,11 +21,14 @@
 </head>
 <body>
 
+	<!-- Used in JS to check whether the game is SP or MP -->
+	<div id="multiPlayer" style="display: none;"></div>
+
 	<!-- Fixed top navbar -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 	    	<div class="navbar-header">
-	    		<!-- Burgermenüü -->
+	    		<!-- Burgermenu for mobile displays -->
 	    		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 			        <span class="sr-only">Toggle navigation</span>
 			        <span class="icon-bar"></span>
@@ -48,7 +52,7 @@
 	<h3 id="guide"><i>Loop through different bodyparts by clicking on the corresponding slot</i></h3>
 	<h3 id="opponentGuide"><i>After you click play, the computer will automatically generate an enemy monster for you</i></h3>
 
-	<!-- Players' monster -->
+	<!-- Players monster -->
 	<div class="container-fluid">
 		<div class="col-sm-6" id="playerMonster">
 			<h2><span class="underline">YOUR MONSTER</span></h2>
@@ -94,7 +98,7 @@
 			</div>
 		</div>
 	
-		<!-- Opponent monster -->
+		<!-- Opponents monster -->
 		<div class="col-sm-6" id="enemyMonster">
 			<h2><span class="underline">ENEMY MONSTER</span></h2>
 			<div class="scale">
@@ -122,22 +126,26 @@
 						<img src="../assets/monster/starter/leg_right_0.png" alt="Monster Bodypart">
 					</div>
 				</div>
+
+				<!-- Buttons that appear after a battle has commenced -->
+				<div class="row">
+					<div class="col-sm-4 col-sm-offset-4" id="inFightButtons">
+						<button type="button" id="backButton" class="controlBtn">Back to opponent selection</button>
+					</div>
+				</div>
+
 			</div>
 		</div>
 		
+		<!-- Listview of available opponents -->
 		<div class="col-sm-6" id="opponentList">
+			
 		</div>
 
-		<!-- inFightButtons -->
-		<div class="row">
-			<div class="col-sm-12" id="inFightButtons">
-				<button type="button" id="backButton" class="controlBtn">Back</button>
-			</div>
-		</div>
+		<!-- Buttons that appear after a battle has commenced -->
+
 
 	</div>
-
-	<div id="multiPlayer" style="display: none;"></div>
 
 </body>
 </html>
