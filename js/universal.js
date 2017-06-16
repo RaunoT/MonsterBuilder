@@ -89,7 +89,8 @@ window.onload = function(){
 	        	document.getElementById("opponentGuide").innerHTML = "<br>";
 	        	document.getElementById("heading").innerHTML = findVictor();
 	    	} else {
-	    		alert("Complete your monster.");
+	    		document.getElementById("heading").innerHTML = "COMPLETE YOUR MONSTER!"
+	    		$("#heading").css("color", "#dc0000");
 	    	}
 	    });
     }
@@ -102,7 +103,8 @@ window.onload = function(){
 					fight(event.target.id);
 					startPlay();
 					document.getElementById("guide").innerHTML = "<i>The winning bodyparts have been highlighted</i>";
-		        	document.getElementById("opponentGuide").innerHTML = findVictor();
+		        	document.getElementById("opponentGuide").innerHTML = "<br>";
+	        		document.getElementById("heading").innerHTML = findVictor();
 		        }
 			}
 		});
@@ -186,10 +188,10 @@ function findVictor() {
 	}
 	if (player["score"] > enemy["score"]) {
 		$("#heading").css("color", "#009600");
-		return "You win!";
+		return "YOU WIN!";
 	} else {
 		$("#heading").css("color", "#dc0000");
-		return "You lose!";
+		return "YOU LOSE!";
 	}
 }
 
@@ -283,7 +285,8 @@ function checkMonster() {
 	for (i in player) {
 		if (i != "name" && i != "score") {
 			if (player[i] == 0) {
-				console.log("Complete your monster first");
+				document.getElementById("heading").innerHTML = "COMPLETE YOUR MONSTER!"
+	    		$("#heading").css("color", "#dc0000");
 				return false;
 			}
 		}

@@ -102,9 +102,7 @@ img {
 	display: none;
 }
 
-/* Enemy monster selector list */
-
-/* ??? */
+/* Save monster name input field */
 .form-control {
     background-color: #000;
     color: #fff;
@@ -116,10 +114,12 @@ img {
     margin-top: 5px;
 }
 
+/* Fight button that starts combat in multiplayer */
 .fightButton {
     margin-right: 1em;
 }
 
+/* List of available opponents on multiplayer page */
 #opponentList {
     overflow: scroll;
     overflow-y: auto;
