@@ -20,6 +20,7 @@ var enemy = {
 	"score":0,
 };
 
+var allPlayers = [];
 var playerString = {};
 var stringToSave = {};
 var allPlayers =[];
@@ -48,6 +49,15 @@ var pTypes = ["pHead", "pLeftHand", "pChest", "pRightHand", "pLeftLeg", "pRightL
 var aIParts = ["aIHead", "aILeftHand", "aIChest", "aIRightHand", "aILeftLeg", "aIRightLeg"];
 
 window.onload = function(){
+
+	loadServerFn().then(function() {
+		if (document.getElementById("opponentList")) {
+			loadEnemyList();
+		}
+	})
+	.catch(function(error) {
+		console.log(error);
+	});
 
 	if (document.getElementById("reset")) {
 		document.getElementById("reset").addEventListener("click", function() {
@@ -81,6 +91,14 @@ window.onload = function(){
 	    		alert("Complete your monster.");
 	    	}
 	    });
+    }
+
+    if (document.getElementById("opponentList")) {
+    	document.querySelector('body').addEventListener('click', function(event) {
+			if (event.target.className == 'fightButton') {
+				fight(event.target.id);
+			}
+		});
     }
 };
 
@@ -291,4 +309,76 @@ function checkMonster() {
 		}
 	}
 	return ready;
+}
+
+function loadEnemyList() {
+
+	if(allPlayers.length>0) {
+		var heading = document.createElement("h3");
+		var headingText = document.createTextNode("Choose an Enemy to fight with");
+		heading.appendChild(headingText);
+		document.getElementById("opponentList").appendChild(heading);
+	} else {
+		var emptyListHeading = document.createElement("h3");
+		var emptyListHeadingText = document.createTextNode("No saved monsters yet, be first!");
+		emptyListHeading.appendChild(emptyListHeadingText);
+		document.getElementById("opponentList").appendChild(emptyListHeading);
+	}
+
+	for(var i=0; i<allPlayers.length; i++) {
+
+		var oneEnemy = document.createElement("div");
+		oneEnemy.className = 'oneEnemy';
+
+		var enemyNameSpan = document.createElement("span");
+		enemyNameSpan.className = 'enemyName';
+		var enemyName = document.createTextNode(allPlayers[i].name);
+		enemyNameSpan.appendChild(enemyName);
+		oneEnemy.appendChild(enemyNameSpan);
+		document.getElementById("opponentList").appendChild(oneEnemy);
+
+
+		var fightButton = document.createElement("button");
+		fightButton.className = 'fightButton';
+		fightButton.id = i;
+		var buttonName = document.createTextNode("Fight");
+		fightButton.appendChild(buttonName);
+		oneEnemy.appendChild(fightButton);
+		document.getElementById("opponentList").appendChild(oneEnemy);
+
+	}
+}
+
+function loadEnemy(chosenEnemy) {
+	for(var e=0; e<allPlayers.length; e++){
+		if(allPlayers[e].name==allPlayers[chosenEnemy].name){
+
+			enemy.name = allPlayers[e].name;
+			document.getElementById('enemyName').innerHTML = enemy.name;
+			enemy.eHead = allPlayers[e].pHead;
+			document.getElementById('eHead').style.backgroundColor = colors[enemy.eHead-1];
+			enemy.eLeftHand = allPlayers[e].pLeftHand;
+			document.getElementById('eLeftHand').style.backgroundColor = colors[enemy.eLeftHand-1];
+			enemy.eChest = allPlayers[e].pChest;
+			document.getElementById('eChest').style.backgroundColor = colors[enemy.eChest-1];
+			enemy.eRightHand = allPlayers[e].pRightHand;
+			document.getElementById('eRightHand').style.backgroundColor = colors[enemy.eRightHand-1];
+			enemy.eLeftLeg = allPlayers[e].pLeftLeg;
+			document.getElementById('eLeftLeg').style.backgroundColor = colors[enemy.eLeftLeg-1];
+			enemy.eRightLeg = allPlayers[e].pRightLeg;
+			document.getElementById('eRightLeg').style.backgroundColor = colors[enemy.eRightLeg-1];
+
+			console.log(enemy.eHead);
+
+		}
+	}
+}
+
+function loadServerFn() {
+	return $.ajax({
+		url: "../database.txt"
+	}).done(function(data) {
+		allPlayers = JSON.parse(data).players;
+		console.log('Loaded monsters from server.');
+	});
 }

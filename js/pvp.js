@@ -65,9 +65,9 @@ window.onload = function(){
 	});
 
 	document.querySelector('body').addEventListener('click', function(event) {
-	  if (event.target.className == 'fightButton') {
+		if (event.target.className == 'fightButton') {
 			fight(event.target.id);
-	  }
+		}
 	});
 
 };
