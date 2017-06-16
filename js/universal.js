@@ -85,8 +85,9 @@ window.onload = function(){
 	    		resetScores();
 	    		startPlay();
 	    		assignValues();
-	    		document.getElementById("guide").innerHTML = "<i>The winning bodyparts have been highlighted</i>";
-	        	document.getElementById("opponentGuide").innerHTML = findVictor();
+	    		document.getElementById("guide").innerHTML = "<i>The winning bodyparts have been highlighted</i><br>";
+	        	document.getElementById("opponentGuide").innerHTML = "<br>";
+	        	document.getElementById("heading").innerHTML = findVictor();
 	    	} else {
 	    		alert("Complete your monster.");
 	    	}
@@ -157,7 +158,8 @@ function reset() {
 	}
 	document.getElementById("guide").innerHTML = "<i>Loop through different bodyparts by clicking on the corresponding slot</i>";
 	document.getElementById("opponentGuide").innerHTML = "<i>After you've created a monster,  either select an opponent from the list and click play or click random to receive a random enemy</i>";
-	$("#opponentGuide").css("color", "#afafaf");
+	document.getElementById("heading").innerHTML = "SINGLE-PLAYER MODE";
+	$("#heading").css("color", "#ce6000");
 }
 
 function findVictor() {
@@ -177,10 +179,10 @@ function findVictor() {
 		}
 	}
 	if (player["score"] > enemy["score"]) {
-		$("#opponentGuide").css("color", "#009600");
+		$("#heading").css("color", "#009600");
 		return "You win!";
 	} else {
-		$("#opponentGuide").css("color", "#dc0000");
+		$("#heading").css("color", "#dc0000");
 		return "You lose!";
 	}
 }
@@ -314,9 +316,12 @@ function checkMonster() {
 function loadEnemyList() {
 
 	if(allPlayers.length>0) {
-		var heading = document.createElement("h3");
-		var headingText = document.createTextNode("Choose an Enemy to fight with");
-		heading.appendChild(headingText);
+		var heading = document.createElement("h2");
+		var span = document.createElement("span");
+		var headingText = document.createTextNode("SELECT OPPONENT");
+		span.className = "underline";
+		heading.appendChild(span);
+		span.appendChild(headingText);
 		document.getElementById("opponentList").appendChild(heading);
 	} else {
 		var emptyListHeading = document.createElement("h3");
@@ -330,22 +335,20 @@ function loadEnemyList() {
 		var oneEnemy = document.createElement("div");
 		oneEnemy.className = 'oneEnemy';
 
-		var enemyNameSpan = document.createElement("span");
-		enemyNameSpan.className = 'enemyName';
-		var enemyName = document.createTextNode(allPlayers[i].name);
-		enemyNameSpan.appendChild(enemyName);
-		oneEnemy.appendChild(enemyNameSpan);
-		document.getElementById("opponentList").appendChild(oneEnemy);
-
-
 		var fightButton = document.createElement("button");
-		fightButton.className = 'fightButton';
+		fightButton.className = 'fightButton controlBtn';
 		fightButton.id = i;
 		var buttonName = document.createTextNode("Fight");
 		fightButton.appendChild(buttonName);
 		oneEnemy.appendChild(fightButton);
 		document.getElementById("opponentList").appendChild(oneEnemy);
 
+		var enemyNameSpan = document.createElement("span");
+		enemyNameSpan.className = 'enemyName';
+		var enemyName = document.createTextNode(allPlayers[i].name);
+		enemyNameSpan.appendChild(enemyName);
+		oneEnemy.appendChild(enemyNameSpan);
+		document.getElementById("opponentList").appendChild(oneEnemy);
 	}
 }
 

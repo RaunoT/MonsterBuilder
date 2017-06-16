@@ -48,6 +48,7 @@
 	<h3 id="guide"><i>Loop through different bodyparts by clicking on the corresponding slot</i></h3>
 	<h3 id="opponentGuide"><i>After you click play, the computer will automatically generate an enemy monster for you</i></h3>
 
+	<!-- Players' monster -->
 	<div class="container-fluid">
 		<div class="col-sm-6" id="playerMonster">
 			<h2><span class="underline">YOUR MONSTER</span></h2>
@@ -77,10 +78,24 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- Monster namebar -->
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2">
+					<div class="form-group">
+						<input type="text" name="newName" id="newName" value="" maxlength="20" placeholder="Insert monsters' name" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2">
+					<button type="button" id="save" class="controlBtn">Save</button>
+				</div>
+			</div>
 		</div>
 	
-	<!-- Opponent monster -->
-		<div class="col-sm-6" id="enemyMonster" style="display: none;">
+		<!-- Opponent monster -->
+		<div class="col-sm-6" id="enemyMonster">
 			<h2><span class="underline">ENEMY MONSTER</span></h2>
 			<div class="scale">
 				<div class="row">
@@ -109,21 +124,18 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-6" id="opponentList"></div>
+		
+		<div class="col-sm-6" id="opponentList">
+		</div>
 
-	<!-- Monster name bar -->
-
-	<div class="row">
-		<div class="col-sm-12">
-			<div class="input-group">
-				<input type="text" name="newName" id="newName" value="" maxlength="20" placeholder="Insert monster name">
-				<button type="button" id="save" class="controlBtn">Save</button>
-				<div id="inFightButtons">
-					<button type="button" id="playAgain" class="controlBtn">playAgain</button>
-					<button type="button" id="backButton" class="controlBtn">Back</button>
-				</div>
+		<!-- inFightButtons -->
+		<div class="row">
+			<div class="col-sm-12" id="inFightButtons">
+				<button type="button" id="backButton" class="controlBtn">Back</button>
 			</div>
 		</div>
+
 	</div>
+
 </body>
 </html>
