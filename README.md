@@ -1,5 +1,5 @@
 # Monster Builder
-![alt text](https://github.com/RaunoT/MonsterBuilder/blob/master/assets/screenshot.PNG?raw=true "Screenshot")
+![alt text](https://github.com/RaunoT/MonsterBuilder/blob/master/assets/screenshot.gif?raw=true "Screenshot")
 
 ## Introduction
 
