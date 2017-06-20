@@ -107,6 +107,7 @@ window.onload = function(){
 			if (event.target.className == 'fightButton controlBtn') {
 				assignValues();
 				if (checkMonster()) {
+					console.log(event.target.id);
 					fight(event.target.id);
 					startPlay();
 					document.getElementById("guide").innerHTML = "<i>The winning bodyparts have been highlighted</i>";
@@ -307,14 +308,14 @@ function startPlay() {
 	    for (var i=0;i<eTypes.length;i++) {
 	        var partDiv = (eTypes[i]);
 	        var partName = eTypes[i].slice(1);
-	        getAi(partDiv, parts[partName]);
+	        pictureAI(partDiv, parts[partName]);
 	    }
 	} else if (document.getElementById("multiPlayer")) {
 		console.log("multiPlayer");
 		for (var i=0;i<eTypes.length;i++) {
 	        var partDiv = (eTypes[i]);
 	        var partName = eTypes[i].slice(1);
-	        // TODO: function to picture saved enemy
+	        pictureEnemy(partDiv, enemy[partName])
 	    }
 	}
 
@@ -324,10 +325,15 @@ function randomizer(numberOfParts) {
     return Math.floor((Math.random() * (numberOfParts-1))+1);
 }
 
-function getAi(divId, bodyparts) {
+function pictureAI(divId, bodyparts) {
 	var value = randomizer(bodyparts.length);
-    $("#"+divId+" img").remove();
-    $("#"+divId).prepend("<img src='"+bodyparts[value]["url"]+"'>");
+	$("#"+divId+" img").remove();
+	$("#"+divId).prepend("<img src='"+bodyparts[value]["url"]+"'>");
+}
+
+function pictureEnemy(divId, partUrl) {
+	$("#"+divId+" img").remove();
+	$("#"+divId).prepend("<img src='"+partUrl+"'>");
 }
 
 function loadEnemyList() {
@@ -381,19 +387,10 @@ function loadServerFn() {
 	});
 }
 
-function loadEnemy(enemyIndex) {
-	for(var e=0; e<allPlayers.length; e++){
-		if(allPlayers[e].name==allPlayers[enemyIndex].name){
-			enemy = allPlayers[e];
-			assignValues();
-		}
-	}
-}
-
 function fight(enemyIndex) {
 	document.getElementById("opponentList").style.display = 'none';
 	document.getElementById("enemyMonster").style.display = 'block';
-	loadEnemy(parseInt(enemyIndex));
+	enemy = allPlayers[enemyIndex];
 }
 
 function back() {
