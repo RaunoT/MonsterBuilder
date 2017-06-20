@@ -77,7 +77,11 @@ window.onload = function(){
 
 	document.getElementById("pRightLeg").addEventListener("click", function() {changePic("pRightLeg", RightLeg, false);} );
 
-	document.getElementById("save").addEventListener("click", function() {saveMonster();} );
+	document.querySelector('body').addEventListener('click', function(event) {
+		if (event.target.id == 'save') {
+			saveMonster();
+		}
+	});
 
 	var play = document.getElementById("play");
     if (play) {
@@ -88,7 +92,7 @@ window.onload = function(){
 	    		startPlay();
 	    		assignValues();
 	    		document.getElementById("guide").innerHTML = "<i>The winning bodyparts have been highlighted</i>";
-	        	document.getElementById("opponentGuide").innerHTML = findVictor();
+	        document.getElementById("opponentGuide").innerHTML = findVictor();
 	    	} else {
 	    		alert("Complete your monster.");
 	    	}
@@ -168,14 +172,15 @@ function assignValues() {
 		var part = pTypes[name];
 		var partUrl = $("#"+part+" img").attr("src");
 		if (!partUrl.includes("starter")) {
-			player[part.slice(1)] = raceFromUrl(part.slice(1), partUrl);
+			player[part.slice(1)] = partUrl;
+			console.log(partUrl);
 		}
 	}
 	for (name in eTypes) {
 		var part = eTypes[name];
 		var partUrl = $("#"+part+" img").attr("src");
 		if (!partUrl.includes("starter")) {
-			enemy[part.slice(1)] = raceFromUrl(part.slice(1), partUrl);
+			enemy[part.slice(1)] = partUrl;
 		}
 	}
 }
@@ -331,6 +336,7 @@ function startPlay() {
 		for (var i=0;i<eTypes.length;i++) {
 	        var partDiv = (eTypes[i]);
 	        var partName = eTypes[i].slice(1);
+					enemy.
 	        pictureEnemy(partDiv, parts[partName], false);
 	    }
 	}
@@ -393,6 +399,7 @@ function loadEnemy(chosenEnemy) {
 	for(var e=0; e<allPlayers.length; e++){
 		if(allPlayers[e].name==allPlayers[chosenEnemy].name){
 			enemy = allPlayers[e];
+			console.log();
 			assignValues();
 			document.getElementById('enemyName').innerHTML = enemy.name;
 		}
