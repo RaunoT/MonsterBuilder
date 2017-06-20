@@ -58,10 +58,17 @@ window.onload = function(){
 	.catch(function(error) {
 		console.log(error);
 	});
+	/*
+	$.when(loadServerFn()).then(function() {
+		if (document.getElementById("opponentList")) {
+			loadEnemyList();
+		}
+	});
+	*/
 
 	if (document.getElementById("reset")) {
 		document.getElementById("reset").addEventListener("click", function() {
-			reset();
+			reset(true);
 		});
 	}
 
@@ -82,7 +89,7 @@ window.onload = function(){
     	play.addEventListener("click", function() {
 	    	assignValues();
 	    	if (checkMonster()) {
-	    		resetScores();
+	    		reset(false);
 	    		startPlay();
 	    		assignValues();
 	    		document.getElementById("guide").innerHTML = "<i>The winning bodyparts have been highlighted</i><br>";
@@ -112,17 +119,16 @@ window.onload = function(){
 };
 
 function currentBodypartIndex(bodyparts, url) {
-	var current = -1;
 	for (var i=0;i<bodyparts.length;i++) {
 		if (bodyparts[i]["url"] == url) {
-			current = bodyparts.indexOf(bodyparts[i]);
+			return bodyparts.indexOf(bodyparts[i]);
 		}
 	}
-	return current;
+	return -1;
 }
 
 function raceFromUrl(partsList, url) {
-	return parts[partsList][currentBodypartIndex(parts[partsList], url)]["race"];
+	return partsList[currentBodypartIndex(partsList, url)]["race"];
 }
 
 function assignValues() {
@@ -130,36 +136,31 @@ function assignValues() {
 		var part = pTypes[name];
 		var partUrl = $("#"+part+" img").attr("src");
 		if (!partUrl.includes("starter")) {
-			player[part.slice(1)] = raceFromUrl(part.slice(1), partUrl);
+			//player[part.slice(1)] = raceFromUrl(part.slice(1), partUrl);
+			player[part.slice(1)] = partUrl;
 		}
 	}
 	for (name in eTypes) {
 		var part = eTypes[name];
 		var partUrl = $("#"+part+" img").attr("src");
 		if (!partUrl.includes("starter")) {
-			enemy[part.slice(1)] = raceFromUrl(part.slice(1), partUrl);
+			//enemy[part.slice(1)] = raceFromUrl(part.slice(1), partUrl);
+			enemy[part.slice(1)] = partUrl;
 		}
 	}
 }
 
-function resetScores() {
-	player["score"] = 0;
-    enemy["score"] = 0;
-	for (var i in player) {
-		$("#e"+i).removeClass("greyed");
-		$("#p"+i).removeClass("greyed");
-	}
-}
-
-function reset() {
+function reset(full) {
 	for (var i in player) {
 		if (i != "name" && i != "score") {
-			player[i] = 0;
-			enemy[i] = 0;
+			if (full) {
+				player[i] = 0;
+				enemy[i] = 0;
+				changePic("p"+i, parts[i], true);
+				changePic("e"+i, parts[i], true);
+			}
 			$("#e"+i).removeClass("greyed");
 			$("#p"+i).removeClass("greyed");
-			changePic("p"+i, parts[i], true);
-			changePic("e"+i, parts[i], true);
 		}
 		player["score"] = 0;
 		enemy["score"] = 0;
@@ -173,8 +174,8 @@ function reset() {
 function findVictor() {
 	for (var i in player) {
 		if (i != "name" && i != "score") {
-			if (player[i] != enemy[i]) {
-				var winningValue = calculate(player[i], enemy[i]);
+			if (raceFromUrl(parts[i], player[i]) != raceFromUrl(parts[i], enemy[i])) {
+				var winningValue = calculate(player[i], enemy[i], i);
 				if (player[i] == winningValue) {
 					$("#e"+i).addClass("greyed");
 				} else {
@@ -189,48 +190,51 @@ function findVictor() {
 	if (player["score"] > enemy["score"]) {
 		$("#heading").css("color", "#009600");
 		return "YOU WIN!";
+	} else if (player["score"] == enemy["score"]) {
+		$("#heading").css("color", "#009600");
+		return "IT'S A TIE!";
 	} else {
 		$("#heading").css("color", "#dc0000");
 		return "YOU LOSE!";
 	}
 }
 
-function calculate(player1, player2) {
+function calculate(player1, player2, bodypart) {
 	// Robot > Human
 	// Human > Animal
 	// Animal > Robot
 	// robot - 1, animal - 2, human - 3
-	if(player1 == 1) {
-		if(player2 == 2) {
+	if(raceFromUrl(parts[bodypart], player1) == 1) {
+		if(raceFromUrl(parts[bodypart], player2) == 2) {
 			// player2 won
 			enemy["score"] += 1;
-			return 2;
+			return player2;
 		} else { 
 			// player1 won
 			player["score"] += 1;
-			return 1;
+			return player1;
 		}
 	}
-	if(player1 == 2) {
-		if(player2 == 3) {
+	if(raceFromUrl(parts[bodypart], player1) == 2) {
+		if(raceFromUrl(parts[bodypart], player2) == 3) {
 			// player2 won
 			enemy["score"] += 1;
-			return 3;
+			return player2;
 		} else { 
 			// player1 won
 			player["score"] += 1;
-			return 2;
+			return player1;
 		}
 	}
-	if(player1 == 3) {
-		if(player2 == 1) {
+	if(raceFromUrl(parts[bodypart], player1) == 3) {
+		if(raceFromUrl(parts[bodypart], player2) == 1) {
 			// player2 won
 			enemy["score"] += 1;
-			return 1;
+			return player2;
 		} else { 
 			// player1 won
 			player["score"] += 1;
-			return 3;
+			return player1;
 		}
 	}
 }
@@ -303,14 +307,14 @@ function startPlay() {
 	    for (var i=0;i<eTypes.length;i++) {
 	        var partDiv = (eTypes[i]);
 	        var partName = eTypes[i].slice(1);
-	        pictureEnemy(partDiv, parts[partName], true);
+	        getAi(partDiv, parts[partName]);
 	    }
 	} else if (document.getElementById("multiPlayer")) {
 		console.log("multiPlayer");
 		for (var i=0;i<eTypes.length;i++) {
 	        var partDiv = (eTypes[i]);
 	        var partName = eTypes[i].slice(1);
-	        pictureEnemy(partDiv, parts[partName], false);
+	        // TODO: function to picture saved enemy
 	    }
 	}
 
@@ -320,12 +324,8 @@ function randomizer(numberOfParts) {
     return Math.floor((Math.random() * (numberOfParts-1))+1);
 }
 
-function pictureEnemy(divId, bodyparts, random) {
-	if (random) {
-		var value = randomizer(bodyparts.length);
-	} else {
-		var value = enemy[divId.slice(1)];
-	}
+function getAi(divId, bodyparts) {
+	var value = randomizer(bodyparts.length);
     $("#"+divId+" img").remove();
     $("#"+divId).prepend("<img src='"+bodyparts[value]["url"]+"'>");
 }
@@ -369,18 +369,9 @@ function loadEnemyList() {
 	}
 }
 
-function loadEnemy(chosenEnemy) {
-	for(var e=0; e<allPlayers.length; e++){
-		if(allPlayers[e].name==allPlayers[chosenEnemy].name){
-			enemy = allPlayers[e];
-			assignValues();
-		}
-	}
-}
-
 function loadServerFn() {
-	return $.ajax({
-		url: "../database.txt"
+	 return $.ajax({
+		url: "../database.txt?time=" + new Date().getTime()
 	}).done(function(data) {
 		allPlayers = JSON.parse(data).players;
 		console.log('Loaded monsters from server.');
@@ -390,8 +381,23 @@ function loadServerFn() {
 	});
 }
 
-function fight(enemy) {
+function loadEnemy(enemyIndex) {
+	for(var e=0; e<allPlayers.length; e++){
+		if(allPlayers[e].name==allPlayers[enemyIndex].name){
+			enemy = allPlayers[e];
+			assignValues();
+		}
+	}
+}
+
+function fight(enemyIndex) {
 	document.getElementById("opponentList").style.display = 'none';
 	document.getElementById("enemyMonster").style.display = 'block';
-	loadEnemy(parseInt(enemy));
+	loadEnemy(parseInt(enemyIndex));
+}
+
+function back() {
+	document.getElementById("opponentList").style.display = 'block';
+	document.getElementById("enemyMonster").style.display = 'none';
+	reset(false);
 }
