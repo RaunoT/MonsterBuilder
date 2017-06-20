@@ -97,7 +97,7 @@ window.onload = function(){
 	        	document.getElementById("heading").innerHTML = findVictor();
 	    	} else {
 	    		document.getElementById("heading").innerHTML = "COMPLETE YOUR MONSTER!"
-	    		$("#heading").css("color", "#dc0000");
+	    		$("#heading").css("color", "#F29300");
 	    	}
 	    });
     }
@@ -185,7 +185,7 @@ function reset(full) {
 		document.getElementById("opponentGuide").innerHTML = "<i>After you've created a monster, select an opponent from the list and click fight</i>";
 		document.getElementById("heading").innerHTML = "MULTI-PLAYER MODE";
 	}
-	$("#heading").css("color", "#ce6000");
+	$("#heading").css("color", "#80ED37");
 }
 
 function findVictor() {
@@ -205,13 +205,13 @@ function findVictor() {
 		}
 	}
 	if (player["score"] > enemy["score"]) {
-		$("#heading").css("color", "#009600");
+		$("#heading").css("color", "#80ED37");
 		return "YOU WIN!";
 	} else if (player["score"] == enemy["score"]) {
-		$("#heading").css("color", "#009600");
+		$("#heading").css("color", "#EFDF00");
 		return "IT'S A TIE!";
 	} else {
-		$("#heading").css("color", "#dc0000");
+		$("#heading").css("color", "#ED2828");
 		return "YOU LOSE!";
 	}
 }

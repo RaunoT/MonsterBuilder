@@ -10,15 +10,16 @@ h1 {
 	text-align: center;
 	margin: 10px;
 	font-family: 'VT323', monospace;
-	color: #ce6000;
+	color: #80ED37;
 	font-size: 3.5em;
+	text-shadow: 2px 2px 4px #000000;
 }
 
 h2 {
     text-align: center;
     margin: 10px;
     font-family: 'VT323', monospace;
-    color: #ce6000;
+    color: white;
     font-size: 2em;
 }
 
@@ -28,6 +29,15 @@ h3 {
     margin: 0px;
     margin-bottom: 5px;
     color: #afafaf;
+	
+}
+
+p{
+	text-align: center;
+    margin: 10px;
+    font-family: 'VT323', monospace;
+    color: white;
+    font-size: 2em;
 }
 
 img {
@@ -37,7 +47,7 @@ img {
 
 /* Underline for h2 */
 .underline {
-    border-bottom: #ce6000 0.1em solid;
+    border-bottom: #80ED37 0.1em solid;
 }
 
 /* Scale value for monsters */
@@ -51,20 +61,30 @@ img {
     padding: 0;
 }
 
-/* Buttons that control gameplay */
+/* Buttons that control gameplay. Different gradients for differen browsers*/
 .controlBtn {
   	color: #fff;
-  	background-color: #007800;
+	 background: -webkit-linear-gradient(top, #4A8FF7 50%, #4A4AF7 50%);
+	background: -moz-linear-gradient(top,  #4A8FF7 50%, #4A4AF7 50%); /* FF3.6+ *//
+	background: -o-linear-gradient(top,  #4A8FF7 50%,#4A4AF7 50%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #4A8FF7 50%,#4A4AF7 50%); /* IE10+ */
   	border: none;
   	margin-top: 1em;
   	margin-bottom: 1em;
   	padding: 0.5em;
     border-radius: 5px;
+	font-family: 'VT323', monospace;
+	font-size: 1.4em;
 }
 
+/* button color changes after klick on it */
 .controlBtn:hover {
-    color: #000;
-    background-color: #fff;
+    color: white;
+    background: -webkit-linear-gradient(top,  #4A8FF7 90%,#4A4AF7 10%);
+	background: -moz-linear-gradient(top,  #4A8FF7 90%, #4A4AF7 10%); /* FF3.6+ */
+	background: -o-linear-gradient(top,  #4A8FF7 90%,#4A4AF7 10%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #4A8FF7 90%,#4A4AF7 10%); /* IE10+ */
+	
 }
 
 .controlBtn:focus {
@@ -77,18 +97,30 @@ img {
     font-size: 2em;
 }
 
-.navbar {
-    background-color: #000;
+/* navbar gradients for different browsers */
+.navbar {	
+	background: -webkit-linear-gradient(top,  #3F3F3F 50%,#1E1E1E 50%);
+	background: -moz-linear-gradient(top,  #3F3F3F 50%, #1E1E1E 50%); /* FF3.6+ */
+	background: -o-linear-gradient(top,  #3F3F3F 50%,#1E1E1E 50%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #3F3F3F 50%,#1E1E1E 50%); /* IE10+ */
     border: none;
     margin: 0;
 }
 
 .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a {
     color: #afafaf;
+	font-family: 'VT323', monospace;
 }
 
+/* gradient for different browsers */
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
-	background-color: #dc0000;
+	background: -webkit-linear-gradient(top,  #4A8FF7 50%,#4A4AF7 50%);
+	background: -moz-linear-gradient(top,  #4A8FF7 50%, #4A4AF7 50%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#4A8FF7), color-stop(50%,#4A4AF7)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #4A8FF7 50%,#4A4AF7 50%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #4A8FF7 50%,#4A4AF7 50%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #4A8FF7 50%,#4A4AF7 50%); /* IE10+ */
+	background: linear-gradient(to bottom,  #4A8FF7 50%,#4A4AF7 50%); /* W3C */
 	color: #fff;
 }
 
@@ -136,4 +168,27 @@ img {
     visibility: hidden;
     height: 0px;
     width: 0%;
+}
+/* Home icon resize */
+.glyphicon.glyphicon-home{
+	font-size:80%;
+}
+
+/*Intro page*/
+.hellotext {
+text-align:  center;
+}
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    margin-left: 0;
+    padding-left: 0;
+	text-align: center;
+    margin: 10px;
+    font-family: 'VT323', monospace;
+    color: white;
+    font-size: 1.5em;
 }
