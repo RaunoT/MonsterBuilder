@@ -11,10 +11,20 @@ The game was made as part of a software development course at Tallinn University
 The logic for the game is written in JavaScript/PHP and the visual aspects are handled by HTML/CSS.
 
 
-## Where to play
+## Installation guide
 
-You can play the game by downloading the repository and giving r/w permissions for database.txt to all users. 
-To launch, open page/index.html. The game is browser-based so requires no additional installations besides PHP.
+**Reuiqred:**
+
+FIle sharing server.
+
+Navigate to the desired directory.
+
+**Clone the git repository with**
+```
+git clone https://github.com/RaunoT/MonsterBuilder
+```
+
+Make sure that the file database.txt is readable and editable by everyone.
 
 ## Tööjaotus ja rühmaliikmed
 
