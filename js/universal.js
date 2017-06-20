@@ -118,10 +118,18 @@ window.onload = function(){
 		});
     }
 
-    document.getElementById("save").addEventListener("click", function() {
-    	saveMonster();
-    });
-    
+    if (document.getElementById("save")) {
+    	document.getElementById("save").addEventListener("click", function() {
+	    	saveMonster();
+	    	loadServerFn().then(function() {
+				if (document.getElementById("opponentList")) {
+					document.getElementById("opponentList").innerHTML = "";
+					loadEnemyList();
+				}
+			})
+	    });
+    }
+	    
 };
 
 function currentBodypartIndex(bodyparts, url) {
@@ -170,8 +178,13 @@ function reset(full) {
 		enemy["score"] = 0;
 	}
 	document.getElementById("guide").innerHTML = "<i>Loop through different bodyparts by clicking on the corresponding slot</i>";
-	document.getElementById("opponentGuide").innerHTML = "<i>After you've created a monster,  either select an opponent from the list and click play or click random to receive a random enemy</i>";
-	document.getElementById("heading").innerHTML = "SINGLE-PLAYER MODE";
+	if (document.getElementById("singlePlayer")) {
+		document.getElementById("opponentGuide").innerHTML = "<i>After you've created a monster, click fight and a random AI enemy is genertaed for you</i>";
+		document.getElementById("heading").innerHTML = "SINGLE-PLAYER MODE";
+	} else if (document.getElementById("multiPlayer")) {
+		document.getElementById("opponentGuide").innerHTML = "<i>After you've created a monster, select an opponent from the list and click fight</i>";
+		document.getElementById("heading").innerHTML = "MULTI-PLAYER MODE";
+	}
 	$("#heading").css("color", "#ce6000");
 }
 
