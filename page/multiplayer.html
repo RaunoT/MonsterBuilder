@@ -55,7 +55,7 @@
 	<!-- Players monster -->
 	<div class="container-fluid">
 		<div class="col-sm-6" id="playerMonster">
-			<h2><span class="underline">YOUR MONSTER</span></h2>
+			<h2><span class="underline" id="pName">YOUR MONSTER</span></h2>
 			<div class="scale">
 				<div class="row">
 					<div class="col-xs-4 col-xs-offset-4" id="pHead">
@@ -100,7 +100,7 @@
 	
 		<!-- Opponents monster -->
 		<div class="col-sm-6" id="enemyMonster">
-			<h2><span class="underline">ENEMY MONSTER</span></h2>
+			<h2><span class="underline" id="eName">ENEMY MONSTER</span></h2>
 			<div class="scale">
 				<div class="row">
 					<div class="col-xs-4 col-xs-offset-4" id="eHead">
@@ -138,8 +138,9 @@
 		</div>
 		
 		<!-- Listview of available opponents -->
-		<div class="col-sm-6" id="opponentList">
-			
+		<div class="col-sm-6" id="opponents">
+			<h2><span class="underline">SELECT OPPONENT</span></h2>
+			<div class="col-sm-6" id="opponentList"></div>
 		</div>
 
 		<!-- Buttons that appear after a battle has commenced -->
