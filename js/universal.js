@@ -52,19 +52,18 @@ window.onload = function(){
 
 	loadServerFn().then(function() {
 		if (document.getElementById("opponentList")) {
+			$("#opponentList").css("height", document.getElementById('playerMonster').clientHeight+"px");
+			$("#opponentList").css("width", document.getElementById('playerMonster').clientWidth+"px");
 			loadEnemyList();
+			window.onresize = function() {
+				$("#opponentList").css("height", document.getElementById('playerMonster').clientHeight+"px");
+				$("#opponentList").css("width", document.getElementById('playerMonster').clientWidth+"px");
+			}
 		}
 	})
 	.catch(function(error) {
 		console.log(error);
 	});
-	/*
-	$.when(loadServerFn()).then(function() {
-		if (document.getElementById("opponentList")) {
-			loadEnemyList();
-		}
-	});
-	*/
 
 	if (document.getElementById("reset")) {
 		document.getElementById("reset").addEventListener("click", function() {
@@ -275,7 +274,6 @@ function changePic(divId, bodyparts, reset) {
 function saveMonster() {
 	getName();
 	assignValues();
-	console.log(JSON.stringify(player));
 	if (player.name != "" && checkMonster()) {
 		$.ajax({
 			url: "../server.php?save="+JSON.stringify(player)
@@ -283,6 +281,7 @@ function saveMonster() {
 			console.log('Saved monster to server.');
 			console.log(data);
 		});
+		document.getElementById("pName").innerHTML = player.name;
 		document.getElementById("heading").innerHTML = "Monster Saved";
 	} else {
 		document.getElementById("heading").innerHTML = "Make sure the monster is completed and named";
@@ -354,7 +353,7 @@ function loadEnemyList() {
 		var headingText = document.createTextNode("SELECT OPPONENT");
 		span.className = "underline";
 		heading.appendChild(span);
-		span.appendChild(headingText);
+		//span.appendChild(headingText);
 		document.getElementById("opponentList").appendChild(heading);
 	} else {
 		var emptyListHeading = document.createElement("h3");
@@ -398,13 +397,14 @@ function loadServerFn() {
 }
 
 function fight(enemyIndex) {
-	document.getElementById("opponentList").style.display = 'none';
+	document.getElementById("opponents").style.display = 'none';
 	document.getElementById("enemyMonster").style.display = 'block';
 	enemy = allPlayers[enemyIndex];
+	document.getElementById("eName").innerHTML = enemy.name;
 }
 
 function back() {
-	document.getElementById("opponentList").style.display = 'block';
+	document.getElementById("opponents").style.display = 'block';
 	document.getElementById("enemyMonster").style.display = 'none';
 	reset(false);
 }
