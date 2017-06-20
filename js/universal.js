@@ -117,6 +117,11 @@ window.onload = function(){
 			}
 		});
     }
+
+    document.getElementById("save").addEventListener("click", function() {
+    	saveMonster();
+    });
+    
 };
 
 function currentBodypartIndex(bodyparts, url) {
@@ -137,7 +142,6 @@ function assignValues() {
 		var part = pTypes[name];
 		var partUrl = $("#"+part+" img").attr("src");
 		if (!partUrl.includes("starter")) {
-			//player[part.slice(1)] = raceFromUrl(part.slice(1), partUrl);
 			player[part.slice(1)] = partUrl;
 		}
 	}
@@ -145,7 +149,6 @@ function assignValues() {
 		var part = eTypes[name];
 		var partUrl = $("#"+part+" img").attr("src");
 		if (!partUrl.includes("starter")) {
-			//enemy[part.slice(1)] = raceFromUrl(part.slice(1), partUrl);
 			enemy[part.slice(1)] = partUrl;
 		}
 	}
@@ -256,30 +259,24 @@ function changePic(divId, bodyparts, reset) {
 	$("#"+divId).prepend("<img src='"+bodyparts[next]["url"]+"'>");
 }
 
-function saveServerFn() {
-	$.ajax({
-		url: "../server.php?save="+JSON.stringify(player)
-	}).done(function(data) {
-		console.log('Saved monster to server.');
-		console.log(data);
-	});
-}
-
 function saveMonster() {
-	if(checkMonster()) {
-
-    getName();
-
-    if(player.name !== "") {
-      console.log("Will save now");
-  		saveServerFn();
-    } else {
-      console.log("Insert a name for the monster");
-    }
+	getName();
+	assignValues();
+	console.log(JSON.stringify(player));
+	if (player.name != "" && checkMonster()) {
+		$.ajax({
+			url: "../server.php?save="+JSON.stringify(player)
+		}).done(function(data) {
+			console.log('Saved monster to server.');
+			console.log(data);
+		});
+		document.getElementById("heading").innerHTML = "Monster Saved";
 	} else {
-		console.log("Monster not ready to save!");
+		document.getElementById("heading").innerHTML = "Make sure the monster is completed and named";
 	}
 }
+
+
 
 function getName() {
   player.name = document.getElementById('newName').value;
