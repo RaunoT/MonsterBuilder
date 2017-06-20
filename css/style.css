@@ -159,6 +159,8 @@ img {
 /* List of available opponents on multiplayer page */
 #opponentList {
     overflow: scroll;
+    overflow-y: auto;
+    overflow-x: auto;
 }
 
 /* Used for preloading images inside an invisible div */
