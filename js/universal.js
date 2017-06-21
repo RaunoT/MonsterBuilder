@@ -27,7 +27,7 @@ var allPlayers =[];
 
 var assets = "../assets/monster/";
 
-// Human = 3, Animal = 2, Robot = 1
+// Human == 3, Animal == 2, Robot == 1, starter == 0
 
 var Head = [{"url":assets+"starter/head_0.png", "race":0}, {"url":assets+"robot/head_0.png", "race":1}, {"url":assets+"animal/head_0.png", "race":2}, {"url":assets+"human/head_0.png", "race":3}, {"url":assets+"human/head_1.png", "race":3}, {"url":assets+"human/head_2.png", "race":3}, {"url":assets+"animal/head_1.png", "race":2}, {"url":assets+"animal/head_2.png", "race":2}, {"url":assets+"robot/head_1.png", "race":1}, {"url":assets+"robot/head_2.png", "race":1}];
 var Chest = [{"url":assets+"starter/body_0.png", "race":0}, {"url":assets+"robot/body_0.png", "race":1}, {"url":assets+"animal/body_0.png", "race":2}, {"url":assets+"human/body_0.png", "race":3}, {"url":assets+"human/body_1.png", "race":3}, {"url":assets+"human/body_2.png", "race":3}, {"url":assets+"animal/body_1.png", "race":2}, {"url":assets+"animal/body_2.png", "race":2}, {"url":assets+"robot/body_1.png", "race":1}, {"url":assets+"robot/body_2.png", "race":1}];
