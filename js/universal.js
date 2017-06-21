@@ -71,17 +71,29 @@ window.onload = function(){
 		});
 	}
 
-	document.getElementById("pHead").addEventListener("click", function() {changePic("pHead", Head, false);} );
+	if (document.getElementById("pHead")) {
+		document.getElementById("pHead").addEventListener("click", function() {changePic("pHead", Head, false);} );
+	}
 
-	document.getElementById("pChest").addEventListener("click", function() {changePic("pChest", Chest, false);} );
+	if (document.getElementById("pChest")) {
+	    document.getElementById("pChest").addEventListener("click", function() {changePic("pChest", Chest, false);} );
+	}
 
-	document.getElementById("pLeftHand").addEventListener("click", function() {changePic("pLeftHand", LeftHand, false);} );
+	if (document.getElementById("pLeftHand")) {
+	    document.getElementById("pLeftHand").addEventListener("click", function() {changePic("pLeftHand", LeftHand, false);} );
+	}
 
-	document.getElementById("pRightHand").addEventListener("click", function() {changePic("pRightHand", RightHand, false);} );
+	if (document.getElementById("pRightHand")) {
+	    document.getElementById("pRightHand").addEventListener("click", function() {changePic("pRightHand", RightHand, false);} );
+	}
 
-	document.getElementById("pLeftLeg").addEventListener("click", function() {changePic("pLeftLeg", LeftLeg, false);} );
+	if (document.getElementById("pLeftLeg")) {
+	    document.getElementById("pLeftLeg").addEventListener("click", function() {changePic("pLeftLeg", LeftLeg, false);} );
+	}
 
-	document.getElementById("pRightLeg").addEventListener("click", function() {changePic("pRightLeg", RightLeg, false);} );
+	if (document.getElementById("pRightLeg")) {
+	    document.getElementById("pRightLeg").addEventListener("click", function() {changePic("pRightLeg", RightLeg, false);} );
+	}
 
 	var play = document.getElementById("play");
     if (play) {
