@@ -56,7 +56,6 @@ window.onload = function(){
 		});
 	}
 
-
 	if (document.getElementById("pHead")) {
 		document.getElementById("pHead").addEventListener("click", function() {changePic("pHead", Head, false);} );
 	}
@@ -110,7 +109,7 @@ window.onload = function(){
     if (document.getElementById("play")) {
     	document.getElementById("play").addEventListener("click", function() {
 	    	assignValues();
-	    	if (checkMonster()) {
+	    	if (checkMonster(1)) {
 	    		reset(false);
 	    		startPlay();
 	    		assignValues();
@@ -266,14 +265,29 @@ function changePic(divId, bodyparts, reset) {
 }
 
 function saveMonster(player_index) {
-	getName();
+	getName(player_index);
 	assignValues();
-	if (player.name != "" && checkMonster()) {
-		document.getElementById("pName").innerHTML = player.name;
-		document.getElementById("heading").innerHTML = "Monster Saved";
-		// TODO switch to creating second monster
-	} else {
-		document.getElementById("heading").innerHTML = "Make sure the monster is completed and named";
+	if (checkMonster(player_index)) {
+		if (player_index == 1) {
+			if (player.name != "") {
+				document.getElementById("pName").innerHTML = player.name;
+				document.getElementById("playerMonster").style.visibility = 'hidden';
+				document.getElementById("enemyMonster").style.visibility = 'visible';
+				document.getElementById("heading").innerHTML = "MAKE YOUR MONSTER PLAYER 2";
+			} else {
+				document.getElementById("heading").innerHTML = "Make sure the monster is completed and named";
+			}
+		} else if (player_index == 2) {
+			if (enemy.name != "") {
+				document.getElementById("eName").innerHTML = enemy.name;
+				document.getElementById("playerMonster").style.visibility = 'visible';
+				document.getElementById("heading").innerHTML = findVictor();
+			} else {
+				document.getElementById("heading").innerHTML = "Make sure the monster is completed and named";
+			}
+		} else {
+			console.log("Cheater?");
+		}
 	}
 }
 
@@ -287,18 +301,31 @@ function getName(player_index) {
   }
 }
 
-function checkMonster() {
+function checkMonster(player_index) {
 	var ready = true;
-	for (i in player) {
-		if (i != "name" && i != "score") {
-			if (player[i] == 0) {
-				document.getElementById("heading").innerHTML = "COMPLETE YOUR MONSTER!"
-	    		$("#heading").css("color", "#dc0000");
-				return false;
+	if (player_index == 1) {
+		for (i in player) {
+			if (i != "name" && i != "score") {
+				if (player[i] == 0) {
+					document.getElementById("heading").innerHTML = "COMPLETE YOUR MONSTER!"
+		    		$("#heading").css("color", "#dc0000");
+					return false;
+				}
 			}
 		}
+		return ready;
+	} else if (player_index == 2) {
+		for (i in enemy) {
+			if (i != "name" && i != "score") {
+				if (enemy[i] == 0) {
+					document.getElementById("heading").innerHTML = "COMPLETE YOUR MONSTER!"
+		    		$("#heading").css("color", "#dc0000");
+					return false;
+				}
+			}
+		}
+		return ready;
 	}
-	return ready;
 }
 
 function startPlay() {
@@ -306,19 +333,13 @@ function startPlay() {
 
 	if (document.getElementById("singlePlayer")) {
 		console.log("singlePlayer");
-		// Loosin arvuti monsterile väärtused
 	    for (var i=0;i<eTypes.length;i++) {
 	        var partDiv = (eTypes[i]);
 	        var partName = eTypes[i].slice(1);
 	        pictureAI(partDiv, parts[partName]);
 	    }
-	} else if (document.getElementById("multiPlayer")) {
-		console.log("multiPlayer");
-		for (var i=0;i<eTypes.length;i++) {
-	        var partDiv = (eTypes[i]);
-	        var partName = eTypes[i].slice(1);
-	        pictureEnemy(partDiv, enemy[partName])
-	    }
+	} else {
+		console.log("Cheater?");
 	}
 
 }
@@ -339,6 +360,7 @@ function pictureEnemy(divId, partUrl) {
 }
 
 function back() {
-	document.getElementById("enemyMonster").style.display = 'none';
+	document.getElementById("enemyMonster").style.visibility = 'hidden';
+	document.getElementById("playerMonster").style.visibility = 'visible';
 	reset(false);
 }

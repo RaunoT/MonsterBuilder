@@ -133,7 +133,7 @@ img {
 
 /* Enemy monster in multiplayer */
 #enemyMonster {
-	display: none;
+	visibility: hidden;
 }
 
 /* Save monster name input field */
@@ -153,24 +153,6 @@ img {
     margin-right: 1em;
 }
 
-/* Buttons that appear after a battle has started in multiplayer mode */
-#inFightButtons {
-    
-}
-
-/* List of available opponents on multiplayer page */
-#opponentList {
-    overflow: scroll;
-    overflow-y: auto;
-    overflow-x: auto;
-}
-
-/* Used for preloading images inside an invisible div */
-.preLoad{
-    visibility: hidden;
-    height: 0px;
-    width: 0%;
-}
 /* Home icon resize */
 .glyphicon.glyphicon-home{font-size:80%;}
 .glyphicon.glyphicon-user{font-size:80%;}
@@ -178,8 +160,8 @@ img {
 
 /*Intro page*/
 .welcomingtext {
-text-align:  center;
-margin-top:3em;
+    text-align:  center;
+    margin-top:3em;
 }
 
 /*Table with names who made this web*/
@@ -212,10 +194,13 @@ margin-top:3em;
 
 /*Text for developerstable*/
 /*Person subject*/
-p.italic{
+p.italic {
 	font-style:italic;
 	font-size:1em;
 	font-family:Tahoma, Geneva, sans-serif;
 }
+
 /*Person name*/
-p.tabletext{font-size:1.5em;}
+p.tabletext {
+    font-size:1.5em;
+}
