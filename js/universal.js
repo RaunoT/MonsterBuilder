@@ -56,6 +56,7 @@ window.onload = function(){
 		});
 	}
 
+
 	if (document.getElementById("pHead")) {
 		document.getElementById("pHead").addEventListener("click", function() {changePic("pHead", Head, false);} );
 	}
@@ -80,9 +81,34 @@ window.onload = function(){
 	    document.getElementById("pRightLeg").addEventListener("click", function() {changePic("pRightLeg", RightLeg, false);} );
 	}
 
-	var play = document.getElementById("play");
-    if (play) {
-    	play.addEventListener("click", function() {
+	if(document.getElementById("multiPlayer")) {
+		if (document.getElementById("eHead")) {
+			document.getElementById("eHead").addEventListener("click", function() {changePic("eHead", Head, false);} );
+		}
+
+		if (document.getElementById("eChest")) {
+		    document.getElementById("eChest").addEventListener("click", function() {changePic("eChest", Chest, false);} );
+		}
+
+		if (document.getElementById("eLeftHand")) {
+		    document.getElementById("eLeftHand").addEventListener("click", function() {changePic("eLeftHand", LeftHand, false);} );
+		}
+
+		if (document.getElementById("eRightHand")) {
+		    document.getElementById("eRightHand").addEventListener("click", function() {changePic("eRightHand", RightHand, false);} );
+		}
+
+		if (document.getElementById("eLeftLeg")) {
+		    document.getElementById("eLeftLeg").addEventListener("click", function() {changePic("eLeftLeg", LeftLeg, false);} );
+		}
+
+		if (document.getElementById("eRightLeg")) {
+		    document.getElementById("eRightLeg").addEventListener("click", function() {changePic("eRightLeg", RightLeg, false);} );
+		}
+	}
+
+    if (document.getElementById("play")) {
+    	document.getElementById("play").addEventListener("click", function() {
 	    	assignValues();
 	    	if (checkMonster()) {
 	    		reset(false);
@@ -97,12 +123,6 @@ window.onload = function(){
 	    	}
 	    });
     }
-
-    if (document.getElementById("save")) {
-    	document.getElementById("save").addEventListener("click", function() {
-	    	saveMonster();
-	    });
-    }    
 };
 
 function currentBodypartIndex(bodyparts, url) {
