@@ -13,18 +13,12 @@ The logic for the game is written in JavaScript/PHP and the visual aspects are h
 
 ## Installation guide
 
-**Reuiqred:**
-
-FIle sharing server.
-
 Navigate to the desired directory.
 
 **Clone the git repository with**
 ```
 git clone https://github.com/RaunoT/MonsterBuilder
 ```
-
-Make sure that the file database.txt is readable and editable by everyone.
 
 ## Tööjaotus ja rühmaliikmed
 
