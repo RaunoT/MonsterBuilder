@@ -55,7 +55,7 @@
 	<!-- Players monster -->
 	<div class="container-fluid">
 		<div class="col-sm-6" id="playerMonster">
-			<h2><span class="underline" id="pName">YOUR MONSTER</span></h2>
+			<h2><span class="underline" id="pName">PLAYER 1</span></h2>
 			<div class="scale">
 				<div class="row">
 					<div class="col-xs-4 col-xs-offset-4" id="pHead">
@@ -84,16 +84,18 @@
 			</div>
 
 			<!-- Monster namebar -->
-			<div class="row">
-				<div class="col-sm-8 col-sm-offset-2">
-					<div class="form-group">
-						<input type="text" name="playerName" id="playerName" value="" maxlength="20" placeholder="Insert monsters' name" class="form-control">
+			<div id="playerNamebar">
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2">
+						<div class="form-group">
+							<input type="text" name="playerName" id="playerName" value="" maxlength="20" placeholder="Insert monsters' name" class="form-control">
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-8 col-sm-offset-2">
-					<button type="button" onclick="saveMonster(1)" class="controlBtn">Save</button>
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2">
+						<button type="button" onclick="saveMonster(1)" class="controlBtn">Save</button>
+					</div>
 				</div>
 			</div>
 
@@ -101,7 +103,7 @@
 	
 		<!-- Opponents monster -->
 		<div class="col-sm-6" id="enemyMonster">
-			<h2><span class="underline" id="eName">ENEMY MONSTER</span></h2>
+			<h2><span class="underline" id="eName">PLAYER 2</span></h2>
 			<div class="scale">
 				<div class="row">
 					<div class="col-xs-4 col-xs-offset-4" id="eHead">
@@ -127,30 +129,32 @@
 						<img src="../assets/monster/starter/leg_right_0.png" alt="Monster Bodypart">
 					</div>
 				</div>
-				<!-- 
-				Buttons that appear after a battle has commenced 
-				<div class="row">
-					<div class="col-sm-4 col-sm-offset-4" id="inFightButtons">
-						<button type="button" id="backButton" class="controlBtn" onclick="back()">Back</button>
-					</div>
-				</div>
-				-->
+				
 			</div>
 
 			<!-- Monster namebar -->
-			<div class="row">
-				<div class="col-sm-8 col-sm-offset-2">
-					<div class="form-group">
-						<input type="text" name="enemyName" id="enemyName" value="" maxlength="20" placeholder="Insert monsters' name" class="form-control">
+			<div id="enemyNamebar">
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2">
+						<div class="form-group">
+							<input type="text" name="enemyName" id="enemyName" value="" maxlength="20" placeholder="Insert monsters' name" class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2">
+						<button type="button" onclick="saveMonster(2)" class="controlBtn">Save</button>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-sm-8 col-sm-offset-2">
-					<button type="button" onclick="saveMonster(2)" class="controlBtn">Save</button>
-				</div>
-			</div>
 
+		</div>
+
+		<!-- Buttons that appear after a battle has commenced -->
+		<div class="row">
+			<div class="col-sm-2 col-sm-offset-5" id="resetBar">
+				<button type="button" id="backButton" class="controlBtn btn-block" onclick="back()">Back</button>
+			</div>
 		</div>
 	</div>
 

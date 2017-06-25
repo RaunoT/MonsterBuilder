@@ -166,6 +166,10 @@ function reset(full) {
 			$("#e"+i).removeClass("greyed");
 			$("#p"+i).removeClass("greyed");
 		}
+		if (i == "name") {
+			player[name] = "PLAYER 1";
+			enemy[name] = "PLAYER 2";
+		}
 		player["score"] = 0;
 		enemy["score"] = 0;
 	}
@@ -197,14 +201,24 @@ function findVictor() {
 		}
 	}
 	if (player["score"] > enemy["score"]) {
-		$("#heading").css("color", "#80ED37");
-		return "YOU WIN!";
+		if (document.getElementById("multiPlayer")) {
+			$("#heading").css("color", "#EFDF00");
+			return "PLAYER 1 WINS!";
+		} else {
+			$("#heading").css("color", "#80ED37");
+			return "YOU WIN!";
+		}
 	} else if (player["score"] == enemy["score"]) {
 		$("#heading").css("color", "#EFDF00");
 		return "IT'S A TIE!";
 	} else {
-		$("#heading").css("color", "#ED2828");
-		return "YOU LOSE!";
+		if (document.getElementById("multiPlayer")) {
+			$("#heading").css("color", "#EFDF00");
+			return "PLAYER 2 WINS!";
+		} else {
+			$("#heading").css("color", "#ED2828");
+			return "YOU LOSE!";
+		}
 	}
 }
 
@@ -281,6 +295,9 @@ function saveMonster(player_index) {
 			if (enemy.name != "") {
 				document.getElementById("eName").innerHTML = enemy.name;
 				document.getElementById("playerMonster").style.visibility = 'visible';
+				document.getElementById("playerNamebar").style.display = 'none';
+				document.getElementById("enemyNamebar").style.display = 'none';
+				document.getElementById("resetBar").style.display = 'block';
 				document.getElementById("heading").innerHTML = findVictor();
 			} else {
 				document.getElementById("heading").innerHTML = "Make sure the monster is completed and named";
@@ -360,7 +377,7 @@ function pictureEnemy(divId, partUrl) {
 }
 
 function back() {
-	document.getElementById("enemyMonster").style.visibility = 'hidden';
-	document.getElementById("playerMonster").style.visibility = 'visible';
-	reset(false);
+	document.getElementById('enemyName').value = null;
+	document.getElementById('playerName').value = null;
+	location.reload();
 }

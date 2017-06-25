@@ -204,3 +204,7 @@ p.italic {
 p.tabletext {
     font-size:1.5em;
 }
+
+#resetBar {
+    display: none;
+}
