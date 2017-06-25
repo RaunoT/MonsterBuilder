@@ -47,10 +47,10 @@
 	</nav>
 
 	<!-- Page heading -->
-	<h1 id="heading">MULTI-PLAYER MODE</h1>
+	<h1 id="heading">PLAYER 1 CREATE YOUR MONSTER</h1>
 	<!-- Guides under heading -->
 	<h3 id="guide"><i>Loop through different bodyparts by clicking on the corresponding slot</i></h3>
-	<h3 id="opponentGuide"><i>After you've created a monster, select an opponent from the list and click fight</i></h3>
+	<h3 id="opponentGuide"><i>The fight will begin after player 2 has saved their monster</i></h3>
 
 	<!-- Players monster -->
 	<div class="container-fluid">
@@ -87,15 +87,16 @@
 			<div class="row">
 				<div class="col-sm-8 col-sm-offset-2">
 					<div class="form-group">
-						<input type="text" name="newName" id="newName" value="" maxlength="20" placeholder="Insert monsters' name" class="form-control">
+						<input type="text" name="playerName" id="playerName" value="" maxlength="20" placeholder="Insert monsters' name" class="form-control">
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-8 col-sm-offset-2">
-					<button type="button" id="save" class="controlBtn">Save</button>
+					<button type="button" onclick="save(1)" class="controlBtn">Save</button>
 				</div>
 			</div>
+
 		</div>
 	
 		<!-- Opponents monster -->
@@ -126,26 +127,31 @@
 						<img src="../assets/monster/starter/leg_right_0.png" alt="Monster Bodypart">
 					</div>
 				</div>
-
-				<!-- Buttons that appear after a battle has commenced -->
+				<!-- 
+				Buttons that appear after a battle has commenced 
 				<div class="row">
 					<div class="col-sm-4 col-sm-offset-4" id="inFightButtons">
 						<button type="button" id="backButton" class="controlBtn" onclick="back()">Back</button>
 					</div>
 				</div>
-
+				-->
 			</div>
+
+			<!-- Monster namebar -->
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2">
+					<div class="form-group">
+						<input type="text" name="enemyName" id="enemyName" value="" maxlength="20" placeholder="Insert monsters' name" class="form-control">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2">
+					<button type="button" onclick="save(2)" class="controlBtn">Save</button>
+				</div>
+			</div>
+
 		</div>
-		
-		<!-- Listview of available opponents -->
-		<div class="col-sm-6" id="opponents">
-			<h2><span class="underline">SELECT OPPONENT</span></h2>
-			<div class="col-sm-6" id="opponentList"></div>
-		</div>
-
-		<!-- Buttons that appear after a battle has commenced -->
-
-
 	</div>
 
 </body>

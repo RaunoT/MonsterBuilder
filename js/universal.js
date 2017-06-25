@@ -50,21 +50,6 @@ var aIParts = ["aIHead", "aILeftHand", "aIChest", "aIRightHand", "aILeftLeg", "a
 
 window.onload = function(){
 
-	loadServerFn().then(function() {
-		if (document.getElementById("opponentList")) {
-			$("#opponentList").css("height", document.getElementById('playerMonster').clientHeight+"px");
-			$("#opponentList").css("width", document.getElementById('playerMonster').clientWidth+"px");
-			loadEnemyList();
-			window.onresize = function() {
-				$("#opponentList").css("height", document.getElementById('playerMonster').clientHeight+"px");
-				$("#opponentList").css("width", document.getElementById('playerMonster').clientWidth+"px");
-			}
-		}
-	})
-	.catch(function(error) {
-		console.log(error);
-	});
-
 	if (document.getElementById("reset")) {
 		document.getElementById("reset").addEventListener("click", function() {
 			reset(true);
@@ -113,34 +98,11 @@ window.onload = function(){
 	    });
     }
 
-    if (document.getElementById("opponentList")) {
-    	document.querySelector('body').addEventListener('click', function(event) {
-			if (event.target.className == 'fightButton controlBtn') {
-				assignValues();
-				if (checkMonster()) {
-					console.log(event.target.id);
-					fight(event.target.id);
-					startPlay();
-					document.getElementById("guide").innerHTML = "<i>The winning bodyparts have been highlighted</i>";
-		        	document.getElementById("opponentGuide").innerHTML = "<br>";
-	        		document.getElementById("heading").innerHTML = findVictor();
-		        }
-			}
-		});
-    }
-
     if (document.getElementById("save")) {
     	document.getElementById("save").addEventListener("click", function() {
 	    	saveMonster();
-	    	loadServerFn().then(function() {
-				if (document.getElementById("opponentList")) {
-					document.getElementById("opponentList").innerHTML = "";
-					loadEnemyList();
-				}
-			})
 	    });
-    }
-	    
+    }    
 };
 
 function currentBodypartIndex(bodyparts, url) {
@@ -193,7 +155,7 @@ function reset(full) {
 		document.getElementById("opponentGuide").innerHTML = "<i>After you've created a monster, click fight and a random AI enemy is genertaed for you</i>";
 		document.getElementById("heading").innerHTML = "SINGLE-PLAYER MODE";
 	} else if (document.getElementById("multiPlayer")) {
-		document.getElementById("opponentGuide").innerHTML = "<i>After you've created a monster, select an opponent from the list and click fight</i>";
+		document.getElementById("opponentGuide").innerHTML = "<i>After you've saved your monster, let player 2 make save theirs</i>";
 		document.getElementById("heading").innerHTML = "MULTI-PLAYER MODE";
 	}
 	$("#heading").css("color", "#80ED37");
@@ -283,27 +245,26 @@ function changePic(divId, bodyparts, reset) {
 	$("#"+divId).prepend("<img src='"+bodyparts[next]["url"]+"'>");
 }
 
-function saveMonster() {
+function saveMonster(player_index) {
 	getName();
 	assignValues();
 	if (player.name != "" && checkMonster()) {
-		$.ajax({
-			url: "../server.php?save="+JSON.stringify(player)
-		}).done(function(data) {
-			console.log('Saved monster to server.');
-			console.log(data);
-		});
 		document.getElementById("pName").innerHTML = player.name;
 		document.getElementById("heading").innerHTML = "Monster Saved";
+		// TODO switch to creating second monster
 	} else {
 		document.getElementById("heading").innerHTML = "Make sure the monster is completed and named";
 	}
 }
 
-
-
-function getName() {
-  player.name = document.getElementById('newName').value;
+function getName(player_index) {
+  if (player_index == 1) {
+  	player.name = document.getElementById('playerName').value;
+  } else if (player_index == 2) {
+	enemy.name = document.getElementById('enemyName').value;
+  } else {
+  	console.log("Cheater?");
+  }
 }
 
 function checkMonster() {
@@ -357,66 +318,7 @@ function pictureEnemy(divId, partUrl) {
 	$("#"+divId).prepend("<img src='"+partUrl+"'>");
 }
 
-function loadEnemyList() {
-
-	if(allPlayers.length>0) {
-		var heading = document.createElement("h2");
-		var span = document.createElement("span");
-		var headingText = document.createTextNode("SELECT OPPONENT");
-		span.className = "underline";
-		heading.appendChild(span);
-		//span.appendChild(headingText);
-		document.getElementById("opponentList").appendChild(heading);
-	} else {
-		var emptyListHeading = document.createElement("h3");
-		var emptyListHeadingText = document.createTextNode("No saved monsters yet, be first!");
-		emptyListHeading.appendChild(emptyListHeadingText);
-		document.getElementById("opponentList").appendChild(emptyListHeading);
-	}
-
-	for(var i=0; i<allPlayers.length; i++) {
-
-		var oneEnemy = document.createElement("div");
-		oneEnemy.className = 'oneEnemy';
-
-		var fightButton = document.createElement("button");
-		fightButton.className = 'fightButton controlBtn';
-		fightButton.id = i;
-		var buttonName = document.createTextNode("Fight");
-		fightButton.appendChild(buttonName);
-		oneEnemy.appendChild(fightButton);
-		document.getElementById("opponentList").appendChild(oneEnemy);
-
-		var enemyNameSpan = document.createElement("span");
-		enemyNameSpan.className = 'enemyName';
-		var enemyName = document.createTextNode(allPlayers[i].name);
-		enemyNameSpan.appendChild(enemyName);
-		oneEnemy.appendChild(enemyNameSpan);
-		document.getElementById("opponentList").appendChild(oneEnemy);
-	}
-}
-
-function loadServerFn() {
-	 return $.ajax({
-		url: "../database.txt?time=" + new Date().getTime()
-	}).done(function(data) {
-		allPlayers = JSON.parse(data).players;
-		console.log('Loaded monsters from server.');
-		for (enemies in allPlayers) {
-			allPlayers[enemies]["score"] = 0;
-		}
-	});
-}
-
-function fight(enemyIndex) {
-	document.getElementById("opponents").style.display = 'none';
-	document.getElementById("enemyMonster").style.display = 'block';
-	enemy = allPlayers[enemyIndex];
-	document.getElementById("eName").innerHTML = enemy.name;
-}
-
 function back() {
-	document.getElementById("opponents").style.display = 'block';
 	document.getElementById("enemyMonster").style.display = 'none';
 	reset(false);
 }
